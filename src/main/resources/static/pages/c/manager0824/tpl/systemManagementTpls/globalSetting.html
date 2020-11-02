@@ -1,0 +1,84 @@
+<div class="globalViewport">
+    <form class="am-form am-form-horizontal">
+        <div class="am-form-group">
+            <label for="site_domain" class="am-u-sm-2 am-form-label">站点域名：</label>
+            <div class="am-u-sm-10 appInfo" id="site_domain">{{globalSetting.site_domain}}
+            </div>
+
+        </div>
+        <div class="am-form-group">
+            <label for="site_name" class="am-u-sm-2 am-form-label">站点名称：</label>
+            <div class="am-u-sm-10 appInfo" id="site_name">
+                {{globalSetting.site_name}}
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label for="moveToDifferentGroup" class="am-u-sm-2 am-form-label">允许跨柜移动：</label>
+                <div class="am-u-sm-10 checkbox">
+                    <input type="checkbox" id="moveToDifferentGroup" ng-model="globalSetting.moveToDifferentGroup" disabled><label></label>
+                </div>
+
+        </div>
+        <div class="am-form-group">
+            <label for="copyToDifferentGroup" class="am-u-sm-2 am-form-label">允许跨柜复制：</label>
+            <div class="am-u-sm-10 checkbox">
+                <input type="checkbox" id="copyToDifferentGroup" ng-model="globalSetting.copyToDifferentGroup" disabled><label></label>
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label for="smtp_auth" class="am-u-sm-2 am-form-label">SMTP认证：</label>
+            <div class="am-u-sm-10 checkbox">
+                <input type="checkbox" id="smtp_auth" ng-model="globalSetting.smtp_auth" disabled><label></label>
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label for="smtp_host" class="am-u-sm-2 am-form-label">SMTP主机：</label>
+            <div class="am-u-sm-10 appInfo" id="smtp_host">
+                {{globalSetting.smtp_host}}
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label for="smtp_password" class="am-u-sm-2 am-form-label">SMTP密码：</label>
+            <div class="am-u-sm-10 appInfo" id="smtp_password">
+                {{globalSetting.smtp_password}}
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label for="smtp_port" class="am-u-sm-2 am-form-label">SMTP端口号：</label>
+            <div class="am-u-sm-10 appInfo" id="smtp_port" >
+                {{globalSetting.smtp_port}}
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label for="smtp_username" class="am-u-sm-2 am-form-label">SMTP用户名：</label>
+            <div class="am-u-sm-10 appInfo" id="smtp_username">
+                {{globalSetting.smtp_username}}
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label for="smtp_sender" class="am-u-sm-2 am-form-label">邮箱地址：</label>
+            <div class="am-u-sm-10 appInfo"  id="smtp_sender" >
+                {{globalSetting.smtp_sender}}
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label for="smtp_sendername" class="am-u-sm-2 am-form-label">邮箱名称：</label>
+            <div class="am-u-sm-10 appInfo" id="smtp_sendername" >
+                {{globalSetting.smtp_sendername}}
+            </div>
+        </div>
+
+        <div class="am-form-group">
+            <label for="personalSpace" class="am-u-sm-2 am-form-label">文件柜总容量：</label>
+            <div class="am-u-sm-10 appInfo" id="personalSpace">
+                {{globalSetting.personalSpace}} KB
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label for="userLimit" class="am-u-sm-2 am-form-label">单个文件大小：</label>
+            <div class="am-u-sm-10 appInfo" id="userLimit" >
+                {{globalSetting.userLimit}} KB
+            </div>
+        </div>
+    </form>
+</div>

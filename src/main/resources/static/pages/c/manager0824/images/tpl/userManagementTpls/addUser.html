@@ -1,0 +1,70 @@
+<form class="am-form">
+    <fieldset>
+        <div class="am-form-group userProperty">
+            <div class="am-u-sm-2" for="account-ipt">用户账号：</div>
+            <div class="am-u-sm-10">
+                <input type="text" id="account-ipt" class="am-form-field am-input-sm"
+                       ng-model="newUser.account" placeholder="必填" ng-pattern="/[a-zA-Z]/" required>
+            </div>
+        </div>
+        <div class="am-form-group userProperty">
+            <div class="am-u-sm-2" for="password-ipt">用户密码：</div>
+            <div class="am-u-sm-10">
+                <input type="password" id="password-ipt" class="am-form-field am-input-sm"
+                       ng-model="newUser.password" placeholder="必填" required>
+            </div>
+        </div>
+        <div class="am-form-group userProperty">
+            <div class="am-u-sm-2" for="name-ipt">用户姓名：</div>
+            <div class="am-u-sm-10">
+                <input type="text" id="name-ipt" class="am-form-field am-input-sm"
+                       ng-model="newUser.name" placeholder="必填" required>
+            </div>
+        </div>
+        <div class="am-form-group userProperty">
+            <div class="am-u-sm-2" for="mobile-ipt">联系方式：</div>
+            <div class="am-u-sm-10">
+                <input type="text" id="mobile-ipt" class="am-form-field am-input-sm"  ng-minlength="10" ng-maxlength="11" ng-model="newUser.mobile">
+            </div>
+        </div>
+        <div class="am-form-group userProperty">
+            <div class="am-u-sm-2" for="email-ipt">电子邮件：</div>
+            <div class="am-u-sm-10">
+                <input type="email" id="email-ipt" class="am-form-field am-input-sm" ng-model="newUser.email">
+            </div>
+        </div>
+        <div class="am-form-group userProperty">
+            <div class="am-u-sm-2" for="company-ipt">公司：</div>
+            <div class="am-u-sm-10">
+                <input type="text" id="company-ipt" class="am-form-field am-input-sm"
+                   ng-model="newUser.company">
+            </div>
+        </div>
+        <div class="am-form-group userProperty">
+            <div class="am-u-sm-2" for="department-ipt">部门：</div>
+            <div class="am-u-sm-10">
+                <input type="text" id="department-ipt" class="am-form-field am-input-sm"
+                   ng-model="newUser.department">
+            </div>
+        </div>
+
+        <div class="am-form-group userProperty">
+            <div class="am-u-sm-2" for="position-ipt">职位：</div>
+            <div class="am-u-sm-10">
+                <input type="text" id="position-ipt" class="am-form-field am-input-sm" ng-model="newUser.position">
+            </div>
+        </div>
+
+        <div class="am-form-group userProperty">
+            <div class="am-u-sm-2" for="im-ipt">即时通信：</div>
+            <div class="am-u-sm-10">
+                <input type="text" id="im-ipt" class="am-form-field am-input-sm" ng-model="newUser.im">
+            </div>
+        </div>
+        <!--<hr>-->
+        <div class="am-btn-group">
+            <button type="submit" class="am-btn am-btn-primary" ng-click="addUserSubmit()">确定</button>
+            <button type="reset" class="am-btn am-btn-gray" data-am-modal-cancel data-am-modal-close>取消</button>
+        </div>
+    </fieldset>
+</form>

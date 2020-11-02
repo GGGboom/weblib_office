@@ -1,0 +1,58 @@
+<!--添加按钮侧边栏-->
+<div id="addPermissionOffcanvas">
+    <div class="am-offcanvas-bar am-offcanvas-bar-flip avoidTopBar">
+        <div class="am-offcanvas-content">
+            <div class="am-panel am-panel-default">
+                <div class="am-panel-hd am-titlebar am-titlebar-multi">
+                    <div class="am-btn-group am-btn-group-lg">
+                        <button type="button" class="am-btn am-btn-default" ng-click="showStructure();"
+                                ng-class="{'am-active':isTabSelected('{{tabSelect.STRUCTURE}}')}">组织结构
+                        </button>
+                        <button type="button" class="am-btn am-btn-default" ng-click="showUsers();"
+                                ng-class="{'am-active':isTabSelected('{{tabSelect.USERS}}')}">所有用户
+                        </button>
+                        <nav class="am-navbar-nav">
+                            <a href="javascript:void(0);"><i class="am-icon-ellipsis-v am-icon-md"></i>
+                            </a>
+                            <a href="javascript:void(0);"><i class="am-icon-search am-icon-md"></i>
+                            </a>
+                        </nav>
+                    </div>
+                    <nav class="am-titlebar-nav">
+                        <a href="javascript:void(0);" ng-click="closeAddPermission();">
+                            <i class="am-icon-close am-icon-md"></i>
+                        </a>
+                    </nav>
+                </div>
+                <!--选项卡标签-->
+                <div class="am-pannel-bd ngViewport">
+                    <div class="ng-scope">
+                        <div class="am-btn-toolbar group-info-tab">
+
+                            <hr data-am-widget="divider" style="" class="am-divider am-divider-default"/>
+                        </div>
+                        <!--选项卡内容-->
+                        <div class="group-info-tab" ng-show="isTabSelected('{{tabSelect.STRUCTURE}}');" id="structure">
+                            <!--使用AngularJS的ui-tree来构建目录结构-->
+                            <div ui-tree data-drag-enabled="false" class="tree-root">
+                                <ol ui-tree-nodes ng-model="usersTree" class="am-list admin-sidebar-list">
+                                    <li ui-tree-node ng-repeat="node in usersTree" ng-include="'nodes_usersRenderer'"></li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="group-info-tab" ng-show="isTabSelected('{{tabSelect.USERS}}');" id="users">
+                            <!--用户列表，用ui-grid实现-->
+                            <!--<div id="grid" ui-grid="userGridOptions" ui-grid-selection class="gridStyle" ui-grid-auto-resize
+                                 ng-style="{height:gridHeight}"></div>-->
+                        </div>
+                        <div>
+                            <button type="button" class="am-btn am-btn-default" ng-click="addPermissionTo();">添加（{{checkedCount}}）个</button>
+                            <button type="button" class="am-btn am-btn-default" ng-click="closeAddPermission();">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

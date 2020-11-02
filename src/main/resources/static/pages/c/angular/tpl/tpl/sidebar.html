@@ -1,0 +1,81 @@
+<div class="admin-sidebar am-offcanvas " id="admin-offcanvas">
+    <div class="am-offcanvas-bar admin-offcanvas-bar">
+        <ul class="am-list admin-sidebar-list">
+            <li>
+                <div class="am-input-group am-input-group-sm" style="padding: 5px">
+                    <input type="text" class="am-form-field" placeholder="搜索文件柜" ng-model="searchGroups">
+                    <span class="am-input-group-btn">
+            <button class="am-btn am-btn-default am-icon-search" type="button"
+                    ng-click="searchMyGroups()"></button>
+          </span>
+                </div>
+            </li>
+            <li ui-tree data-drag-enabled="false" class="tree-root" id="searchResult" ng-class="{hidden: !hasSearch}">
+                <ol ui-tree-nodes="" ng-model="data2" style="list-style-type:none;cursor: pointer;"
+                    class="am-list admin-sidebar-list">
+                    <li><a ng-repeat="node in data2" ui-tree-node ng-include="'nodes_renderer'"
+                           ng-show="visible(node)" style="padding-bottom: 3px"></a></li>
+                </ol>
+            </li>
+            <li><a ui-sref="main({parentId:0})" ng-click="homepage()"><img src="images/personalGroup.png"
+                                                                           class="sidebarImg"> 个人资源库 </a>
+                <!--<ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">-->
+                <!--<li><a ui-sref="main({id:1})" class="am-cf"><span class="am-icon-photo "></span> 图片</a></li>-->
+                <!--<li><a ui-sref="main({id:2})"><span class="am-icon-file-text-o"></span> 文档</a></li>-->
+                <!--<li><a ui-sref="main({id:3})"><span class="am-icon-music"></span> 音乐</a></li>-->
+                <!--<li><a ui-sref="main({id:4})"><span class="am-icon-film"></span> 视频</a></li>-->
+                <!--</ul>-->
+            </li>
+            <li ui-tree data-drag-enabled="false" class="tree-root publicTree">
+                <ol ui-tree-nodes="" ng-model="data"
+                    style="list-style-type:none;cursor: pointer;overflow: auto;max-height: 450px;padding:0;"
+                    class="am-list admin-sidebar-list">
+                    <li><a ng-repeat="node in data" ui-tree-node ng-include="'nodes_renderer'"
+                           ng-show="visible(node)" style="padding-bottom: 3px"></a></li>
+                </ol>
+            </li>
+            <li><a ui-sref="main.shareToMe"><img src="images/sharedToMe.png" class="sidebarImg"> 我的接收</a></li>
+            <li><a ui-sref="main.myshare"><img src="images/sharedByMe.png" class="sidebarImg"> 我的分享</a></li>
+            <!--<li><a href="javascript:void(0)"><img src="images/favorites.png" class="sidebarImg"> 我的收藏</a></li>-->
+            <li ui-tree data-drag-enabled="false" class="tree-root">
+                <ol ui-tree-nodes="" ng-model="data1" style="list-style-type:none;cursor: pointer"
+                    class="am-list admin-sidebar-list">
+                    <li><a ng-repeat="node in data1" ui-tree-node ng-include="'nodes_renderer'"
+                           ng-show="visible(node)" style="padding-bottom: 3px"></a></li>
+                </ol>
+            </li>
+        </ul>
+        <!--<div class="am-icon-search am-fr am-margin-right " id="showClassify"-->
+        <!--data-am-collapse="{target: '#collapse-nav'}"></div>-->
+        <!-- Nested node template -->
+        <script type="text/ng-template" id="nodes_renderer">
+            <div class="tree-node tree-node-content" ng-click="openTree(this)" style="color: #000000">
+                <div data-nodrag style="padding-bottom: 9px"
+                     ng-if="findNodes(node)"
+                     context-menu="onRightClick()"
+                     context-menu-close="onClose()"
+                     data-target="menu-{{node}}">
+                    <img ng-src={{selectImg(node.type,collapsed)|treeImg}} class="sidebarImg">
+                    {{node.displayName|displayName}}
+                    <div class="dropdown position-fixed" id="menu-{{node}}" style="margin-top: -40px;">
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a class="pointer" role="menuitem" tabindex="1"
+                                   ng-click="collect(node)">{{selectTitle(node)}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div ng-if="!findNodes(node)" data-nodrag style="padding-bottom: 9px">
+                    <img ng-src={{selectImg(node.type,collapsed)|treeImg}} class="sidebarImg">
+                    {{node.displayName|displayName}}
+                </div>
+            </div>
+            <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: !collapsed}">
+                <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer'" ng-show="visible(node)"
+                    style="line-height: 2">
+                </li>
+            </ol>
+        </script>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+<div class="ngCellText" ng-dblclick="title(row.entity)">
+    <span ng-cell-text style="cursor:default"> <img src={{row.entity|shareicon}} > {{row.getProperty(col.field) | displayName}}</span>
+    <span ng-class="{'hidden':isHidden}" style="padding-left: 20px">
+        <a href="javascript:void(0)" ng-click="download(row.entity.resourceId)">下载</a>
+        <a href="javascript:void(0)" ng-click="recycle(row.entity.id)">删除</a></span>
+</div>

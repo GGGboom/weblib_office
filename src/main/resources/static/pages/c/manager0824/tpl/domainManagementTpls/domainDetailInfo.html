@@ -1,0 +1,51 @@
+<div class="am-g domainProperty"></div>
+<div class="am-g domainProperty">
+    <div class="am-u-sm-3 domainDiv">域名称：</div>
+    <div class="am-u-sm-9 ">{{domainDetailInfo.domainName}}</div>
+</div>
+<div class="am-g domainProperty">
+    <div class="am-u-sm-3 domainDiv" for="capacity">域容量：</div>
+    <div class="am-u-sm-9 ">
+        {{domainDetailInfo.availableCapacity}}KB
+    </div>
+</div>
+<div class="am-g domainProperty">
+    <div class="am-u-sm-3 domainDiv" for="desc">域描述：</div>
+    <div class="am-u-sm-9 ">
+        {{domainDetailInfo.desc}}
+    </div>
+</div>
+<div class="am-g domainProperty" id="creatorAccount">
+    <div class="am-u-sm-3 domainDiv">创建者：</div>
+    <div class="am-u-sm-9">{{domainDetailInfo.creatorAccount}}</div>
+</div>
+<div class="am-g domainProperty">
+    <div class="am-u-sm-3 domainDiv">创建时间：</div>
+    <div class="am-u-sm-9">{{domainDetailInfo.createDate}}</div>
+</div>
+
+<div class="am-g domainProperty">
+    <div class="am-u-sm-3 domainDiv">关联节点：</div>
+    <div class="am-u-sm-9" data-drag-enabled="false">
+        <ul  class="am-list admin-sidebar-list" >
+            <li class="domainProperty" ng-repeat="folder in domainDetailInfo.associatedFolders">
+                <div>{{folder.name}}</div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="am-g domainProperty">
+    <div class="am-u-sm-3 domainDiv">管理员：</div>
+    <div class="am-u-sm-9" data-drag-enabled="false" >
+        <ul  class="am-list admin-sidebar-list" >
+            <li class="domainProperty" ng-repeat="manager in domainDetailInfo.managers">
+                <div class="am-u-sm-4">账号：{{manager.account}}</div>
+                <div class="am-u-sm-5">姓名：{{manager.name}}</div>
+                <!--<a href="javascript:void(0);"  class="domainProperty">
+                    <i></i>
+                    <i></i>
+                </a>-->
+            </li>
+        </ul>
+    </div>
+</div>

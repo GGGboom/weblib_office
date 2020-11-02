@@ -1,0 +1,12 @@
+<div class="ui-grid-cell-contents" ng-switch="col.field">
+    <!--完全控制-->
+    <input type="checkbox" ng-value="row.entity.addDir&&row.entity.delete&&row.entity.modify&&row.entity.upload"
+           ng-checked="row.entity.addDir&&row.entity.delete&&row.entity.modify&&row.entity.upload"
+           ng-switch-when="totalControl" ng-change="grid.appScope.permissionChanged(row,col);" ng-model="row.entity[col.field]">
+    <!--下载-->
+    <input type="checkbox" value=""  ng-checked="true" ng-switch-when="download"
+           ng-change="grid.appScope.permissionChanged(row,col);" ng-model="row.entity[col.field]" disabled="disabled">
+    <!--其他（上传、创建文件夹、删除、修改）-->
+    <input type="checkbox" value=""  ng-checked="grid.getCellValue(row, col)" ng-switch-default
+           ng-change="grid.appScope.permissionChanged(row,col);" ng-model="row.entity[col.field]">
+</div>

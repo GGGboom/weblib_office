@@ -1,0 +1,574 @@
+<div id="user-m" class="am-g am-g-collapse">
+    <!--左边用户组目录视图-->
+    <div class="panelWrap am-u-sm-3 left">
+        <div class="am-panel am-panel-default ">
+            <!--用户组目录视图，标题栏-->
+            <div class="am-panel-hd am-titlebar am-titlebar-multi">
+                <div><h3 class="am-titlebar-title">用户组织/组</h3></div>
+                <!--按钮组设置依次是:新建组织、新建组、编辑、删除、搜索-->
+                <nav class="am-titlebar-nav am-fr">
+                    <div class="am-btn-group">
+                        <div class="am-collapse am-topbar-collapse am-btn-group" >
+                            <button type="button" class="am-btn am-btn-default" ng-click="addFolder();"
+                                    ng-mouseenter="tipsOn('addFolder',$event);" ng-mouseleave="tipsOff();"
+                                    ng-disabled="selectedNode.type!='rootFolder' && selectedNode.type!='folder'|| selectedNode.id=='1445'" >
+                                <img src="./images/User_Management/icon_Add_organization@2x.png"/>
+                            </button>
+                            <button type="button" class="am-btn am-btn-default" ng-click="addTeam();"
+                                    ng-mouseenter="tipsOn('addTeam',$event);" ng-mouseleave="tipsOff();"
+                                    ng-disabled="selectedNode.type!='folder'|| selectedNode.id=='1445'" >
+                                <img src="./images/User_Management/icon_Add_group@2x.png"/>
+                            </button>
+                            <button type="button" class="am-btn am-btn-default " ng-click="editFolderOrTeam();"
+                                    ng-mouseenter="tipsOn('editFolderOrTeam',$event);" ng-mouseleave="tipsOff();"
+                                    ng-disabled="selectedNode.type!='team'&& selectedNode.type!='folder'" >
+                                <img src="./images/User_Management/icon_edit@2x.png"/>
+                            </button>
+                            <button type="button" class="am-btn am-btn-default" ng-click="deleteFolderOrTeam();"
+                                    ng-mouseenter="tipsOn('deleteFolderOrTeam',$event);" ng-mouseleave="tipsOff();"
+                                    ng-disabled="selectedNode.type!='folder' && selectedNode.type!='team'|| selectedNode.id=='1445'" >
+                                <img src="./images/User_Management/icon_delete@2x.png"/>
+                            </button>
+                            <button type="button" class="am-btn am-btn-default" ng-click="searchGroup();"
+                                    ng-mouseenter="tipsOn('searchGroup',$event);" ng-mouseleave="tipsOff();">
+                                <img src="./images/User_Management/icon_search@2x.png"/>
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="am-panel-bd ngViewport">
+                <!--用户组目录树视图，内容栏-->
+                <!--tree begin-->
+                <div ui-tree data-drag-enabled="false" class="tree-root">
+                    <ol ui-tree-nodes="" ng-model="tree" class="am-list admin-sidebar-list">
+                        <li ng-repeat="node in tree" ui-tree-node ng-include="'nodes_renderer'"></li>
+                        <li><span ng-bind=""></span></li>
+                    </ol>
+                </div>
+
+                <!--tree end-->
+            </div>
+            <!--<footer class="am-panel-footer">面板页脚</footer>-->
+        </div>
+    </div>
+    <!--选中用户组，右边视图-->
+    <div class="panelWrap am-u-sm-6 middle">
+        <div class="am-panel am-panel-default">
+            <!--选中用户组，右边视图标题栏-->
+            <div class="am-panel-hd am-titlebar am-titlebar-multi">
+                <!--用户列表模块，新增/激活/停用/移除/删除/编辑用户/导入用户/导出用户按钮组-->
+                <div><h3 class="am-titlebar-title">{{currentGroup}}</h3></div>
+                <nav class="am-titlebar-nav am-fr">
+                    <div class="am-btn-group">
+                        <button type="button" class="am-btn am-btn-default" ng-click="addRole();">
+                            <img src="./images/User_Management/icon_add_authorization@2x.png"/>
+                        </button>
+                        <button type="button" class="am-btn am-btn-default" ng-click="revokeRole();">
+                            <img src="./images/User_Management/icon_cancel_authorization@2x.png"/>
+                        </button>
+                        <button type="button" id="addUser" class="am-btn am-btn-default" ng-click="addUser();"
+                                ng-mouseenter="tipsOn('addUser',$event);" ng-mouseleave="tipsOff();">
+                            <img src="./images/User_Management/icon_Add_user@2x.png"/>
+                        </button>  <!--新增用户-->
+                        <button type="button" id="delUser" class="am-btn am-btn-default" ng-click="deleteUser();"
+                                ng-mouseenter="tipsOn('delUser',$event);" ng-mouseleave="tipsOff();">
+                            <img src="./images/User_Management/icon_delete@2x.png"/>
+                        </button><!--删除用户-->
+                        <button type="button" id="resetUserPw" class="am-btn am-btn-default" ng-click="resetUserPw();"
+                                ng-mouseenter="tipsOn('resetUserPw',$event);" ng-mouseleave="tipsOff();">
+                            <img src="./images/User_Management/icon_reset_Password_@2x.png"/>
+                        </button><!--重置密码-->
+                        <button type="button" class="am-btn am-btn-default" ng-click="searchUser();"
+                                ng-mouseenter="tipsOn('searchUser',$event);" ng-mouseleave="tipsOff();">
+                            <img src="./images/User_Management/icon_search@2x.png"/>
+                        </button><!--搜索用户-->
+                    </div>
+                    <div class="am-btn-group am-dropdown" data-am-dropdown>
+                        <button type="button" class="am-dropdown-toggle am-btn am-btn-default" data-am-dropdown-toggle>
+                            <img src="./images/User_Management/icon_More@2x.png"/>
+                        </button><!--更多-->
+                        <div class="am-dropdown-content">
+                            <ul>
+                                <li><a class="moreList" href="javascript:void(0);" ng-click="restoreUser();">
+                                    <img src="./images/User_Management/icon_Activate_the_user@2x.png"/>
+                                    <i class="am-btn am-btn-default">激活用户</i>
+                                </a></li>
+                                <li><a class="moreList" href="javascript:void(0);" ng-click="expiredUser();">
+                                    <img src="./images/User_Management/icon_Disable_users@2x.png"/>
+                                    <i class="am-btn am-btn-default">停用用户</i>
+                                </a></li>
+                                <li><a class="moreList" href="javascript:void(0);" ng-click="addUserToTeam();">
+                                    <img src="./images/User_Management/icon_Move_to_user@2x.png"/>
+                                    <i class="am-btn am-btn-default">移入用户</i>
+                                </a></li>
+                                <li><a class="moreList" href="javascript:void(0);" ng-click="removeUserFromTeam();">
+                                    <img src="./images/User_Management/icon_Remove_the_user@2x.png"/>
+                                    <i class="am-btn am-btn-default">移除用户</i>
+                                </a></li>
+                                <li><a class="moreList" href="javascript:void(0);" ng-click="importUser();">
+                                    <img src="./images/User_Management/icon_Batch_Import@2x.png"/>
+                                    <i class="am-btn am-btn-default">批量导入</i>
+                                </a></li>
+                                <li><a class="moreList" href="javascript:void(0);" ng-click="exportUser();">
+                                    <img src="./images/User_Management/icon_Batch_Export@2x.png"/>
+                                    <i class="am-btn am-btn-default">批量导出</i>
+                                </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="am-btn-group">
+                        <button type="button" ng-class="{'am-disabled':pagingOptions.currentPage==1||pagingOptions.totalPage==0}"
+                                ng-click="prevPage();" class="am-btn am-btn-default">
+                            <img src="./images/User_Management/icon_back@2x.png"/>
+                        </button>
+                        <button type="button" ng-class="{'am-disabled':pagingOptions.currentPage==pagingOptions.totalPage||pagingOptions.totalPage==0}"
+                                ng-click="nextPage();" class="am-btn am-btn-default">
+                            <img src="./images/User_Management/icon_Next@2x.png"/>
+                        </button>
+                    </div>
+                </nav>
+                <div class="am-text tipShow" id="tipShow" ng-show="tipShow" ><span class="am-text-secondary">{{tipContent}}</span></div>
+            </div>
+
+            <!--选中用户组，右边视图的用户列表-->
+            <div class="am-panel-bd ngViewport userViewport">
+                <!--用户列表，用ui-grid实现-->
+                <div id="userGrid" ui-grid="userGridOptions" ui-grid-selection class="gridStyle" ui-grid-auto-resize
+                     ng-style="{height:gridHeight}"></div>
+
+            </div>
+            <!--<footer class="am-panel-footer">面板页脚</footer>-->
+        </div>
+    </div>
+    <div class="panelWrap am-u-sm-3 right" >
+        <div class="am-panel am-panel-default ">
+            <div class="am-panel-hd am-titlebar am-titlebar-multi">
+                <h3 class="am-titlebar-title">详细资料</h3>
+                <nav class="am-titlebar-nav am-fr">
+                    <div class="am-btn-group">
+                        <button type="button" class="am-btn am-btn-default" ng-show="ifModify"
+                                ng-click="modifyUserSubmit();">
+                            <img src="./images/User_Management/icon_ok@2x.png"/>
+                        </button>
+                        <button type="button" class="am-btn am-btn-default" ng-show="ifModify" ng-click="modifyUserCancel();">
+                            <img src="./images/User_Management/icon_cancel@2x.png"/>
+                        </button>
+                        <button type="button" class="am-btn am-btn-default" ng-show="ifAdd" ng-click="addUserSubmit();">
+                            <img src="./images/User_Management/icon_ok@2x.png"/>
+                        </button>
+                        <button type="button" class="am-btn am-btn-default" ng-show="ifAdd" ng-click="addUserCancel();">
+                            <img src="./images/User_Management/icon_cancel@2x.png"/>
+                        </button>
+                        <button type="button" class="am-btn am-btn-default" ng-show="ifEdit" ng-click="modifyUser();">
+                            <img src="./images/User_Management/icon_edit@2x.png"/>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+            <div class="am-panel-bd ngViewport userViewport">
+                <div id="userDetails" ui-view></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--新建组织Modal-->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="addFolderModal">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">
+            <i class="am-text-xs">新建组织</i>
+        </div>
+        <div class="am-modal-bd">
+            <form class="am-form am-form-horizontal">
+                <div class="am-form-group" ng-class="{'am-form-error':wrongName} ">
+                    <label for="name-folder" class="am-u-sm-2 am-form-label ">名称</label>
+                    <div class="am-u-sm-10">
+                        <input type="text" class="am-modal-prompt-input" id="name-folder" ng-model="newFolder.name" required>
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <div class="am-u-sm-offset-2 am-u-sm-10">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="ifSameNameTeam">同时建立同名用户组
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn am-icon-remove am-icon-btn-sm" data-am-modal-cancel data-am-modal-close></span>
+            <span class="am-modal-btn am-icon-check am-icon-btn-sm" ng-click="addFolderSubmit();"></span>
+        </div>
+    </div>
+</div>
+<!--新建组Modal-->
+<div class="am-modal am-modal-confirm" tabindex="-1" id="addTeamModal">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd"><i class="am-text-xs">新建组</i>
+            <a href="javascript:void(0);" class="am-close am-close-spin" data-am-modal-close data-am-modal-cancel>&times;</a>
+        </div>
+        <div class="am-modal-bd">
+            <form class="am-form am-form-horizontal">
+                <div class="am-form-group an-form-icon am-form-feedback" ng-class="{'am-form-error':wrongName} ">
+                    <label for="name-team" class="am-form-label am-u-sm-3">名称：</label>
+                    <div class="am-u-sm-9">
+                        <input type="text" id="name-team" class="am-form-field " ng-model="newTeam.name" required>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn am-icon-remove" data-am-modal-cancel data-am-modal-close></span>
+            <span class="am-modal-btn am-icon-check" ng-click="addTeamSubmit();"></span>
+        </div>
+    </div>
+</div>
+<!--编辑组/组织名称Modal-->
+<div class="am-modal am-modal-confirm" tabindex="-1" id="editFolderOrTeamModal">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd"><i class="am-text-xs">编辑名称</i>
+            <a href="javascript:void(0);" class="am-close am-close-spin" data-am-modal-close data-am-modal-cancel>&times;</a>
+        </div>
+        <div class="am-modal-bd">
+            <form class="am-form am-form-horizontal">
+                <div class="am-form-group an-form-icon am-form-feedback" ng-class="{'am-form-error':wrongName} ">
+                    <label for="name-edit" class="am-form-label am-u-sm-3 am-text-right">名称：</label>
+                    <div class="am-u-sm-9">
+                        <input type="text" id="name-edit" class="am-form-field am-text-xs" ng-model="editName.name">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn am-icon-remove" data-am-modal-cancel data-am-modal-close></span>
+            <span class="am-modal-btn am-icon-check" ng-click="editFolderOrTeamSubmit();"></span>
+        </div>
+    </div>
+</div>
+<!--删除组/组织按钮Modal-->
+<div class="am-modal am-modal-confirm" tabindex="-1" id="deleteFolderOrTeamModal">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd"><i class="am--text-xs">删除组织/组</i></div>
+        <div class="am-modal-bd">
+            确定要删除“{{selectedNode.text}}”这个组织吗？
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn am-icon-remove" data-am-modal-cancel></span>
+            <span class="am-modal-btn am-icon-check" data-am-modal-confirm></span>
+        </div>
+    </div>
+</div>
+<!--授权-->
+<div class="am-modal  am-modal-confirm" tabindex="-1" id="addRoleModal">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">授权用户<a href="javascript: void(0)" class="am-close am-close-spin " data-am-modal-cancel>&times;</a></div>
+        <div class="am-modal-bd">
+            <ul>
+                <li><label>
+                    <input type="radio" ng-model="role.id" ng-value="1">
+                    系统管理员
+                </label></li>
+                <li><label>
+                    <input type="radio" ng-model="role.id" ng-value="2">
+                    域管理员
+                </label></li>
+                <li><label>
+                    <input type="radio" ng-model="role.id" ng-value="3">
+                    日志管理员
+                </label></li>
+                <li><span>当前选中的是：{{rode.id}}</span></li>
+            </ul>
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn am-icon-remove" data-am-modal-cancel></span>
+            <span class="am-modal-btn am-icon-check" data-am-modal-confirm></span>
+        </div>
+    </div>
+</div>
+<!--重置密码modal-->
+<div class="am-modal am-modal-alert" tabindex="-1" id="resetUserPwConfirm">
+    <div class="am-modal-dialog ">
+        <div class="am-modal-hd">重置用户密码</div>
+        <div class="am-modal-bd">
+            重置密码后，用户名和密码相同，确定重置{{count}}个用户的密码？
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" ng-click="resetUserPwSubmit();">确定</span>
+        </div>
+    </div>
+</div>
+<!--没有选择记录提示框Alert-->
+<div class="am-modal am-modal-alert" tabindex="-1" id="noSelectionAlert">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">消息</div>
+        <div class="am-modal-bd">
+            请选择一条记录！
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn">确定</span>
+        </div>
+    </div>
+</div>
+<!--停用用户modal-->
+<div class="am-modal am-modal-confirm" tabindex="-1" id="expiredUserConfirm">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">停用</div>
+        <div class="am-modal-bd">
+            确定要停用这{{count}}个用户吗？
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+        </div>
+    </div>
+</div>
+<!--激活用户modal-->
+<div class="am-modal am-modal-confirm" tabindex="-1" id="restoreUserConfirm">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">激活</div>
+        <div class="am-modal-bd">
+            确定要激活这{{count}}个用户吗？
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+        </div>
+    </div>
+</div>
+<!--移入用户modal-->
+<div class="am-modal am-modal-confirm" tabindex="-1" id="addUserToTeamConfirm">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">移入用户</div>
+        <div class="am-modal-bd">
+            是否将{{count}}个用户移入{{currentGroup}}用户组吗？
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" ng-click="addUserToTeamSubmit();">确定</span>
+        </div>
+    </div>
+</div>
+<!--移除用户modal-->
+<div class="am-modal am-modal-confirm" tabindex="-1" id="removeUserConfirm">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">移除用户</div>
+        <div class="am-modal-bd">
+            确定要删除{{currentGroup}}中的{{count}}个用户吗？
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" ng-click="removeUserSubmit();">确定</span>
+        </div>
+    </div>
+</div>
+<!--删除用户Modal-->
+<div class="am-modal am-modal-confirm" tabindex="-1" id="deleteUserConfirm">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">删除用户</div>
+        <div class="am-modal-bd">
+            删除用户后，用户的所有资源都会转移给管理员，确定将{{count}}个用户删除吗？
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" ng-click="deleteUserSubmit();">确定</span>
+        </div>
+    </div>
+</div>
+<!--导入用户Modal-->
+<div class="am-modal " tabindex="-1" id="importUserModal">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd"><i class="am-text-xs">导入用户</i><a href="javascript: void(0)" class="am-close am-close-spin " data-am-modal-cancel>&times;</a></div>
+        <div class="am-modal-bd">
+            <form class="am-form" >
+                <fieldset>
+                    <div class="am-form-group am-form-file">
+                        <!--<button type="button" class="am-btn am-btn-danger am-btn-sm">
+                            <i class="am-icon-cloud-upload"></i> 选择要上传的文件</button>-->
+                        <button id="doc-form-file" type="button"  class="am-btn am-btn-danger am-btn-sm am-icon-cloud-upload"
+                                name="filedata" ngf-select ng-model="uploadFile" >选择要上传的文件</button><!--ng-model="uploadFile" fileread=""-->
+                    </div>
+                    <div id="file-list">
+                        <span class="am-badge" >{{uploadFile.name}}</span>
+                    </div>
+
+                    <!--<hr>
+                    <button type="submit" class="am-btn  am-btn-primary am-btn-sm am-icon-check" data-am-modal-confirm ></button>
+                    <button type="reset" class="am-btn am-btn-gray am-btn-sm am-icon-remove" data-am-modal-cancel data-am-modal-close></button>-->
+                </fieldset>
+            </form>
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn am-icon-remove" data-am-modal-cancel data-am-modal-close></span>
+            <span class="am-modal-btn am-icon-check" data-am-modal-confirm></span>
+        </div>
+    </div>
+</div>
+<!--搜索用户组Modal-->
+<div class="am-modal  am-modal-no-btn" tabindex="-1" id="searchGroupModal">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">搜索用户组<a href="javascript: void(0)" class="am-close am-close-spin " data-am-modal-cancel>&times;</a></div>
+        <div class="am-modal-bd">
+            <form class="am-form" method="POST" enctype="multipart/form-data" >
+                <fieldset>
+                    <div class="am-form-group am-text-left">
+                        <label for="search-group-ipt">请输入用户组</label>
+                        <input type="text" id="search-group-ipt" class="am-form-field am-input-sm" ng-model="searchingGroup">
+                    </div>
+
+                    <hr>
+                    <button type="submit" class="am-btn  am-btn-primary " data-am-modal-confirm >搜索</button>
+                    <button type="reset" class="am-btn am-btn-gray " data-am-modal-cancel data-am-modal-close>取消</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+<!--搜索用户Modal-->
+<div class="am-modal  am-modal-no-btn" tabindex="-1" id="searchUserModal">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">搜索用户<a href="javascript: void(0)" class="am-close am-close-spin " data-am-modal-cancel>&times;</a></div>
+        <div class="am-modal-bd">
+            <form class="am-form" method="POST" enctype="multipart/form-data" >
+                <fieldset>
+                    <div class="am-form-group am-text-left">
+                        <label for="search-user-account-ipt">账号</label>
+                        <input type="text" id="search-user-account-ipt" class="am-form-field am-input-sm" ng-model="searchingUser.account">
+                    </div>
+                    <div class="am-form-group am-text-left">
+                        <label for="search-user-name-ipt">姓名</label>
+                        <input type="text" id="search-user-name-ipt" class="am-form-field am-input-sm" ng-model="searchingUser.name">
+                    </div>
+                    <div class="am-form-group am-text-left">
+                        <label for="search-user-company-ipt">单位</label>
+                        <input type="text" id="search-user-company-ipt" class="am-form-field am-input-sm" ng-model="searchingUser.company">
+                    </div>
+                    <div class="am-form-group am-text-left">
+                        <label for="search-user-department-ipt">部门</label>
+                        <input type="text" id="search-user-department-ipt" class="am-form-field am-input-sm" ng-model="searchingUser.department">
+                    </div>
+                    <div class="am-form-group am-text-left">
+                        <label for="search-user-email-ipt">邮箱</label>
+                        <input type="text" id="search-user-email-ipt" class="am-form-field am-input-sm" ng-model="searchingUser.email">
+                    </div>
+                    <div class="am-form-group am-text-left">
+                        <label for="search-user-status-ipt">邮箱</label>
+                        <select type="text" id="search-user-status-ipt" class="am-form-field am-input-sm" ng-model="searchingUser.status">
+                            <option value="" selected>全部</option>
+                            <option value="normal">正常</option>
+                            <option value="delete">已注销</option>
+                        </select>
+                    </div>
+
+                    <hr>
+                    <button type="submit" class="am-btn  am-btn-primary " data-am-modal-confirm >搜索</button>
+                    <button type="reset" class="am-btn am-btn-gray " data-am-modal-cancel data-am-modal-close>取消</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+<!--右键菜单-->
+<div class="position-fixed" id="menu" ng-hide="true">
+    <ul class="am-list menu-list ">
+        <li >
+            <a class="pointer" ng-disabled="selectedNode.type!='rootFolder' && selectedNode.type!='folder'|| selectedNode.id=='1445'"
+               ng-click="addFolder()">新建组织</a>
+        </li>
+        <li >
+            <a class="pointer" ng-disabled="selectedNode.type!='folder'|| selectedNode.id=='1445'"
+               ng-click="addTeam()">新建组</a></li>
+        <li ng-disabled="selectedNode.type!='team'&& selectedNode.type!='folder'" >
+            <a class="pointer"
+               ng-click="editFolderOrTeam()">编辑</a></li>
+        <li ng-disabled="selectedNode.type!='folder' && selectedNode.type!='team'|| selectedNode.id=='1445'" >
+            <a class="pointer"
+               ng-click="deleteFolderOrTeam()">删除</a></li>
+    </ul>
+</div>
+<!--改成modal，不用右键菜单
+<div class="position-fixed" id="dropSuccessMenu" ng-show="showCopyMove"
+     style="width:50px;left: 25px;top: 100px;text-align: center;background-color: #fff;">
+    <ul class="am-list" style="margin: 0;">
+        <li ><a href="javascript:void(0);" ng-click="moveToTeam()"><i>移动</i></a></li>
+        <li ><a href="javascript:void(0);" ng-click="addToTeam()"><i>复制</i></a></li>
+    </ul>
+</div>-->
+<div class="am-modal" id="moveOrCopyTo">
+    <div class="am-modal-dialog">
+        <ul class="am-list">
+            <li ><a href="javascript:void(0);" ng-click="moveToTeamOrFolder();"><i>移动</i></a></li>
+            <li ><a href="javascript:void(0);" ng-click="copyToTeamOrFolder();"><i>复制</i></a></li>
+        </ul>
+    </div>
+</div>
+<div class="am-modal am-modal-confirm" tabindex="-1" id="moveToConfirm">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">移动用户组/组织</div>
+        <div class="am-modal-bd">
+            确定要将{{selectedNode.text}}移动到{{currentGroup}}吗？
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" ng-click="moveToSubmit();">确定</span>
+        </div>
+    </div>
+</div>
+<div class="am-modal am-modal-confirm" tabindex="-1" id="copyToConfirm">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">复制用户组/组织</div>
+        <div class="am-modal-bd">
+            确定要将{{selectedNode.text}}复制到{{currentGroup}}吗？
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" ng-click="copyToSubmit();">确定</span>
+        </div>
+    </div>
+</div>
+<!-- 嵌套节点模板Nested node template -->
+<script type="text/ng-template" id="nodes_renderer">
+
+    <div class="tree-node tree-node-content "   id="{{node.id}}"  ng-click="selectNode(this);openTree(this);"
+         ng-style="isSelected(this)">
+        <div data-nodrag data-target="menu" class="am-text-xs"
+             ng-drag="node.type!='allUser'&& node.type!='rootFolder'" ng-drag-success="selectNode(this);"
+             ng-drop="true" ng-drop-success="dropInTree(this,$event);">
+            <i ng-class="{'am-icon-caret-down':node.leaf!='team'&&node.type!='allUser'&&!collapsed,
+                          'am-icon-caret-right':node.type!='team'&&node.type!='allUser'&&collapsed}"
+               class="sidebarImg am-text-secondary am-icon-sm"></i>
+            <img src="./images/User_Management/icon_group@2x.png"
+                 width="16px" height="16px" ng-show="node.type!='folder'&&node.type!='rootFolder'"/>
+            <i class="am-text-xs am-dropdown-toggle" data-am-dropdown-toggle>{{node.text}}</i>
+        </div>
+    </div>
+
+
+    <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+        <li ng-repeat="node in node.nodes" ui-tree-node="" style="line-height: 2" ng-include="'nodes_renderer'"
+            collapsed="true">
+        </li>
+    </ol>
+    <!--张帆的代码<div class="dropdown position-fixed" id="menu-{{node}}" >
+        <ul class="dropdown-menu" role="menu">
+            <li ng-class="{'disabled':!isMenuAvailable(node,0)}">
+                <a class="pointer" role="menuitem"
+                   ng-click="collect(node)">新建组织</a>
+            </li>
+            <li ng-class="{'disabled':!isMenuAvailable(node,1)}">
+                <a class="pointer" role="menuitem"
+                   ng-click="collect(node)">新建用户组</a></li>
+            <li ng-class="{'disabled':!isMenuAvailable(node, 2)}">
+                <a class="pointer" role="menuitem"
+                   ng-click="collect(node)">编辑</a></li>
+            <li ng-class="{'disabled':!isMenuAvailable(node,3)}">
+                <a class="pointer" role="menuitem"
+                   ng-click="collect(node)">删除</a></li>
+        </ul>
+    </div>-->
+
+</script>
+
+

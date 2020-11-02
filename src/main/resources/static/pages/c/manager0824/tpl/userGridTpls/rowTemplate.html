@@ -1,0 +1,12 @@
+<div ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.uid"
+        ui-grid-one-bind-id-grid="rowRenderIndex + '-' + col.uid + '-cell'"
+        class="ui-grid-cell"
+        ng-class="{ 'ui-grid-row-header-cell': col.isRowHeader}"
+        role="{{col.isRowHeader ? 'rowheader' : 'gridcell'}}"
+        ui-grid-cell ng-click="grid.appScope.showUserDetail(row);" style="cursor:default;position: relative;" >
+    <div draggable="false" ng-drag="true" ng-drag-success="grid.appScope.dragRowComplete(row);"
+         ng-drag-data="row.entity" style="position: absolute;width: 50px;height: 35px;"></div>
+</div>
+<div ng-drag-clone>
+    {{clonedData.account}}{{clonedData.text}}
+</div>

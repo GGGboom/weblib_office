@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="82px" height="21px" viewBox="0 0 82 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>域管理_选中</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M0.808,4.1198 C0.808,5.6658 1.666,6.9988 2.926,7.7038 C1.713,8.2278 0.504,9.2118 0,10.4348 L1.047,10.4348 C1.718,9.1718 3.264,8.2978 4.78,8.2408 L4.928,8.2408 L5.094,8.2408 C6.61,8.2978 8.157,9.1718 8.828,10.4348 L9.874,10.4348 C9.368,9.2078 8.156,8.2218 6.938,7.6988 C8.193,6.9938 9.048,5.6628 9.048,4.1198 C9.048,1.8448 7.204,-0.0002 4.928,-0.0002 C2.653,-0.0002 0.808,1.8448 0.808,4.1198 Z M1.761,4.1198 C1.761,2.3708 3.179,0.9528 4.928,0.9528 C6.678,0.9528 8.095,2.3708 8.095,4.1198 C8.095,5.8698 6.678,7.2878 4.928,7.2878 C3.179,7.2878 1.761,5.8698 1.761,4.1198 Z" id="path-1"></path>
+        <rect id="path-3" x="0.437" y="0" width="21" height="21" rx="10.5"></rect>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="21" height="21" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="域管理_选中">
+            <g id="Group">
+                <g id="Page-1" transform="translate(6.000000, 5.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Clip-2" fill="#5EB95E" xlink:href="#path-1"></use>
+                    <polygon id="Fill-1" mask="url(#mask-2)" points="-5 15.435 14.874 15.435 14.874 -5 -5 -5"></polygon>
+                </g>
+                <use id="Rectangle" stroke="#5EB95E" mask="url(#mask-4)" stroke-width="2" xlink:href="#path-3"></use>
+            </g>
+            <text id="域管理" font-family="PingFangSC-Regular, PingFang SC" font-size="12" font-weight="normal" fill="#5EB95E">
+                <tspan x="34" y="15">域管理</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

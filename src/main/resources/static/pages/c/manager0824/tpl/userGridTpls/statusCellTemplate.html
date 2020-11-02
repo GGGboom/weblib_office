@@ -1,0 +1,6 @@
+<div class="ui-grid-cell-contents" >
+    <button class="am-btn am-btn-success am-btn-xs status-btn" ng-if="grid.getCellValue(row, col)=='normal'">正常</button>
+    <button class="am-btn am-btn-default am-btn-xs status-btn" ng-if="grid.getCellValue(row, col)=='expired'">停用</button>
+    <button class="am-btn am-btn-warning am-btn-xs status-btn" ng-if="grid.getCellValue(row, col)=='unknown'">未知</button>
+    <button class="am-btn am-btn-warning am-btn-xs status-btn" ng-if="grid.getCellValue(row, col)=='delete'">注销</button>
+</div>

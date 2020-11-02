@@ -1,0 +1,98 @@
+<div id="application-m" class="am-g am-g-collapse">
+    <div class="panelWrap am-u-sm-3 left">
+        <div class="am-panel am-panel-default ">
+            <div class="am-panel-hd am-titlebar am-titlebar-multi">
+                <div><h3 class="am-titlebar-title">应用列表</h3></div>
+                <nav class="am-titlebar-nav am-fr">
+                    <div class="am-btn-group">
+                        <div class="am-collapse am-topbar-collapse am-btn-group" >
+                            <button type="button" class="am-btn am-btn-default am-icon-plus" ng-click="">
+                                <!--<img src="./images/User_Management/icon_Add_organization@2x.png"/>-->
+                            </button>
+                            <button type="button" class="am-btn am-btn-default am-icon-edit" ng-click="" >
+                                <!--<img src="./images/User_Management/icon_Add_group@2x.png"/>-->
+                            </button>
+                            <button type="button" class="am-btn am-btn-default am-icon-minus" ng-click="" >
+                                <!--<img src="./images/User_Management/icon_edit@2x.png"/>-->
+                            </button>
+                            <button type="button" class="am-btn am-btn-default am-icon-refresh" ng-click="">
+                                <!--<img src="./images/User_Management/icon_delete@2x.png"/>-->
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="am-panel-bd ngViewport">
+                <div data-drag-enabled="false" >
+                    <ul  class="am-list admin-sidebar-list" >
+                        <li ng-repeat="app in applications">
+                            <a href="javascript:void(0);" ng-click="" >
+                                <i>{{app.name}}</i>
+                            </a>
+                            <a href="javascript:void(0);"><i>{{app.availableSpace}}/{{app.totalSpace}}</i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="panelWrap am-u-sm-6 middle">
+        <div class="am-panel am-panel-default ">
+            <!--选中用户组，右边视图标题栏-->
+            <div class="am-panel-hd am-titlebar am-titlebar-multi">
+                <h3 class="am-titlebar-title">应用信息</h3>
+            </div>
+            <div class="am-panel-bd ngViewport ">ssss</div>
+        </div>
+    </div>
+    <div class="panelWrap am-u-sm-3 right">
+        <div class="am-panel am-panel-default ">
+            <div class="am-panel-hd am-titlebar am-titlebar-multi">
+                <h3 class="am-titlebar-title">应用信息</h3>
+                <nav class="am-titlebar-nav am-fr">
+                    <div class="am-btn-group">
+                        <button type="button" class="am-btn am-btn-default">
+                            <img src="./images/User_Management/icon_Activate_the_user@2x.png"/>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+            <div class="am-panel-bd ngViewport">
+                <form role="form" name="editAppForm">
+                    <div class="am-g userProperty"></div>
+                    <div id="appName" class="am-g userProperty">
+                        <div class="am-u-sm-3">名称：</div>
+                        <div class="am-u-sm-8" style="float:left;">
+                            <input type="text" class="am-form-field" ng-model="">
+                        </div>
+                    </div>
+                    <div id="appDesc" class="am-g userProperty">
+                        <div class="am-u-sm-3">描述：</div>
+                        <div class="am-u-sm-8" style="float:left;">
+                            <input type="text" class="am-form-field" ng-model="">
+                        </div>
+                    </div>
+                    <div id="appTotal" class="am-g userProperty">
+                        <div class="am-u-sm-3">总容量（GB）：</div>
+                        <div class="am-u-sm-8" style="float:left;">
+                            <input type="text" class="am-form-field" ng-model="">
+                        </div>
+                    </div>
+                    <div id="appAvailable" class="am-g userProperty">
+                        <div class="am-u-sm-3">可用容量：</div>
+                        <div class="am-u-sm-8" style="float:left;">
+                            <input type="text" class="am-form-field" ng-model="">
+                        </div>
+                    </div>
+                    <div id="appCreate" class="am-g userProperty">
+                        <div class="am-u-sm-3">创建者：</div>
+                        <div class="am-u-sm-8" style="float:left;">
+                            <input type="text" class="am-form-field" ng-model="">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

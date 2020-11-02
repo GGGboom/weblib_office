@@ -1,0 +1,114 @@
+<div id="domain-m" class="am-g am-g-collapse">
+    <div class="panelWrap am-u-sm-3 left">
+        <div class="am-panel am-panel-default">
+            <div class="am-panel-hd am-titlebar am-titlebar-multi">
+                <div><h3 class="am-titlebar-title">域结构管理</h3></div>
+                <!--按钮组:新建-->
+                <nav class="am-titlebar-nav am-fr">
+                    <div class="am-btn-group">
+                        <div class="am-collapse am-topbar-collapse am-btn-group" >
+                            <button type="button" class="am-btn am-btn-default" ng-disabled="selectedNode.associated || selectedNode.type=='rootFolder'"
+                                    ng-click="createDomainOnFolder();">
+                                <img src="./images/User_Management/icon_Add_organization@2x.png"/>
+                            </button>
+                            <button type="button" class="am-btn am-btn-default"
+                                    ng-click="createDomainWithNewFolder();">
+                                <img src="./images/User_Management/icon_Add_group@2x.png"/>
+                            </button>
+                            <button type="button" class="am-btn am-btn-default" ng-disabled="!selectedNode.associated" ng-click="deleteDomain();">
+                                <img src="./images/User_Management/icon_delete@2x.png"/>
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="am-panel-bd ngViewport">
+                <!--域结构-->
+                <!--tree begin-->
+                <div ui-tree data-drag-enabled="false" class="tree-root">
+                    <ol ui-tree-nodes="" ng-model="folders" class="am-list admin-sidebar-list">
+                        <li ng-repeat="node in folders" ui-tree-node ng-include="'nodes_areaRenderer'"></li>
+                        <li><span ng-bind=""></span></li>
+                    </ol>
+                </div>
+
+                <!--tree end-->
+            </div>
+        </div>
+    </div>
+    <div class="panelWrap am-u-sm-6 middle">
+        <div class="am-panel am-panel-default">
+            <div class="am-panel-hd am-titlebar am-titlebar-multi">
+                <div><h3 class="am-titlebar-title">当前域为：{{domainDetailInfo.domainName}}</h3></div>
+            </div>
+            <div class="am-panel-bd ngViewport areaViewport">
+                <!--用户列表，用ui-grid实现-->
+                <div id="domainGrid" ui-grid="usersInDomainGridOptions" ui-grid-selection class="gridStyle" ui-grid-auto-resize
+                     ng-style="{height:gridHeight}"></div>
+            </div>
+        </div>
+    </div>
+    <div class="panelWrap am-u-sm-3 right">
+        <div class="am-panel am-panel-default">
+            <div class="am-panel-hd am-titlebar am-titlebar-multi">
+                <h3 class="am-titlebar-title">域详情</h3>
+                <!--<h3 class="am-titlebar-title" ng-show="ifAdd">新建域/子域</h3>-->
+                <nav class="am-titlebar-nav am-fr">
+                    <div class="am-btn-group">
+                        <button type="button" class="am-btn am-btn-default" ng-show="ifModify"
+                                ng-click="modifyDomainSubmit();">
+                            <img src="./images/User_Management/icon_ok@2x.png"/>
+                        </button>
+                        <button type="button" class="am-btn am-btn-default" ng-show="ifModify" ng-click="modifyDomainCancel();">
+                            <img src="./images/User_Management/icon_cancel@2x.png"/>
+                        </button>
+                        <button type="button" class="am-btn am-btn-default" ng-show="ifDOnF" ng-click="createDOnFSubmit();">
+                            <img src="./images/User_Management/icon_ok@2x.png"/>
+                        </button>
+                        <button type="button" class="am-btn am-btn-default" ng-show="ifDOnF" ng-click="createDOnFCancel();">
+                            <img src="./images/User_Management/icon_cancel@2x.png"/>
+                        </button>
+                        <button type="button" class="am-btn am-btn-default" ng-show="ifDWithNF" ng-click="createDWithNFSubmit();">
+                            <img src="./images/User_Management/icon_ok@2x.png"/>
+                        </button>
+                        <button type="button" class="am-btn am-btn-default" ng-show="ifDWithNF" ng-click="createDWithNFCancel();">
+                            <img src="./images/User_Management/icon_cancel@2x.png"/>
+                        </button>
+                        <button type="button" class="am-btn am-btn-default" ng-show="ifEdit" ng-click="modifyDomain();">
+                            <img src="./images/User_Management/icon_edit@2x.png"/>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+            <div class="am-panel-bd ngViewport userViewport">
+                <div id="domainDetails" ui-view></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 嵌套节点模板Nested node template -->
+<script type="text/ng-template" id="nodes_areaRenderer">
+
+    <div class="tree-node tree-node-content"   id="{{node.id}}"  ng-click="selectNode(this);openDomainTree(this);"
+         ng-style="isSelected(this)">
+        <div data-nodrag data-target="menu" class="am-text-xs">
+            <i ng-class="{'am-icon-caret-down':node.type!='team'&&!collapsed,
+                          'am-icon-caret-right':node.type!='team'&&collapsed}"
+               class="sidebarImg am-text-secondary am-icon-sm"></i>
+            <i ng-class="{'am-icon-bank':node.associated}"
+              class="sidebarImg am-text-secondary am-icon-sm"></i>
+            <img src="./images/User_Management/icon_group@2x.png"
+                 width="16px" height="16px" ng-show="node.type=='team'"/>
+            <i class="am-text-xs am-dropdown-toggle" data-am-dropdown-toggle>{{node.text}}</i>
+        </div>
+    </div>
+
+
+    <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+        <li ng-repeat="node in node.nodes" ui-tree-node="" style="line-height: 2" ng-include="'nodes_areaRenderer'"
+            collapsed="true">
+        </li>
+    </ol>
+
+</script>

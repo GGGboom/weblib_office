@@ -1,0 +1,54 @@
+<!--<div class="ngCellText" ng-dblclick="title(row.entity)" ng-click="selectRow(row,renderedRows)">-->
+    <!--<img style="position:relative;top:-2px;margin-right:5px;" src={{row.entity|shareicon}}>-->
+    <!--{{row.getProperty(col.field)}}</span>-->
+    <!--<span ng-if="row.entity.status !== '1' && row.entity.status !== undefined" class="unReadCountInside"></span>-->
+<!--</div>-->
+
+
+<div class="ngCellText" context-menu="onRightClick(row,renderedRows)"
+     context-menu-close="Close()"
+     data-target="menu-{{ row.entity.id  }}"
+     ng-dblclick="title(row.entity)"
+     ng-click="selectRow(row,renderedRows)">
+    <img style="position:relative;top:-2px;margin-right:5px;" src={{row.entity|shareicon}}>
+    {{row.getProperty(col.field)}}
+    </span>
+    <span ng-if="row.entity.status !== '1' && row.entity.status !== undefined" class="unReadCountInside"></span>
+    <!--<span ng-cell-text style="cursor:default"> {{row.getProperty(col.field) | displayName}}</span>-->
+    <!--<span ng-if="row.entity.readCount !== 0" class="unReadCount">{{row.entity.readCount}}</span>-->
+    <span ng-class="{'hidden':isHidden}" style="padding-left: 50px">
+        <a href="javascript:void(0)" ng-click="download(row.entity.resourceId,row.entity.id)">下载</a>
+        <!--<a href="javascript:void(0)" ng-click="deleteFile(row.entity)">删除</a>-->
+        <!--<a href="javascript:void(0)" ng-click="share(row.entity.id)">分享</a>-->
+        <!--<a href="javascript:void(0)" ng-click="fileChain(row.entity.id)">外链</a>-->
+        <!--<a href="javascript:void(0)" ng-click="Email(row.entity)">邮件</a>-->
+    </span>
+    <div class="dropdown position-fixed" id="menu-{{ row.entity.id }}">
+        <ul class="dropdown-menu" role="menu">
+            <li>
+                <a class="pointer" role="menuitem" tabindex="1"
+                   ng-click="multiSelectDownload()"><img src="images/download.png">下载</a>
+            </li>
+            <!--<li>-->
+                <!--<a class="pointer" role="menuitem" tabindex="2"-->
+                   <!--ng-click="multiSelectDelete()">-->
+                    <!--<img src="images/delete.png">删除</a>-->
+            <!--</li>-->
+            <li>
+                <a class="pointer" role="menuitem" tabindex="3"
+                   ng-click="moveCopy(row.entity.resourceId,'复制',2)">
+                    <img src="images/copy.png">复制到</a>
+            </li>
+            <li>
+                <a class="pointer" role="menuitem" tabindex="4"
+                   ng-click="fileChain(row.entity.resourceId)">
+                    <img src="images/fileChain.png">文件外链</a>
+            </li>
+            <li>
+                <a class="pointer" role="menuitem" tabindex="5"
+                   ng-click="Email(row.entity)">
+                    <img src="images/email.png">邮件快递</a>
+            </li>
+        </ul>
+    </div>
+</div>

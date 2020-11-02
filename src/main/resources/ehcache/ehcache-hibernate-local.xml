@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache updateCheck="false" name="hibernateCache">
+
+	<diskStore path="java.io.tmpdir/com/dcampus/ehcache/hibernate" />
+
+	<!-- DefaultCache setting. -->
+	<defaultCache maxEntriesLocalHeap="10000" eternal="false"
+		timeToIdleSeconds="300" timeToLiveSeconds="600" overflowToDisk="true"
+		maxEntriesLocalDisk="100000" />
+
+
+	<!--
+         cache:为指定名称的对象进行缓存的特殊配置
+         name:指定对象的完整名
+     -->
+	<cache name="entity"
+		   maxEntriesLocalHeap="1000"
+		   maxEntriesLocalDisk="10000"
+		   eternal="false"
+		   diskSpoolBufferSizeMB="20"
+		   timeToIdleSeconds="10"
+		   timeToLiveSeconds="60"
+		   memoryStoreEvictionPolicy="LFU">
+		<persistence strategy="localTempSwap"/>
+	</cache>
+
+
+	<!--想使用查询缓存，这两个类需要添加-->
+	<!--保存查询的结果-->
+	<cache name="org.hibernate.cache.internal.StandardQueryCache"
+		   maxEntriesLocalHeap="5" eternal="false" timeToLiveSeconds="120">
+		<persistence strategy="localTempSwap" />
+	</cache>
+
+	<!--持有时间戳的最新更新-->
+	<cache name="org.hibernate.cache.spi.UpdateTimestampsCache"
+		   maxEntriesLocalHeap="5000" eternal="true" overflowToDisk="true">
+	</cache>
+
+
+</ehcache>

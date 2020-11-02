@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DCampus Weblib 2018</title>
+    <meta name="description" content="DCampus Weblib 2016">
+    <meta name="keywords" content="table">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="images/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="WebLib" />
+</head>
+
+<!--[if lte IE 9]>
+<script language="javascript" type="text/javascript">
+//    window.location.href="http://weblib2011.ccnl.scut.edu.cn/pages/c/";
+    window.location.href = "http://" + window.location.host + "/2016newmanager/app/index.html#/login";
+</script>
+<![endif]-->
+
+<body ng-app="managerApp" style="-webkit-user-select:none;-moz-user-select:none; -ms-user-select:none;user-select:none;" data-am-observe>
+
+<div ui-view="manager" class="wrap" ng-controller="appController" ></div>
+
+<div ui-view="copyright"></div>
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="lib/amaze2.7.1/js/jquery.min.js"></script>
+<!--<![endif]-->
+
+<script src="lib/amaze2.7.1/js/jquery.min.js"></script>
+<script src="lib/amaze2.7.1/js/amazeui.js"></script>
+<script type="text/javascript" src="lib/angular-ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="lib/angular-ueditor/ueditor.all.js"></script>
+<script src="lib/ZeroClipboard/ZeroClipboard.js"></script>
+<script src="lib/ZeroClipboard/myClipboard.js"></script>
+<script src="lib/angularjs/ui-grid/ng-grid.plugin.draggablerow.js"></script>
+<script src="dist/vendor.js?random=1"></script>
+<!--<script src="js/controller/personalController.js"></script>-->
+
+</body>
+</html>

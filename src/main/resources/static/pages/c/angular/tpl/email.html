@@ -1,0 +1,76 @@
+<div>
+<div>
+<div class="EmailLeft">
+
+<div style="margin-top:10px;">
+    收件人: <textarea style="border:1px solid #ccc;padding:10px;width:80%;" ng-model="data.recipient"  placeholder="收件人的完整邮箱地址，超过一个以分号隔开" cols=82 rows=3></textarea>
+</div>
+
+<div style="padding-left: 13px;
+    padding-bottom: 10px;
+    padding-top: 10px;">
+    主题:  <input type="text" ng-model="data.EmailTitle"  style="width:514px;height: 28px;"/>
+</div>
+
+<div>
+    发件人: <input type="text" ng-model="data.sender"  style="width:514px;height: 28px;"/>
+</div>
+
+<div style="padding-top: 10px">
+    正文:
+    <br>
+    <div class="ueditor" config="config" ng-model="data.emailContent" style="padding-top: 5px;"></div>
+</div>
+    <div style="padding-top: 10px;">
+    附件:
+        <br>
+    <div style="height:116px;overflow: auto; border:1px ridge #bbbbbb ;margin-top: 5px;">
+        <form class="am-form">
+            <table class="am-table am-table-striped am-table-hover" >
+                <tbody >
+                <tr ng-repeat="x in emailfile" >
+                    <td style="width: 85%;vertical-align: middle"> <img style="height:24px" ng-src ={{x|fileicon}} > {{ x.displayName|displayName }}</td>
+                    <td style="vertical-align: middle">{{ x.size }}KB</td>
+                    <td ><span class="am-btn am-btn-xs am-icon-minus-circle" ng-click="deleteBtn($index)"></span></td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+    </div>
+</div>
+<div class="EmailRight">
+    <div style="background: #F3F3F3;padding-top: 5px;">
+        通讯录
+    </div>
+    <div>
+        <input type="text" placeholder="输入用户名搜索" id="searchPerson" style="width: 150px"/><span class="am-btn am-icon-search" ng-click="searchBtn()"></span>
+    </div>
+    <div class="am-cf admin-main"style=" height:355px;overflow: auto;text-align: left">
+        <form class="am-form">
+            <table class="am-table am-table-striped am-table-hover table-main" >
+                <thead>
+                <tr>
+                   <th class="table-author am-hide-sm-only">姓名</th>
+                </tr>
+                </thead>
+                <tbody >
+                <tr ng-repeat="x in accounts"  ng-click="selectRecipient(x)">
+                    <td>{{ x.name }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <button type="button" class="am-btn am-btn-default am-btn-xs am-icon-step-backward" ng-click="first()"></button>
+    <button type="button" class="am-btn am-btn-default am-btn-xs am-icon-caret-left " ng-click="prev()"></button>
+    <input type="text" ng-model="pagingOptions.currentPage" style="width: 40px"/>
+    <button type="button" class="am-btn am-btn-default am-btn-xs am-icon-caret-right " ng-click="next()"></button>
+    <button type="button" class="am-btn am-btn-default am-btn-xs am-icon-step-forward" ng-click="end()"></button>
+</div>
+</div>
+<div style="padding-top: 455px;">
+    <button type="button" class="am-btn am-btn-primary am-btn-xs" ng-click="sent()">发送</button>
+    <button type="button" class="am-btn  am-btn-xs" ng-click="cancel()">取消</button>
+</div>
+</div>

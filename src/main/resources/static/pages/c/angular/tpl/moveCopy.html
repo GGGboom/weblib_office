@@ -1,0 +1,45 @@
+<div class="moveCopy" ng-class="{hidden:ishidden}">
+
+    <!-- Nested node template -->
+    <script type="text/ng-template" id="nodes.html" >
+        <div ui-tree-handle class="tree-node tree-node-content" ng-click="openTree(this)" style="color: #000000">
+            <div class="am-btn am-btn-xs" data-nodrag ><span  ng-class="{'am-icon-plus-square-o': !collapsed, 'am-icon-minus-square-o': collapsed}"></span></div>
+            {{node.displayName|text}}
+        </div>
+        <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: !collapsed}">
+            <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes.html'"  ng-show="visible(node)">
+            </li>
+        </ol>
+    </script>
+    <div ui-tree data-drag-enabled="false">
+        <ol ui-tree-nodes="" ng-model="data" style="padding:0">
+            <li ng-repeat="node in data" ui-tree-node ng-include="'nodes.html'" ng-show="visible(node)"></li>
+        </ol>
+    </div>
+</div>
+<div class="moveCopy"  ng-class="{hidden:!ishidden}">
+<div class="am-btn am-btn-xs" ng-click="moveCopyBack()">
+    返回
+</div>
+    <span style="padding-left: 150px;"> {{group}}</span>
+    <!-- Nested node template -->
+    <script type="text/ng-template" id="node.html" >
+        <div ui-tree-handle class="tree-node tree-node-content" ng-click="openGroup(this)" ng-class ="{'selectTree': node.selected}" style="color: #000000">
+            <div class="am-btn am-btn-xs" data-nodrag ><span  ng-class="{'am-icon-plus-square-o': !collapsed, 'am-icon-minus-square-o': collapsed}"></span></div><img src="images/folder.png" style="height: 24px">
+            {{node.text|text}}
+        </div>
+        <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: !collapsed}">
+            <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'node.html'"  ng-show="visible(node)">
+            </li>
+        </ol>
+    </script>
+    <div ui-tree data-drag-enabled="false">
+        <ol ui-tree-nodes="" ng-model="data1" style="padding:0">
+            <li ng-repeat="node in data1" ui-tree-node ng-include="'node.html'" ng-show="visible(node)"></li>
+        </ol>
+    </div>
+</div>
+<div class="am-margin">
+    <button type="button" class="am-btn am-btn-primary am-btn-xs" ng-click="moveAndCopy()">{{btnText}}</button>
+    <button type="button" class="am-btn  am-btn-xs" ng-click="cancel()">取消</button>
+</div>

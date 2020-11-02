@@ -1,0 +1,19 @@
+<!--2016.08.05,edit by ChenQiqi, modify“添加”button-->
+<div class="">
+    <div class="am-btn-group am-fr">
+        <ul class="am-pagination am-margin-0">
+            <li ng-class="{'am-disabled':pagingOptions.currentPage==1}">
+                <a href="javascript:void(0)" ng-click="prevPage()" class="am-btn am-btn-sm am-icon-backward"></a></li>
+            <li ng-class="{'am-disabled':pagingOptions.currentPage==pagingOptions.totalPage}">
+                <a href="javascript:void(0)" ng-click="nextPage()" class="am-btn am-btn-sm am-icon-forward"></a></li>
+        </ul>
+    </div>
+</div>
+<div class="am-alert am-alert-secondary" ng-show="currentGroupPermissionChanged" >
+    <button type="button" class="am-btn am-btn-default am-btn-xs am-fr" ng-click="cancelEditedPermission()">取消</button>
+    <button type="button" class="am-btn am-btn-primary am-btn-xs am-fr" ng-click="submitEditedPermission()">确认</button>
+    <p class="am-cf"><i class="am-icon-exclamation-circle am-text-danger am-icon-sm" aria-hidden="true"></i>该文件柜权限已被修改，请确认</p>
+</div>
+<!--文件柜权限列表-->
+<div id="userGrid" ui-grid="permissionGridOptions" ui-grid-selection class="gridStyle" ui-grid-auto-resize
+     ng-style="{height:gridHeight}"></div>

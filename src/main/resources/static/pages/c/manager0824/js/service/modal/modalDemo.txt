@@ -1,0 +1,38 @@
+弹出窗口
+var modal=modalWindow.open({
+    template:'{{t}}+{{s}}+{{u}}',
+    controller:'modalCtrl',
+    scope:$scope,
+    title:'标题',
+    width:300,
+    height:600,
+    resolve:{
+        data: function () {
+            return 'rer';
+        }
+    },
+    onCloseClicked:function () {console.log('点击了默认的关闭按钮');}
+});
+
+关闭窗口，相关界面标签会被清除
+modal.close(result);
+modal.dismiss(reason);
+
+隐藏窗口，保留相关界面标签
+modal.hide(result);
+
+显示被隐藏的窗口
+modal.show();
+
+打开后的回调
+modal.opened.then(function(){
+    console.log("窗口打开");
+})
+
+关闭后的回调
+modal.result.then(function(result){
+    console.log("窗口关闭");
+},
+function(reason){
+    console.log("窗口关闭");
+})

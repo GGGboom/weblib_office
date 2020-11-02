@@ -1,0 +1,81 @@
+<div class="am-topbar-brand">
+    <img src="images/logo.png">
+</div>
+
+<!--<button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"-->
+<!--data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span-->
+<!--class="am-icon-bars"></span></button>-->
+
+<div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+    <div class="am-btn-toolbar">
+        <div class="am-btn-group am-btn-group-sm">
+            <button type="button" class="am-btn am-btn-default am-radius" ng-class="{hidden:isBack}"
+                    ng-click="back(listOptions.parentId)"><span
+                    class="am-icon-angle-left"></span> 返回
+            </button>
+            <button type="button" class="am-btn am-btn-default" ng-class="{hidden:!Upload||istrash}"
+                    ng-click="upload()"><span
+                    class="am-icon-upload"></span> 上传
+            </button>
+            <button type="button" class="am-btn am-btn-default" ng-class="{hidden:istrash}"
+                    ng-click="multiSelectDownload()"><span
+                    class="am-icon-download"></span> 下载
+            </button>
+            <button type="button" class="am-btn am-btn-default" ng-class="{hidden:!Delete||istrash}"
+                    ng-click="multiSelectDelete()"><span
+                    class="am-icon-trash-o"></span> 删除
+            </button>
+            <button type="button" class="am-btn am-btn-default" ng-class="{hidden:!istrash}"
+                    ng-click="multiSelectRestore()"><span
+                    class="am-icon-reply"></span> 恢复
+            </button>
+            <button type="button" class="am-btn am-btn-default" ng-class="{hidden:!istrash}"
+                    ng-click="multiSelectDelete()"><span
+                    class="am-icon-trash-o"></span> 彻底删除
+            </button>
+            <div class="am-dropdown" data-am-dropdown>
+                <button class="am-btn am-btn-default am-radius am-btn-sm am-dropdown-toggle"
+                        data-am-dropdown-toggle><span
+                        class="am-icon-plus-square-o"></span> 更多
+                </button>
+                <ul class="am-dropdown-content">
+                    <li ng-click="updateList()"><a href="javascript:"><span class="am-icon-refresh"></span> 刷新</a>
+                    </li>
+                    <li ng-class="{hidden:!AddDir||istrash}" ng-click="newFolder()"><a href="javascript:"><span
+                            class="am-icon-folder-o"></span>
+                        新建文件夹</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="am-input-group am-input-group-sm">
+        <input type="text" class="am-form-field" placeholder="全盘搜索" ng-model="searchText"
+               style="padding-top: 7px;width: 200px">
+        <span class="am-input-group-btn">
+            <button class="am-btn am-btn-default am-icon-search" type="button"
+                    ng-click="searchBtn(searchText)"></button>
+              <button class="am-btn am-btn-default" type="button"
+                      ng-click="advancedSearch()"> 高级</button>
+          </span>
+    </div>
+
+    <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
+        <li class="am-dropdown" data-am-dropdown>
+            <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+                <span class="am-icon-user"></span> {{username}} <span class="am-icon-caret-down"></span>
+            </a>
+            <ul class="am-dropdown-content">
+                <li><a href="javascript:;" ng-click="modifyAccount()"><span class="am-icon-user"></span> 修改个人信息</a>
+                </li>
+                <li ng-if="status.isAdmin"><a href="http://weblib.ccnl.scut.edu.cn/pages/c/manager/"><span
+                        class="am-icon-desktop"></span> 管理端</a></li>
+                <li ng-if="status.isAdmin"><a href="http://weblib.scn.cn/pages/c/manager0824/"><span
+                        class="am-icon-desktop"></span> 新版管理端</a></li>
+                <!--<li><a href="http://weblib.ccnl.scut.edu.cn/pages/c/login.jsp" ng-click="logout()"><span class="am-icon-power-off"></span> 退出 </a></li>-->
+                <li><a href="javascript:void(0)" ng-click="logout()"><span class="am-icon-power-off"></span> 退出 </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

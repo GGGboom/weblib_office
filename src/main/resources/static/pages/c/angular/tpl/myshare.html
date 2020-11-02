@@ -1,0 +1,26 @@
+<div class="admin-content">
+    <!-- dragging multiple rows image (must be hidden some how) -->
+    <div id="dragIconMultiRows">
+        <i class="glyphicon glyphicon-file"></i>
+        <span class="badge">{{dragRowNum}}</span>
+    </div>
+    <div>
+        <ol class="breadcrumb">
+            <li ng-repeat="x in breadcrumbpath">
+                <a ng-if="!$last"  ng-click="goToState(x.id)" href="javascript:void(0)">{{x.displayName}}</a>
+                <span ng-if="$last">{{x.displayName}}</span>
+            </li>
+        </ol>
+    </div>
+    <div class="gridStyle" ng-grid="gridOptions">
+    </div>
+
+</div>
+
+<!--<div class="footer">-->
+    <!--<a href="javascript:void(0)" ng-click="first()">首页</a> <a href="javascript:void(0)" ng-click="prev()">上一页</a>-->
+    <!--<input type="text" ng-model="pagingOptions.currentPage" class="currentPage"/>-->
+    <!--<a href="javascript:void(0)" ng-click="next()">下一页</a>-->
+    <!--<a href="javascript:void(0)" ng-click="end()">尾页</a>-->
+    <!--共{{pagingOptions.totalPage}}页 {{pagingOptions.totalCount}}条记录-->
+<!--</div>-->

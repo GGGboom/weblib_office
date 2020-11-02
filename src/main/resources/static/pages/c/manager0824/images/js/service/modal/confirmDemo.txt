@@ -1,0 +1,16 @@
+//弹出确认窗
+$scope.showConfirm=function() {
+            modalConfirm.confirm({
+                title: '标题',
+                content: '内容',
+                data: {
+                    xxx: '向确定或取消的回调中传递参数'
+                },
+                onConfirm: function (data) {
+                    console.log('确定：' + data.xxx);
+                },
+                onCancel: function (data) {
+                    console.log('取消：' + data.xxx);
+                }
+            });
+        }

@@ -1,0 +1,61 @@
+<!doctype html>
+<!-- The DOCTYPE declaration above will set the    -->
+<!-- browser's rendering engine into               -->
+<!-- "Standards Mode". Replacing this declaration  -->
+<!-- with a "Quirks Mode" doctype may lead to some -->
+<!-- differences in layout.                        -->
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <meta name="gwt:property" content="locale=zh_CN">
+    <!--                                                               -->
+    <!-- Consider inlining CSS to reduce the number of requested files -->
+    <!--                                                               -->
+   
+
+    <!--                                           -->
+    <!-- Any title is fine                         -->
+    <!--                                           -->
+    <title>DCampus Web Library 2012</title>
+    
+    <!--                                           -->
+    <!-- This script loads your compiled module.   -->
+    <!-- If you add any GWT meta tags, they must   -->
+    <!-- be added before this line.                -->
+    <!--                                           -->
+    
+     <link type="text/css" rel="stylesheet" href="js/jquery-lightbox-0.5/css/jquery.lightbox-0.5.css">
+    <script type="text/javascript" language="javascript" src="library/library.nocache.js"></script>
+    <link type="text/css" rel="stylesheet" href="Library.css">
+    
+    <script src="js/jquery-lightbox-0.5/js/jquery.js" type="text/javascript"></script>
+    <script src="js/ui.core.js" type="text/javascript"></script>
+	<script src="js/ui.draggable.js" type="text/javascript"></script>
+    <script src="js/jquery-lightbox-0.5/js/jquery.lightbox-gwt.js" type="text/javascript"></script>
+     <script>
+		$.ajax({
+			url:"/user/status?temp="+Math.random()
+			,dataType : "json"
+			,type : "get"
+			,success : function(data){	
+			   if(data.status == "guest") {
+				 window.location.href = "login.jsp";
+			   }
+			}
+		});     
+
+
+
+     </script>
+  </head>
+
+  <!--                                           -->
+  <!-- The body can have arbitrary html, or      -->
+  <!-- you can leave the body empty if you want  -->
+  <!-- to create a completely dynamic UI.        -->
+  <!--                                           -->
+  <body scroll="no">
+  </body>
+</html>

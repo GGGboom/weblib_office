@@ -1,0 +1,16 @@
+<div style="text-align: right;padding-right: 15px;border-bottom: 1px solid #dedede; padding-bottom: 10px;">
+    <div style="margin:10px">
+        链接名：<input type="text" ng-model="data.linkname" style="width: 300px"/>
+    </div>
+    <div style="margin:10px">
+        URL：<select ng-model="data.option">
+        <option value="http://">http://</option>
+        <option value="https://">https://</option>
+    </select>
+        <input type="text" ng-model="data.url" style="width:227px "/>
+    </div>
+</div>
+<div style="height: 44px;overflow: hidden;display: table;width: 100%;border-collapse: collapse">
+    <span class="am-modal-btn " ng-click="createLinkConfirm()">确定</span>
+    <span class="am-modal-btn">取消</span>
+</div>

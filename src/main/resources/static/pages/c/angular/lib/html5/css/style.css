@@ -1,0 +1,56 @@
+@charset "UTF-8";
+/*
+ * jQuery File Upload Plugin CSS Example 8.0
+ * https://github.com/blueimp/jQuery-File-Upload
+ *
+ * Copyright 2013, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+body {
+  padding-top: 2px;
+}
+
+.ng-cloak {
+  display: none;
+}
+
+.container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {width:99%;margin:0 auto;}
+.dragWrap {width:90%;margin:0 auto !important;border:1px dashed #ccc;clear:both;overflow:auto;}
+.span7 {width:90%;margin:0 auto;overflow:hidden;float:none;margin-bottom:5px;}
+#window-resizer-tooltip {display:none !important;}
+form {margin:0 auto;}
+.row {margin:0;}
+.span5 {width:80%;}
+.progress {height:50px;position:absolute;z-index:1;left:0;top:0;width:100%;background:none;}
+.files {margin:0;padding:0;}
+.files li {list-style:none;position:relative;height:50px;border-bottom:1px dashed #ccc;}
+.progress-success.progress-striped .bar, .progress-striped .bar-success {background:#ddf1ce;box-shadow: none;transition: width .6s ease;}
+.files .name {position: absolute;top: 2px;left: 5px;z-index: 99;display: block;height: 20px;line-height: 20px;font-size: 12px;width: 170px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+.files .size {position:absolute;top:2px;right:25px;z-index:90;font-size:12px;color:#666;}
+.btn.start {display:none;}
+.btn.cancelAll {font-family: Microsoft YaHei;position:relative;top:-1px;left:-2px;}
+.btn.onecancel {display:block;width:14px;height:14px;position:absolute;right:5px;top:20px;background:url(../img/close-icon.png) no-repeat 0 0;border-radius:0;border:0;overflow:hidden;margin:0;padding:0;cursor:pointer;z-index:99;box-shadow:none;}
+.btn.onecancel:hover {background:url(../img/close-icon.png) no-repeat 0 -19px;transition:none;}
+.files .upload-status {position:absolute;bottom:2px;left:5px;color:#999;z-index:2;font-size:12px;}
+.fileinput-button {
+  /*font-size: 12px;*/
+  font-family: Microsoft YaHei;}
+.template-upload .error {position:absolute;top:26px;left:5px;}
+.close_error {display:block;width:14px;height:14px;position:absolute;right:5px;top:20px;background:url(../img/close-icon.png) no-repeat 0 0;border-radius:0;border:0;overflow:hidden;margin:0;padding:0;cursor:pointer;z-index:99;box-shadow:none;}
+.close_error:hover {background:url(../img/close-icon.png) no-repeat 0 -19px;transition:none;}
+.dragWrap  .tips {
+  /*font-size:20px;*/
+  color:#a47c90;
+  position:absolute;
+  top:45%;
+  left:26%;
+  font-family: Microsoft YaHei;
+}
+.noscript {width:85%;margin:0 auto;border:1px dashed #ccc;font-size:12px;color:#444;padding:20px;}
+p {margin:0 !important;padding:0 !important;font-size:12px;color:#666;}
+.error {font-size:12px;color:#666;}
+#message {position: absolute;top: 2px;right: 15px;font-size: 12px;color: #333;background: url(../img/loading.gif);background-size: 30px 30px;display: block;text-indent: -99999px;overflow: hidden;width: 30px;height: 30px;display:none;}
+.folderscreen {position:absolute;width:100px;height:20px;font:12px/150% Microsoft YaHei;top:0px;right:18px;text-align:right;display:none;}

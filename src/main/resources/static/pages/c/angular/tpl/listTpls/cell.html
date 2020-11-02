@@ -1,0 +1,85 @@
+<div class="ngCellText" context-menu="onRightClick()"
+     context-menu-close="Close()"
+     data-target="menu-{{ row.entity.id  }}"
+     ng-dblclick="title(row.entity)"
+     ng-click="selectRow(row,renderedRows)">
+    <span ng-cell-text style="cursor:default" class="title"> <img ng-src={{row.entity|icon}}> {{row.getProperty(col.field) | displayName}}</span>
+    <span ng-class="{'hidden':isHidden}" style="padding-left: 50px">
+        <a href="javascript:void(0)" ng-class="{hidden: istrash}" ng-click="download(row.entity.id)">下载</a>
+        <a href="javascript:void(0)" ng-class="{hidden: istrash}" ng-click="moveCopy(row.entity.id,'移动',1)">移动</a>
+        <a href="javascript:void(0)" ng-class="{hidden: istrash}" ng-click="moveCopy(row.entity.id,'复制',1)">复制</a>
+        <a href="javascript:void(0)" ng-class="{hidden: istrash}" ng-click="deleteFile(row.entity)">删除</a>
+        <a href="javascript:void(0)" ng-class="{hidden:!istrash}" ng-click="restoreResource(row.entity.id)">恢复</a>
+        <a href="javascript:void(0)" ng-class="{hidden:!istrash}" ng-click="deleteFile(row.entity)">彻底删除</a>
+        <!--<a href="javascript:void(0)" ng-click="Email(row.entity)">邮件</a>-->
+    </span>
+    <div class="dropdown position-fixed" id="menu-{{ row.entity.id }}">
+        <ul class="dropdown-menu" role="menu">
+            <li>
+                <a class="pointer" role="menuitem" tabindex="1" ng-class="{hidden: !Upload||istrash}"
+                   ng-click="upload()"><img src="images/upload.png">上传</a>
+            </li>
+            <li>
+                <a class="pointer" role="menuitem" tabindex="2" ng-class="{hidden: istrash}"
+                   ng-click="multiSelectDownload()"><img src="images/download.png">下载</a>
+            </li>
+            <li>
+                <a class="pointer" role="menuitem" tabindex="3" ng-class="{hidden:!AddDir||istrash}"
+                   ng-click="newFolder()"><img src="images/newFolder.png">新建文件夹</a>
+            </li>
+            <li>
+                <a class="pointer" role="menuitem" tabindex="4" ng-class="{hidden:istrash}"
+                   ng-click="moveCopy(row.entity.id,'移动',2)">
+                    <img src="images/move.png">移动到
+                </a>
+            </li>
+            <li>
+                <a class="pointer" role="menuitem" tabindex="5" ng-class="{hidden:istrash}"
+                   ng-click="moveCopy(row.entity.id,'复制',2)">
+                    <img src="images/copy.png">复制到</a>
+            </li>
+            <li>
+                <a class="pointer" role="menuitem" tabindex="6" ng-class="{hidden:!Delete||istrash}"
+                   ng-click="multiSelectDelete()">
+                    <img src="images/delete.png">删除</a>
+            </li>
+            <li>
+                <a class="pointer" role="menuitem" tabindex="7" ng-class="{hidden:!Modify||istrash}"
+                   ng-click="rename(row.entity)">
+                    <img src="images/rename.png">编辑</a>
+            </li>
+            <li>
+                <a class="pointer" role="menuitem" tabindex="8" ng-class="{hidden: istrash}"
+                   ng-click="share(row.entity.id)">
+                    <img src="images/share.png">文件共享</a>
+            </li>
+            <li>
+                <a class="pointer" role="menuitem" tabindex="9" ng-class="{hidden: istrash}"
+                   ng-click="fileChain(row.entity.id)">
+                    <img src="images/fileChain.png">文件外链</a>
+            </li>
+            <li>
+                <a class="pointer" role="menuitem" tabindex="10" ng-class="{hidden:istrash}"
+                   ng-click="Email(row.entity)">
+                    <img src="images/email.png">邮件快递</a>
+            </li>
+
+
+            <li>
+                <a class="pointer" role="menuitem" tabindex="11" ng-class="{hidden:istrash}"
+                   ng-click="createLink()">
+                    <img src="images/createLink.png">新建链接</a>
+            </li>
+            <li>
+                <a class="pointer" role="menuitem" tabindex="12" ng-class="{hidden:!istrash}"
+                   ng-click="multiSelectRestore()">
+                    <img src="images/move.png">恢复</a>
+            </li>
+            <li>
+                <a class="pointer" role="menuitem" tabindex="13" ng-class="{hidden:!istrash}"
+                   ng-click="multiSelectDelete()">
+                    <img src="images/delete.png">彻底删除</a>
+            </li>
+        </ul>
+    </div>
+</div>

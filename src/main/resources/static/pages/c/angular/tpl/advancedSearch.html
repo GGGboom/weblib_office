@@ -1,0 +1,108 @@
+<!--<div style="text-align: left;border-bottom: 1px solid #dedede; padding-bottom: 10px;">-->
+    <!--<div style="margin:10px;padding-left: 24px">-->
+        <!--快速搜索：<input type="text" ng-model="data.searchText" style="width: 305px;height: 28px"/>-->
+        <!--<button class="am-btn am-btn-default am-btn-sm am-icon-search" type="button"-->
+                <!--ng-click="searchBtn(data.searchText)"></button>-->
+    <!--</div>-->
+<!--</div>-->
+<div id="advancedSearch" style="text-align: left ;border-bottom: 1px solid #dedede;">
+    <!--<div style="margin: 10px;padding-left: 24px;padding-bottom: 6px">-->
+        <!--高级搜索-->
+    <!--</div>-->
+    <div style="margin: 10px;padding-left: 24px;">
+          搜索内容：<input type="text" ng-model="data.searchText" style="width: 304px;"/>
+    </div>
+    <div style="margin: 10px 10px 0 10px;padding-left: 24px;">
+        搜索范围：<input type="text" ng-model="data.range" readonly id="searchInput" style="width: 304px;"/>
+    </div>
+    <div id="searchRang">
+        <div ui-tree data-drag-enabled="false" id="tree-root" >
+
+            <ol ui-tree-nodes="" ng-model="data1" style="padding-left: 0">
+                <li ng-repeat="node in data1" ui-tree-node ng-include="'nodes_renderer.html'"
+                    ng-show="visible(node)" style="background-color: white;line-height: 2"></li>
+            </ol>
+        </div>
+    </div>
+    <div style="margin: 10px;padding-left: 36px;">
+        创建者：<select data-am-selected  ng-model="data.creator" style="width: 304px">
+        <option value="" selected>不限</option>
+        <option value="myself">本人</option>
+        <option value="other">其他人</option>
+    </select>
+    </div>
+    <div style="margin: 10px;padding-left: 24px;">
+        文件格式：<select data-am-selected  ng-model="data.fileType" style="width: 304px">
+        <option value="" selected>所有格式</option>
+        <option value=".txt">*.txt</option>
+        <option value=".doc">*.doc</option>
+        <option value=".xls">*.xls</option>
+        <option value=".ppt">*.ppt</option>
+        <option value=".jpg">*.jpg</option>
+        <option value=".gif">*.gif</option>
+        <option value=".png">*.png</option>
+        <option value=".avi">*.avi</option>
+        <option value=".rmvb">*.rmvb</option>
+        <option value=".mp3">*.mp3</option>
+        <option value=".mp4">*.mp4</option>
+        <option value=".mov">*.mov</option>
+        <option value=".html">*.html</option>
+    </select>
+    </div>
+    <div style="margin: 10px;padding-left: 12px">
+        上传时间从：<input class="startTime" readonly />  &nbsp; 至：<input class="endTime" readonly />
+    </div>
+</div>
+<div style="height: 44px;overflow: hidden;display: table;width: 100%;border-collapse: collapse">
+    <span class="am-modal-btn " ng-click="advancedSearchBtn()">搜索</span>
+    <span class="am-modal-btn" ng-click="cancel()">取消</span>
+</div>
+<script type="text/ng-template" id="nodes_renderer.html">
+    <div  class="tree-node tree-node-content">
+        <div ng-click="selectTree(this)" style="cursor:default" data-nodrag > <span style="padding-left: 5px" id="searchTree" ng-click="openTree(this,$event)"
+         ng-class="{'am-icon-caret-right': !collapsed, 'am-icon-caret-down': collapsed}"></span>  {{node.displayName}}</div>
+    </div>
+    <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: !collapsed}">
+        <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'"
+            ng-show="visible(node)" style="line-height: 2">
+        </li>
+    </ol>
+</script>
+<script>
+    $b = $("#searchRang");
+    $("#searchInput").on({
+        "click": function(){
+            $b.toggle();
+            return false;
+        }
+    });
+    $("#advancedSearch").on({
+        "click": function(e){
+            var src = e.target;
+console.log(src);
+            if(src.id && src.id ==="searchTree"){
+                return false;
+            }else{
+                $b.hide();
+            }
+        }
+    });
+</script>
+<script>
+    $(".startTime").datepicker({}).on("changeDate.datepicker.amui", function (event) {
+        $(".startTime").datepicker("setValue", event.date);
+        var startTime = new Date($(".startTime").val());
+        var endTime = new Date($(".endTime").val());
+        if (endTime && endTime.getTime() < startTime.getTime()) {
+            $(".endTime").datepicker("setValue", startTime);
+        }
+    });
+    $(".endTime").datepicker({}).on("changeDate.datepicker.amui", function (event) {
+        $(".endTime").datepicker("setValue", event.date);
+        var startTime = new Date($(".startTime").val());
+        var endTime = new Date($(".endTime").val());
+        if (startTime && endTime.getTime() < startTime.getTime()) {
+            $(".startTime").datepicker("setValue", endTime);
+        }
+    });
+</script>

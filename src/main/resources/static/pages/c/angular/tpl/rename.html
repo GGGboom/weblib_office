@@ -1,0 +1,23 @@
+
+<div style="text-align: right;padding-right: 15px;border-bottom: 1px solid #dedede; padding-bottom: 10px;">
+    <div style="margin:10px">
+        文件名：<input type="text" ng-model="data.newname" style="width: 300px"/>
+    </div>
+    <div style="margin:10px">
+        备注：<input type="text" ng-model="data.desc" style="width:300px "/>
+    </div>
+    <div style="margin:10px">
+        序号：<input type="text" ng-model="data.priority" style="width:300px "/>
+    </div>
+    <div style="margin:10px" ng-class ="{'hidden': !data.islink}">
+        URL：<select ng-model="data.option">
+        <option value="http://">http://</option>
+        <option value="https://">https://</option>
+    </select>
+        <input type="text" ng-model="data.url" style="width:229px "/>
+    </div>
+</div>
+<div style="height: 44px;overflow: hidden;display: table;width: 100%;border-collapse: collapse">
+    <span class="am-modal-btn " ng-click="renameConfirm()">确定</span>
+    <span class="am-modal-btn">取消</span>
+</div>

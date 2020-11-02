@@ -1,0 +1,56 @@
+#配置端口
+server:
+  port: 9092
+  jsp-servlet:
+    init-parameters:
+      development: true
+
+#配置数据源
+spring:
+  datasource:
+    username: weblib
+    password: weblib
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/weblibnew
+    maxPoolSize: 50
+    minPoolSize: 20
+    initialPoolSize: 20
+    maxIdleTime: 300
+    preferredTestQuery: select 1
+
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+      use-new-id-generator-mappings: false
+    properties:
+       hibernate:
+         show_sql: false
+         format_sql: true
+#         query:
+#           substitutions: true 1, false 0
+         cache:
+           use_query_cache: true
+#             # 二级缓存
+#           use_second_level_cache: true
+           # 缓存配置文件位置
+           provider_configuration_file_resource_path: ehcache/ehcache-hibernate-local.xml
+           region:
+             factory_class: org.hibernate.cache.ehcache.EhCacheRegionFactory
+           ehcache:
+             missing_cache_strategy: create
+         ejb:
+           naming_strategy: org.hibernate.cfg.ImprovedNamingStrategy
+         search:
+            default.directory_provider: filesystem
+            default:
+              indexBase: indexes
+         dialect: com.dcampus.common.config.MysqlConfig
+
+  thymeleaf:
+    enabled: false
+
+
+
+

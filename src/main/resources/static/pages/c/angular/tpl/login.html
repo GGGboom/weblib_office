@@ -1,0 +1,78 @@
+<div class="loginWrap">
+    <div class="main">
+        <form method="post" id="form" ng-submit="login()" autocomplete="off">
+            <input type="text" class="field" placeholder="帐号" name="username" ng-model="loginInfo.username" required
+                   id="username" autocomplete="off"/>
+            <input type="password" class="field" placeholder="密码" name="password" ng-model="loginInfo.password"
+                   required id="password" autocomplete="off"/>
+            <select class="field" id="loginType" ng-options="cas.name as cas.name for cas in optionsData"
+                    ng-model="casOptions">
+            </select>
+            <div class="checkbox"><input ng-click="rememberme($event)" type="button" class="unchecked"
+                                         ng-class="['','checked'][loginInfo.isChecked]" id="rememberme"
+                                         type="checkbox"
+                                         name="rememberpassword"
+                                         ng-model="loginInfo.shouldRemember"/> 记住密码
+            </div>
+            <input type="submit" value="登录" class="submit_btn local" ng-if="!isCas"/>
+            <input type="submit" value="登录" class="submit_btn cas" ng-if="isCas"/>
+        </form>
+        <!--这个根据需要修改中央认证地址及回跳地址-->
+        <form style="display: none;" method="post" name="casForm"
+              action="">
+            <input type="text" class="field" placeholder="帐号" name="username" value="{loginInfo.username}"
+                   ng-model="loginInfo.username"/>
+            <input type="password" class="field" placeholder="密码" name="password" value="{loginInfo.username}"
+                   ng-model="loginInfo.password"/>
+        </form>
+    </div>
+    <div class="footer">
+        <span class="copyright">© Copyright 2008-2016 DCampus Networks ltd. Ver.3.1.1 </span>
+        <div class="scan_hint">
+            <a href="javascript:void(0)" ng-mouseover="loginInfo.isShow = true"
+               ng-mouseleave="loginInfo.isShow = false">扫码下载客户端</a>
+            <div class="scan_pop" ng-show="loginInfo.isShow"></div>
+        </div>
+    </div>
+</div>
+<!--<div class="login-body">-->
+<!--<div class="login-wrap">-->
+<!--<DIV class="main">-->
+<!--<form method="post" id="form" ng-submit="login()">-->
+<!--<div class="form-text">-->
+<!--用户名：-->
+<!--<br/>-->
+<!--<input class="text-input" type="text" name="username" ng-model="loginInfo.username" required=""/>-->
+<!--</div>-->
+<!--<div class="form-text">-->
+<!--密&nbsp;&nbsp;码：-->
+<!--<br/>-->
+<!--<input class="text-input" type="password" name="password" ng-model="loginInfo.password"-->
+<!--required=""/>-->
+<!--</div>-->
+<!--<div class="form-checkbox">-->
+<!--<input class="checkbox-input" id="rememberme" type="checkbox" name="rememberpassword"-->
+<!--ng-model="loginInfo.shouldRemember"/> 记住密码-->
+
+<!--</div>-->
+<!--<div class="form-foot">-->
+<!--<input class="submit local" type="submit" value=""/>-->
+<!--&lt;!&ndash;a href="#" target="_blank">忘记了密码吗?</a&ndash;&gt;-->
+<!--</div>-->
+<!--</form>-->
+<!--</DIV>-->
+<!--<div class="downloadWrap">-->
+<!--<div class="links">-->
+<!--<a target="_blank" class="iphone"-->
+<!--href="https://itunes.apple.com/cn/app/dcampus-weblib/id519009725?mt=8"></a>-->
+<!--<a target="_blank" class="ipad" href="https://itunes.apple.com/cn/app/weblib-hd/id510591668?mt=8"></a>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="copyright">-->
+<!--Copyright © 2008 - 2016 DCampus. All Rights Reserved-->
+<!--</div>-->
+
+<!--</div>-->
+<!--</div>-->
+
+

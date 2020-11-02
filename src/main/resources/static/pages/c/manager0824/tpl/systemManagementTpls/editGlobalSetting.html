@@ -1,0 +1,85 @@
+<div class="ngViewport globalViewport">
+    <form class="am-form am-form-horizontal">
+        <div class="am-form-group">
+            <label for="site_domain" class="am-u-sm-2 am-form-label">站点域名：</label>
+            <div class="am-u-sm-10">
+                <input class="am-form-field" type="text" id="site_domain" name="site_domain" ng-model="globalSetting.site_domain">
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label for="site_name" class="am-u-sm-2 am-form-label">站点名称：</label>
+            <div class="am-u-sm-10">
+                <input type="text" id="site_name" name="site_name" ng-model="globalSetting.site_name" >
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label for="moveToDifferentGroup" class="am-u-sm-2 am-form-label">允许跨柜移动：</label>
+                <div class="am-u-sm-10 checkbox">
+                    <input type="checkbox" id="moveToDifferentGroup" name="moveToDifferentGroup" ng-model="globalSetting.moveToDifferentGroup"><label></label>
+                </div>
+
+        </div>
+        <div class="am-form-group">
+            <label for="copyToDifferentGroup" class="am-u-sm-2 am-form-label">允许跨柜复制：</label>
+            <div class="am-u-sm-10 checkbox">
+                <input type="checkbox" id="copyToDifferentGroup" name="copyToDifferentGroup" ng-model="globalSetting.copyToDifferentGroup"><label></label>
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label for="smtp_auth" class="am-u-sm-2 am-form-label">SMTP认证：</label>
+            <div class="am-u-sm-10 checkbox">
+                <input type="checkbox" id="smtp_auth" name="smtp_auth" ng-model="globalSetting.smtp_auth"><label></label>
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label for="smtp_host" class="am-u-sm-2 am-form-label">SMTP主机：</label>
+            <div class="am-u-sm-10">
+                <input type="text" id="smtp_host" name="smtp_host" ng-model="globalSetting.smtp_host">
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label for="smtp_password" class="am-u-sm-2 am-form-label">SMTP密码：</label>
+            <div class="am-u-sm-10">
+                <input type="password" id="smtp_password" name="smtp_password" ng-model="globalSetting.smtp_password">
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label for="smtp_port" class="am-u-sm-2 am-form-label">SMTP端口号：</label>
+            <div class="am-u-sm-10">
+                <input type="text" id="smtp_port" name="smtp_port" ng-model="globalSetting.smtp_port">
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label for="smtp_username" class="am-u-sm-2 am-form-label">SMTP用户名：</label>
+            <div class="am-u-sm-10">
+                <input type="text" id="smtp_username" name="smtp_username" ng-model="globalSetting.smtp_username">
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label for="smtp_sender" class="am-u-sm-2 am-form-label">邮箱地址：</label>
+            <div class="am-u-sm-10">
+                <input type="email" id="smtp_sender" name="smtp_sender" ng-model="globalSetting.smtp_sender">
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label for="smtp_sendername" class="am-u-sm-2 am-form-label">邮箱名称：</label>
+            <div class="am-u-sm-10">
+                <input type="text" id="smtp_sendername" name="smtp_sendername" ng-model="globalSetting.smtp_sendername">
+            </div>
+        </div>
+
+        <div class="am-form-group">
+            <label for="personalSpace" class="am-u-sm-2 am-form-label">文件柜总容量：</label>
+            <div class="am-u-sm-10">
+                <input type="text" id="personalSpace" name="personalSpace" ng-model="globalSetting.personalSpace">
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label for="userLimit" class="am-u-sm-2 am-form-label">单个文件大小：</label>
+            <div class="am-u-sm-10">
+                <input type="text" id="userLimit" name="userLimit" ng-model="globalSetting.userLimit">
+            </div>
+        </div>
+
+    </form>
+</div>

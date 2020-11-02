@@ -1,0 +1,998 @@
+@charset "utf-8";
+.uploadButtonTitle{background:url(images/icons/addMember.png) no-repeat 4px 6px}
+.uploadButtonTitleDisabled{background:url(images/icons/16/upload_Disabled.png) no-repeat 4px 6px}
+
+
+.buttonBase,.buttonBaseDisabled{background:url(images/buttonBg.jpg)}
+* html .iconbtn-txt{position:relative;top:4px}
+.listGrid .alternateGridBody div,.listGrid .alternateGridBody nobr,.listGrid .gridBody nobr{font-family:"宋体" !important;}
+.managerTitle {font-size:12px;font-weight:bold;padding-left:15px;}
+.sgwtTitle {
+    font-family:"宋体";
+    color:#454545;
+    font-size:18px;
+}
+
+.exampleSeparator {
+    border-bottom: 2px solid gray;
+    background-color:white; color:black;
+    font-weight: bold;
+    text-align: left;
+}
+
+/* Buttons*/
+.cssButton {
+    padding:2px;
+    font-family:"宋体"; font-size:12px; background-color:#CCCCCC;
+    border-left:1px solid white; border-top:1px solid white;
+    border-right:1px solid #808080; border-bottom:1px solid #808080;
+    filter:"progid:dximagetransform.microsoft.gradient(gradientType=0, startColorStr=#AAAAAA, endColorStr=#EEEEEE)";
+}
+.cssButtonOver {
+    padding:2px;
+    font-family:"宋体"; font-size:12px; background-color:#CCCCCC;
+    border-left:1px solid #808080; border-top:1px solid #808080;
+    border-right:1px solid white; border-bottom:1px solid white;
+    filter:"progid:dximagetransform.microsoft.gradient(gradientType=0, startColorStr=#EEEEEE, endColorStr=#AAAAAA)";
+}
+.cssButtonDown {
+    padding:2px;
+    font-family:"宋体"; font-size:12px; background-color:#AAAAAA;
+    border-left:1px solid #666666; border-top:1px solid #666666;
+    border-right:1px solid white; border-bottom:1px solid white;
+    filter:"progid:dximagetransform.microsoft.gradient(gradientType=0, startColorStr=#CCCCCC, endColorStr=#888888)";
+}
+.cssButtonDisabled {
+    padding:2px;
+    font-family:"宋体"; font-size:12px; color:#666666;
+    background-color:#CCCCCC;
+    border-left:1px solid #CCCCCC; border-top:1px solid #CCCCCC;
+    border-right:1px solid #CCCCCC; border-bottom:1px solid #CCCCCC;
+    filter:"progid:dximagetransform.microsoft.gradient(gradientType=0, startColorStr=#888888, endColorStr=#CCCCCC)";
+}
+
+.stretchTitle,
+.stretchTitleOver {
+    font-family:"宋体";
+    font-size:10px;
+    font-weight:bold;
+}
+
+.stretchTitleDown {
+    font-family:"宋体"; font-size:10px; font-weight:bold;
+    padding-left:1px; padding-top:2px;
+}
+
+.stretchTitleDisabled {
+    font-family:"宋体"; font-size:10px; color:#666666;
+    font-weight:bold;
+}
+
+.explorerTabTitle,
+.explorerTabTitleDown {
+    font-family:"宋体"; font-size:12px;
+    padding-top:3px;
+}
+.explorerTabTitleOver {
+    font-family:"宋体"; font-size:12px;
+    padding-top:3px;
+}
+.explorerTabTitleDisabled {
+    font-family:"宋体"; font-size:12px;
+      color:#666666;
+    padding-top:3px;
+}
+.explorerTabTitleSelected,
+.explorerTabTitleSelectedDown {
+    font-family:"宋体"; font-size:12px;
+      font-weight:bold;
+    padding-bottom:2px;
+}
+.explorerTabTitleSelectedOver {
+    font-family:"宋体"; font-size:12px;
+      font-weight:bold;
+    padding-bottom:2px;
+}
+.explorerTabTitleSelectedDisabled {
+    font-family:"宋体"; font-size:12px;
+      color:#666666;
+    font-weight:bold;
+    padding-bottom:2px;
+}
+.exampleTabTitle,
+.exampleTabTitleSelected,
+.exampleTabTitleOver,
+.exampleTabTitleDown,
+.exampleTabTitleSelectedOver,
+.exampleTabTitleSelectedDown,
+.exampleTabTitleDisabled,
+.exampleTabTitleSelectedDisabled {
+    font-family:"宋体"; font-size:12px; font-weight:bold;
+    color: #DDDDDD;
+    padding-right:20px;
+}
+
+.exampleTabTitleSelected {
+    color: #213D42;
+}
+.exampleTabTitleOver,
+.exampleTabTitleDown,
+.exampleTabTitleSelectedOver,
+.exampleTabTitleSelectedDown {
+    color: #00CCCC;
+}
+.exampleTabTitleDisabled,
+.exampleTabTitleSelectedDisabled {
+    color: #666666;
+}
+
+.explorerExampleTitle {
+	font-family:"宋体";
+	color:#ffffff;
+	padding-left:6px;
+	background-color:#404080;
+	font-size:18px;
+}
+.explorerExampleDescription {
+	font-family:"宋体";
+	font-size:13px;
+	padding:6px;
+}
+.explorerTitlePageTitle {
+	font-family:"宋体";
+	color:#ffffff;
+	padding-left:6px;
+	background-color:#404080;
+	font-size:18px;
+}
+.explorerTitlePageDescription {
+	font-family:"宋体";
+	font-size:13px;
+	padding:6px;
+}
+.explorerFolderList {
+	font-family:"宋体";
+	font-size:13px;
+	padding:6px;
+}
+.explorerCheckErrorMessage {
+    color: red;
+	font-family:"宋体";
+	font-size:13px;
+}
+.explorerSourceEditor {
+	border:1px solid #808080;
+	padding:10px;
+	font-size:12px;
+	font-family:"宋体";
+}
+.explorerSourceViewer {
+	padding:10px;
+	font-size:12px;
+	font-family:"宋体";
+}
+
+.explorerTree {
+    border-top: 2px solid rgb(129,141,185);
+}
+
+.splitbarDown {
+	border-left:2px solid #606060;
+	border-right:2px solid #606060;
+	background-color:#F0F0F0;
+}
+
+.examplePane {
+	margin:20px;
+}
+
+.jumpButton {
+    font-family:"宋体"; font-size:12px;
+	border:1px solid #F0F0F0;
+}
+
+.jumpButtonOver {
+    font-family:"宋体"; font-size:12px;
+    border: 1px solid white;
+    border-right-color: #808080;
+    border-bottom-color: #808080;
+
+}
+
+.jumpButtonDown {
+    font-family:"宋体"; font-size:12px;
+    border: 1px solid #808080;
+    border-right-color: white;
+    border-bottom-color: white;
+
+}
+
+.exampleDescCode {
+	font-family:"宋体";
+	font-size:14px;
+	font-weight:bold;
+}
+
+.exampleTitle {
+	font-family:Gill Sans MT,"宋体"; font-size:22px;
+}
+
+.exampleText {
+	font-family:Georgia,serif; font-size:12px;
+}
+
+.exampleTextBlock {
+	font-family:Georgia,serif; font-size:12px;
+	line-height:16px; text-align:justify;
+	padding-left:10px; padding-right:10px;
+}
+
+.exampleDropTitle {
+	float:left;font-family:"宋体";
+    font-size:22px;
+    line-height:32px;
+    color:#404040;
+}
+
+.interactImageHover {
+    font-family:"宋体";
+    font-size:12px;
+    border:1px solid #808080;
+    padding:5px;
+    background-color:#b8d0ff;
+    color:black;
+}
+
+.interactFormHover {
+    font-family:"宋体";
+    font-size:12px;
+    border:1px solid #ffffff;
+    padding:5px;
+    background-color:#000000;
+    color:#ffffff;
+}
+
+/*
+grid cell styles sample
+*/
+.myBoxedGridCell,
+.myBoxedGridCellDark {
+    font-family:"宋体"; font-size:12px;
+    color:black;
+    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
+    background-color:#ffffff;
+}
+.myBoxedGridCellOver,
+.myBoxedGridCellOverDark {
+    font-family:"宋体"; font-size:12px;
+    color:black;
+    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
+    background-color:#c0ffc0;
+}
+.myBoxedGridCellSelected,
+.myBoxedGridCellSelectedDark {
+    font-family:"宋体"; font-size:12px;
+    color:white;
+    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
+    background-color:#000080;
+}
+.myBoxedGridCellSelectedOver,
+.myBoxedGridCellSelectedOverDark {
+    font-family:"宋体"; font-size:12px;
+    color:white;
+    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
+    background-color:#8080ff;
+}
+.myBoxedGridCellDisabled,
+.myBoxedGridCellDisabledDark {
+    font-family:"宋体"; font-size:12px;
+    color:#808080;
+    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
+    background-color:#ffffff;
+}
+
+.myOtherGridCell {
+    font-family:"宋体"; font-size:12px;
+    color:black;
+    border-bottom:1px solid #ffffff; border-top:1px solid #ffffff;
+    background-color:#ffffff;
+}
+.myOtherGridCellDark {
+    font-family:"宋体"; font-size:12px;
+    color:black;
+    border-bottom:1px solid #f0f0e8; border-top:1px solid #f0f0e8;
+    background-color:#f0f0e8;
+}
+.myOtherGridCellOver,
+.myOtherGridCellOverDark {
+    font-family:"宋体"; font-size:12px;
+    color:black;
+    border-bottom:1px solid #c0c0c0; border-top:1px solid #c0c0c0;
+    background-color:#ffffc0;
+}
+.myOtherGridCellSelected,
+.myOtherGridCellSelectedDark {
+    font-family:"宋体"; font-size:12px;
+    color:black;
+    border-bottom:1px solid #c0c0ff; border-top:1px solid #c0c0ff;
+    background-color:#c0c0ff;
+}
+.myOtherGridCellSelectedOver,
+.myOtherGridCellSelectedOverDark {
+    font-family:"宋体"; font-size:12px;
+    color:black;
+    border-bottom:1px solid #a0a0a0; border-top:1px solid #a0a0a0;
+    background-color:#e0e0ff;
+}
+.myOtherGridCellDisabled {
+    font-family:"宋体"; font-size:12px;
+    color:#808080;
+    border-bottom:1px solid #ffffff; border-top:1px solid #ffffff;
+    background-color:#ffffff;
+}
+.myOtherGridCellDisabledDark {
+    font-family:"宋体"; font-size:12px;
+    color:#808080;
+    border-bottom:1px solid #f0f0e8; border-top:1px solid #f0f0e8;
+    background-color:#f0f0e8;
+}
+
+.simpleCell,
+.simpleCellSelected,
+.simpleCellOver,
+.simpleCellSelectedOver {
+    font-family:"宋体"; font-size:12px;
+    color:black;
+}
+
+.simpleCellDisabled {
+    font-family:"宋体"; font-size:12px;
+    color:#808080;
+}
+
+/*
+hilite cells replace
+*/
+.myHighGridCell,
+.myHighGridCellDark {
+    font-family:"宋体"; font-size:12px; text-overflow:ellipsis;
+    color:black;
+    border-bottom:1px solid #ffc0c0; border-top:1px solid #ffc0c0;
+    background-color:#ffc0c0;
+}
+.myHighGridCellOver,
+.myHighGridCellOverDark {
+    font-family:"宋体"; font-size:12px; text-overflow:ellipsis;
+    color:black;
+    border-bottom:1px solid #c0c0c0; border-top:1px solid #c0c0c0;
+    background-color:#ffe0e0;
+}
+.myHighGridCellSelected,
+.myHighGridCellSelectedDark {
+    font-family:"宋体"; font-size:12px; text-overflow:ellipsis;
+    color:black;
+    border-bottom:1px solid #ffc0ff; border-top:1px solid #ffc0ff;
+    background-color:#ffc0ff;
+}
+.myHighGridCellSelectedOver,
+.myHighGridCellSelectedOverDark {
+    font-family:"宋体"; font-size:12px; text-overflow:ellipsis;
+    color:black;
+    border-bottom:1px solid #a0a0a0; border-top:1px solid #a0a0a0;
+    background-color:#ffe0ff;
+}
+.myHighGridCellDisabled,
+.myHighGridCellDisabledDark {
+    font-family:"宋体"; font-size:12px; text-overflow:ellipsis;
+    color:#808080;
+    border-bottom:1px solid #ffc0c0; border-top:1px solid #ffc0c0;
+    background-color:#ffc0c0;
+}
+
+
+.myLowGridCell,
+.myLowGridCellDark {
+    font-family:"宋体"; font-size:12px; text-overflow:ellipsis;
+    color:black;
+    border-bottom:1px solid #c0ffc0; border-top:1px solid #c0ffc0;
+    background-color:#c0ffc0;
+}
+.myLowGridCellOver,
+.myLowGridCellOverDark {
+    font-family:"宋体"; font-size:12px; text-overflow:ellipsis;
+    color:black;
+    border-bottom:1px solid #c0c0c0; border-top:1px solid #c0c0c0;
+    background-color:#e0ffe0;
+}
+.myLowGridCellSelected,
+.myLowGridCellSelectedDark {
+    font-family:"宋体"; font-size:12px; text-overflow:ellipsis;
+    color:black;
+    border-bottom:1px solid #c0ffff; border-top:1px solid #c0ffff;
+    background-color:#c0ffff;
+}
+.myLowGridCellSelectedOver,
+.myLowGridCellSelectedOverDark {
+    font-family:"宋体"; font-size:12px; text-overflow:ellipsis;
+    color:black;
+    border-bottom:1px solid #a0a0a0; border-top:1px solid #a0a0a0;
+    background-color:#e0ffff;
+}
+.myLowGridCellDisabled,
+.myLowGridCellDisabledDark {
+    font-family:"宋体"; font-size:12px; text-overflow:ellipsis;
+    color:#808080;
+    border-bottom:1px solid #c0ffc0; border-top:1px solid #c0ffc0;
+    background-color:#c0ffc0;
+}
+
+/*calendar samples*/
+.testStyle {
+    font-size:9px;
+    background-color:#FA8072;
+   border: 1px solid #004D99;
+}
+
+.testStyleHeader {
+    font-size:9px; color: white;
+    background-color:#B22222;
+}
+
+.testStyleBody {
+    font-size: 9px;
+    background-color: #FA8072;
+    padding: 3px;
+}
+
+.testStyleResizer{
+    border-top:1px solid white;
+    border-bottom: 1px solid white;
+}
+
+/* tree connectors sample */
+
+.noBorderCell {
+    font-family:"宋体"; font-size:12px; text-overflow:ellipsis;
+    color:black;
+    background-color:#ffffff;
+}
+.noBorderCellDark {
+    font-family:"宋体"; font-size:12px; text-overflow:ellipsis;
+    color:black;
+    background-color:#f0f0f0;
+}
+.noBorderCellOver,
+.noBorderCellOverDark {
+    font-family:"宋体"; font-size:12px; text-overflow:ellipsis;
+    color:black;
+    background-color:#ffffc0;
+}
+.noBorderCellSelected,
+.noBorderCellSelectedDark {
+    font-family:"宋体"; font-size:12px; text-overflow:ellipsis;
+    color:black;
+    background-color:#b8d0ff;
+}
+.noBorderCellSelectedOver,
+.noBorderCellSelectedOverDark {
+    font-family:"宋体"; font-size:12px; text-overflow:ellipsis;
+    color:black;
+    background-color:#e0ebff;
+}
+.noBorderCellDisabled {
+    font-family:"宋体"; font-size:12px; text-overflow:ellipsis;
+    color:#808080;
+    background-color:#ffffff;
+}
+.noBorderCellDisabledDark {
+    font-family:"宋体"; font-size:12px; text-overflow:ellipsis;
+    color:#808080;
+    background-color:#f0f0e8;
+}
+
+/*filter tiling sample*/
+.commonName,
+.commonNameOver,
+.commonNameSelected,
+.commonNameSelectedOver,
+.endangered,
+.threatened,
+.notEndangered {
+    font-size:8pt;
+}
+
+.commonName,
+.commonNameOver,
+.commonNameSelected,
+.commonNameSelectedOver {
+    color:darkblue;
+    font-weight:bold;
+}
+
+.endangered {
+    color:red;
+    font-weight:bold;
+}
+
+.threatened {
+    color:orange;
+}
+
+.notEndangered {
+    color:green;
+}
+
+.lifeSpan,
+.lifeSpanOver,
+.lifeSpanSelected,
+.lifeSpanSelectedOver{
+    color:green;
+}
+
+/*gwt  intergration */
+
+.gwt-Reference-standard {
+  height: 5px;
+  width: 5px;
+  zoom: 1;
+}
+
+.gwt-Button {
+  margin: 0;
+  padding: 3px 5px;
+  text-decoration: none;
+  font-size: small;
+  cursor: pointer;
+  cursor: hand;
+  background: url("images/hborder.png") repeat-x 0px -27px;
+  border: 1px outset #ccc;
+}
+.gwt-Button:active {
+  border: 1px inset #ccc;
+}
+.gwt-Button:hover {
+  border-color: #9cf #69e #69e #7af;
+}
+.gwt-Button[disabled] {
+  cursor: default;
+  color: #888;
+}
+.gwt-Button[disabled]:hover {
+  border: 1px outset #ccc;
+}
+
+.gwt-DecoratorPanel {
+}
+.gwt-DecoratorPanel .topCenter,
+.gwt-DecoratorPanel .bottomCenter {
+  background: url(images/hborder.png) repeat-x;
+}
+.gwt-DecoratorPanel .middleLeft,
+.gwt-DecoratorPanel .middleRight {
+  background: url(images/vborder.png) repeat-y;
+}
+.gwt-DecoratorPanel .topLeftInner,
+.gwt-DecoratorPanel .topRightInner,
+.gwt-DecoratorPanel .bottomLeftInner,
+.gwt-DecoratorPanel .bottomRightInner {
+  width: 5px;
+  height: 5px;
+  zoom: 1;
+}
+html>body .gwt-DecoratorPanel .topLeft {
+  background: url(images/corner.png) no-repeat 0px 0px;
+}
+html>body .gwt-DecoratorPanel .topRight {
+  background: url(images/corner.png) no-repeat -5px 0px;
+}
+html>body .gwt-DecoratorPanel .bottomLeft {
+  background: url(images/corner.png) no-repeat 0px -5px;
+}
+html>body .gwt-DecoratorPanel .bottomRight {
+  background: url(images/corner.png) no-repeat -5px -5px;
+}
+* html .gwt-DecoratorPanel .topLeftInner {
+  width: 5px;
+  height: 5px;
+  overflow: hidden;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='gwt/standard/images/corner.png',sizingMethod='crop');
+}
+* html .gwt-DecoratorPanel .topRightInner {
+  width: 10px;
+  height: 5px;
+  margin-left: -5px;
+  overflow: hidden;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='gwt/standard/images/corner.png',sizingMethod='crop');
+}
+* html .gwt-DecoratorPanel .bottomLeftInner {
+  width: 5px;
+  height: 10px;
+  margin-left: 0px;
+  margin-top: -5px;
+  overflow: hidden;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='gwt/standard/images/corner.png',sizingMethod='crop');
+}
+* html .gwt-DecoratorPanel .bottomRightInner {
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
+  margin-top: -5px;
+  overflow: hidden;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='gwt/standard/images/corner.png',sizingMethod='crop');
+}
+
+.gwt-TabBar {
+}
+.gwt-TabBar .gwt-TabBarFirst {
+  width: 5px;  /* first tab distance from the left */
+}
+.gwt-TabBar .gwt-TabBarRest {
+}
+.gwt-TabBar .gwt-TabBarItem {
+  margin-left: 6px;
+  padding: 3px 6px 3px 6px;
+  cursor: pointer;
+  cursor: hand;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  background: #d0e4f6;
+}
+.gwt-TabBar .gwt-TabBarItem-selected {
+  cursor: default;
+  background: #92c1f0;
+}
+.gwt-TabPanel {
+}
+.gwt-TabPanelBottom {
+  border-color: #92c1f0;
+  border-style: solid;
+  border-width: 3px 2px 2px;
+  overflow: hidden;
+  padding: 6px;
+}
+
+.gwt-DecoratedTabBar {
+}
+.gwt-DecoratedTabBar .gwt-TabBarFirst {
+  width: 5px;  /* first tab distance from the left */
+}
+.gwt-DecoratedTabBar .gwt-TabBarRest {
+}
+.gwt-DecoratedTabBar .gwt-TabBarItem {
+  border-collapse: collapse;
+  margin-left: 6px;
+}
+.gwt-DecoratedTabBar .tabTopCenter {
+  padding: 0px;
+  background: #d0e4f6;
+}
+.gwt-DecoratedTabBar .tabTopLeft,
+.gwt-DecoratedTabBar .tabTopRight {
+  padding: 0px;
+  zoom: 1;
+}
+.gwt-DecoratedTabBar .tabTopLeftInner,
+.gwt-DecoratedTabBar .tabTopRightInner {
+  width: 6px;
+  height: 6px;
+}
+html>body .gwt-DecoratedTabBar .tabTopLeft {
+  background: url(images/corner.png) no-repeat 0px -55px;
+}
+html>body .gwt-DecoratedTabBar .tabTopRight {
+  background: url(images/corner.png) no-repeat -6px -55px;
+}
+* html .gwt-DecoratedTabBar .tabTopLeftInner {
+  width: 5px;
+  height: 61px;
+  margin-top: -55px;
+  overflow: hidden;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='gwt/standard/images/corner.png',sizingMethod='crop');
+}
+* html .gwt-DecoratedTabBar .tabTopRightInner {
+  width: 12px;
+  height: 61px;
+  margin-top: -55px;
+  margin-left: -6px;
+  overflow: hidden;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='gwt/standard/images/corner.png',sizingMethod='crop');
+}
+.gwt-DecoratedTabBar .tabMiddleLeft,
+.gwt-DecoratedTabBar .tabMiddleRight {
+  width: 6px;
+  padding: 0px;
+  background: #d0e4f6;
+}
+.gwt-DecoratedTabBar .tabMiddleLeftInner,
+.gwt-DecoratedTabBar .tabMiddleRightInner {
+  width: 1px;
+  height: 1px;
+}
+.gwt-DecoratedTabBar .tabMiddleCenter {
+  padding: 0px 4px 2px 4px;
+  cursor: pointer;
+  cursor: hand;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  background: #d0e4f6;
+}
+.gwt-DecoratedTabBar .gwt-TabBarItem-selected .tabTopCenter {
+  background: #92c1f0;
+}
+html>body .gwt-DecoratedTabBar .gwt-TabBarItem-selected .tabTopLeft {
+  background-position: 0px -61px;
+}
+html>body .gwt-DecoratedTabBar .gwt-TabBarItem-selected .tabTopRight {
+  background-position: -6px -61px;
+}
+* html .gwt-DecoratedTabBar .gwt-TabBarItem-selected .tabTopLeftInner {
+  width: 5px;
+  height: 67px;
+  margin-top: -61px;
+  overflow: hidden;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='gwt/standard/images/corner.png',sizingMethod='crop');
+}
+* html .gwt-DecoratedTabBar .gwt-TabBarItem-selected .tabTopRightInner {
+  width: 12px;
+  height: 67px;
+  margin-top: -61px;
+  margin-left: -6px;
+  overflow: hidden;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='gwt/standard/images/corner.png',sizingMethod='crop');
+}
+.gwt-DecoratedTabBar .gwt-TabBarItem-selected .tabMiddleLeft,
+.gwt-DecoratedTabBar .gwt-TabBarItem-selected .tabMiddleRight {
+  background: #92c1f0;
+}
+.gwt-DecoratedTabBar .gwt-TabBarItem-selected .tabMiddleCenter {
+  cursor: default;
+  background: #92c1f0;
+}
+
+.vpDotted {
+  border: 1px dotted blue;
+}
+
+.thumbnail,
+.thumbnailOver,
+.thumbnailSelected,
+.thumbnailSelectedOver {
+    border : 1px solid #CDCDCB;
+}
+
+.thumbnailTitle,
+.thumbnailTitleOver,
+.thumbnailTitleSelected,
+.thumbnailTitleSelectedOver {
+    font-size:9px;
+    text-overflow:ellipsis;
+}
+
+.thumbnailTitleOver,
+.thumbnailTitleSelected,
+.thumbnailTitleSelectedOver {
+    font-size:9px;
+    text-overflow:ellipsis;    
+    color: #336699;
+}
+
+/**hjz**/
+.formTitle, .formTitleFocused, .formTitleDisabled, .formCellError, .formTitleError, .formHint, .headerItem, .headerItemDisabled, .headerItemError, .staticTextItem, .staticTextItemDisabled, .staticTextItemError, .textItem, .textItemFocused, .textItemDisabled, .textItemError, .textItemHint, .selectItemControl, .selectItemControlError, .selectItemControlFocused, .selectItemText, .selectItemTextError, .selectItemTextDisabled, .selectItemTextFocused, .pickListCell, .pickListCellSelected, .pickListCellDisabled, .pickListCellDark, .pickListCellSelectedDark, .tallPickListCell, .tallPickListCellSelected, .tallPickListCellDisabled, .tallPickListCellDark, .tallPickListCellSelectedDark, .labelAnchor, .labelAnchorDisabled, .labelAnchorError, .labelAnchorFocused {font-size:12px !important;line-height:14px !important}
+.windowHeaderText, .dialogHeaderText {font-size:12px !important;}
+.treeCell, .treeCellDark, .treeCellOver, .treeCellOverDark, .treeCellSelected, .treeCellSelectedDark, .treeCellSelectedOver, .treeCellSelectedOverDark, .treeCellDisabled, .treeCellDisabledDark, .treeTallCell, .treeTallCellDark, .treeTallCellOver, .treeTallCellOverDark, .treeTallCellSelected, .treeTallCellSelectedDark, .treeTallCellSelectedOver, .treeTallCellSelectedOverDark, .treeTallCellDisabled, .treeTallCellDisabledDark {font-size:12px !important;}
+.headerTitle, .headerTitleOver, .headerTitleDown, .headerTitleSelected, .headerTitleSelectedOver, .headerTitleSelectedDown, .headerTitleDisabled, .headerTitleSelectedDisabled {font-size:12px !important;}
+.menu, .menuSelected, .menuOver, .menuSelectedOver, .menuDisabled, .menuTitleField, .menuTitleFieldSelected, .menuTitleFieldOver, .menuTitleFieldSelectedOver, .menuTitleFieldDisabled, .menuIconField, .menuIconFieldOver, .menuIconFieldSelected, .menuIconFieldSelectedOver, .menuIconFieldDisabled, .treeMenuSelected, .treeMenuSelectedOver, .treeMenuSelectedSelected, .treeMenuSelectedSelectedOver {font-size:12px !important;}
+.context-download {display:block;color:#333;text-decoration:none;}.normal,.canvasHover, .gridHover, .formHover{font-size:12px !important;}
+.menu, .menuSelected, .menuOver, .menuSelectedOver, .menuDisabled, .menuTitleField, .menuTitleFieldSelected, .menuTitleFieldOver, .menuTitleFieldSelectedOver, .menuTitleFieldDisabled, .menuIconField, .menuIconFieldOver, .menuIconFieldSelected, .menuIconFieldSelectedOver, .menuIconFieldDisabled, .treeMenuSelected, .treeMenuSelectedOver, .treeMenuSelectedSelected, .treeMenuSelectedSelectedOver {font-size:12px !important;padding-top:5px\9 !important;}
+.context-download {display:block;color:#333;text-decoration:none;}.normal,.canvasHover, .gridHover, .formHover{font-size:12px !important;}
+.menuOver,
+.menuSelectedOver,
+.menuTitleFieldOver,
+.menuTitleFieldSelectedOver,
+.menuIconFieldOver,
+.menuIconFieldSelectedOver,
+.treeMenuSelected,
+.treeMenuSelectedOver,
+.treeMenuSelectedSelected,
+.treeMenuSelectedSelectedOver {
+	background:#e3f1ff\9 !important;
+}
+.netDiskTitle{color:#283347;font-size:14px;font-weight:700;}
+
+/*-yz-*/
+
+/*-main-*/
+#titleEng{font: bold 14px Arial !important;color:#1c1c1c}
+#titleChn{font: bold 14px "宋体";color:#1c1c1c}
+.buttonText{font-family:"宋体";font-size:12px}
+
+.topButtonBase,.topButtonBase{background:none}
+.topButtonBaseSelected,.topButtonBaseSelectedOver{background:url(images/topButtonBasSelected.jpg)}
+.topButtonBase2Selected,.topButtonBase2SelectedOver{background:url(images/topButtonBasSelected2.jpg)}
+
+.topButtonText{position:absolute;top:5px;left:22px;font-size:12px; font-family:"宋体";top:6px \9;}
+
+.managerTab{background:url(images/managerTabBg.jpg) no-repeat right 0px}
+.userManageButtonTitle{background:url(images/icons/person.gif) no-repeat 2px 4px;}
+.resourceManageButtonTitle{background:url(images/icons/source.gif) no-repeat 2px 4px;}
+.systemManageButtonTitle{background:url(images/icons/system.gif) no-repeat 2px 4px;}
+
+
+#quick-link,#client-link,#logout-link{font:12px 宋体;color:#333333;text-decoration:none;}
+#quick-link:hover{display:block;background:url(images/toolstripButtonBg.gif) no-repeat;width:64px;height:22px}
+#client-link:hover{display:block;background:url(images/toolstripButtonBg.gif) no-repeat;width:64px;height:22px}
+#logout-link:hover{display:block;background:url(images/toolstripButtonBg2.gif) no-repeat;width:52px;height:22px}
+#quick-btn{background:url(images/icons/16/quick.gif) no-repeat 4px 2px;width:64px;height:22px;cursor:pointer}
+#client-btn{background:url(images/icons/16/client.gif) no-repeat 4px 4px;width:64px;height:22px;cursor:pointer}
+#logout-btn{background:url(images/icons/16/logout.gif) no-repeat 4px 3px;width:52px;height:22px;cursor:pointer}
+#quick-txt,#client-txt,#logout-txt{font:12px 宋体;color:#333333;position:absolute;left:24px;top:4px;top:5px \9;cursor:pointer}
+
+
+.advancedSearchButtonBase,.advancedSearchButtonBaseDisabled{background:url(images/advancedSearchButtonBg.jpg)}
+.advancedSearchButtonTitle span{font:12px '宋体';color:#000000;position:absolute;top:4px;top:5px \9;left:5px}
+.advancedSearchButtonTitleDisabled span{font:12px '宋体';color:#aaaaaa;position:absolute;top:4px;left:5px}
+
+.copyright{font:12px Arial !important;color:#272626;}
+
+.title-text{font:bold 12px "宋体";color:#010101}
+
+/*-通用的按钮底图-*/
+.buttonBase,.buttonBaseDisabled{background:url(images/buttonBg.jpg)}
+.buttonBase2,.buttonBase2Disabled{background:url(images/buttonBg2.jpg)}
+.buttonBase3,.buttonBase3Disabled{background:url(images/buttonBg3.jpg)}
+.buttonBase4,.buttonBase4Disabled{background:url(images/buttonBg4.jpg)}
+.buttonBase5,.buttonBase5Disabled{background:url(images/buttonBg5.jpg)}
+.buttonBase6,.buttonBase6Disabled{background:url(images/buttonBg6.jpg)}
+
+.menuButtonBase,.menuButtonBaseDisabled{background:url(images/menuButtonBg.jpg)}
+.menuButtonBase2,.menuButtonBase2Disabled{background:url(images/menuButtonBg2.jpg)}
+.menuButtonBase2Up,.menuButtonBase2UpDisabled{background:url(images/menuButtonBg2Up.jpg)}
+.menuButtonBase3,.menuButtonBase3Disabled{background:url(images/menuButtonBg3.jpg)}
+
+/*-无icon的按钮文字-*/
+.editUserButtonTitle span,
+.expiredUserButtonTitle span,
+.deleteUserButtonTitle span,
+.importUserButtonTitle span,
+.asignButtonTitle span,
+.editGroupButtonTitle span,
+.deleteGroupButtonTitle span,
+.editButtonTitle span,
+.deleteButtonTitle span,
+.addNewsButtonTitle span,
+.editNewsButtonTitle span,
+.deleteNewsButtonTitle span,
+.addIconButtonTitle span,
+.editIconButtonTitle span,
+.deleteIconButtonTitle span{font-size:12px;color:#000000;position:absolute;top:5px;top:6px \9;left:14px}
+.createFolderButtonTitle span,
+.createCategoryButtonTitle span,
+.assignPermissionButtonTitle span,
+.reorderButtonTitle span,
+.assignGroupSizeButtonTitle span,
+.assignFileSizeButtonTitle span{font-size:12px;color:#000000;position:absolute;top:5px;top:6px \9;left:8px}
+.copyPermissionButtonTitle span{font-size:12px;color:#000000;position:absolute;top:5px;top:6px \9;left:6px}
+
+.editUserButtonTitleDisabled span,
+.expiredUserButtonTitleDisabled span,
+.deleteUserButtonTitleDisabled span,
+.asignButtonTitleDisabled span,
+.editGroupButtonTitleDisabled span,
+.deleteGroupButtonTitleDisabled span,
+.editButtonTitleDisabled span,
+.deleteButtonTitleDisabled span,
+.addNewsButtonTitleDisabled span,
+.editNewsButtonTitleDisabled span,
+.deleteNewsButtonTitleDisabled span,
+.addIconButtonTitleDisabled span,
+.editIconButtonTitleDisabled span,
+.deleteIconButtonTitleDisabled span{font-size:12px;color:#aaaaaa;position:absolute;top:5px;top:6px \9;left:14px}
+.createFolderButtonTitleDisabled span,
+.createCategoryButtonTitleDisabled span,
+.assignPermissionButtonTitleDisabled span,
+.reorderButtonTitleDisabled span,
+.assignGroupSizeButtonTitleDisabled span,
+.assignFileSizeButtonTitleDisabled span{font-size:12px;color:#aaaaaa;position:absolute;top:5px;top:6px \9;left:8px}
+.copyPermissionButtonTitleDisabled span{font-size:12px;color:#aaaaaa;position:absolute;top:5px;top:6px \9;left:6px}
+/*
+.createFolderMenuButtonTitle,.createCategoryMenuButtonTitle,.preSetMenuButtonTitle{font-size:12px;color:#000000;position:absolute;top:2px;left:0px;}
+.createFolderMenuButtonTitle img,.createCategoryMenuButtonTitle img,.preSetMenuButtonTitle img{display:none}
+.createFolderMenuButtonTitle span,.createCategoryMenuButtonTitle span,.preSetMenuButtonTitle span{position:absolute;top:0px;top:1px \9;left:4px;}
+.createFolderMenuButtonTitleDisabled,.createCategoryMenuButtonTitleDisabled{font-size:12px;color:#aaaaaa;position:absolute;top:2px;left:0px;}
+.createFolderMenuButtonTitleDisabled img,.createCategoryMenuButtonTitleDisabled img{display:none}
+.createFolderMenuButtonTitleDisabled span,.createCategoryMenuButtonTitleDisabled span{position:absolute;top:0px;top:1px \9;left:4px;}
+*/
+/*-带icon的按钮icon-*/
+.addUserButtonTitle{background:url(images/icons/addUser.gif) no-repeat 2px 4px}
+.createTeamButtonTitle{background:url(images/icons/addTeam.gif) no-repeat 2px 4px}
+.createTeamButtonTitleDisabled{background:url(images/icons/addTeam_Disabled.gif) no-repeat 2px 4px}
+.createGroupButtonTitle{background:url(images/icons/addGroup.gif) no-repeat 2px 3px}
+.createGroupButtonTitleDisabled{background:url(images/icons/addGroup_Disabled.gif) no-repeat 2px 3px}
+
+/*-带icon的按钮文字-*/
+.addUserButtonTitle span,.createTeamButtonTitle span,.createGroupButtonTitle span{font-size:12px;color:#000000;position:absolute;top:5px;top:6px \9;left:22px}
+.createTeamButtonTitleDisabled span,.createGroupButtonTitleDisabled span{font-size:12px;color:#aaaaaa;position:absolute;top:5px;top:6px \9;left:22px}
+
+/*-特殊的按钮-*/
+#exportUserButton{width:58px;height:23px;background:url(images/buttonBg.jpg);position:relative;cursor:pointer}
+.exportUserLink{text-decoration:none;}
+#exportUserButton a div{width:58px;height:23px;cursor:pointer}
+#exportUserButton span{font-size:12px;color:#000000;position:absolute;top:4px;top:5px \9;left:18px;font-family:"宋体";}
+
+.saveButtonBase{background:url(images/saveButtonBg.jpg)}
+.saveButtonTitle{background:url(images/icons/save.png) no-repeat 16px 12px}
+.saveButtonTitle span{font-size:12px;color:#000000;position:absolute;top:40px;left:14px}
+
+.saveButton2Title{background:url(images/icons/save2.jpg) no-repeat 2px 5px}
+.saveButton2Title span{font-size:12px;color:#000000;position:absolute;top:4px;top:5px \9;left:20px;}
+
+.preSetMenuButtonTitle{font-size:12px;color:#000000;position:absolute;top:2px;left:0px;}
+.preSetMenuButtonTitle img{display:none}
+.preSetMenuButtonTitle span{position:absolute;top:0px;top:1px \9;left:4px;}
+
+.assignWindow{background:#f2f2f2;border:1px solid #c4c4c4;border-left:0 none}
+
+/*-用户组结构树-*/
+.folder,.folder-empty{height:19px;background:url(images/folderHead.jpg) no-repeat;padding-left:4px}
+.folder div{height:15px;background:url(images/folderBg.jpg) no-repeat right;color:#000000;padding:4px 4px 0px 4px}
+.folder-empty div{height:15px;background:url(images/folderBg.jpg) no-repeat right;color:#898989;padding:4px 4px 0px 4px}
+.team{height:19px;background:url(images/icons/team.gif) no-repeat left;padding-left:18px}
+.person{height:19px;background:url(images/icons/person.gif) no-repeat left;padding-left:18px}
+.team div,.person div{height:15px;color:#000000;padding:4px 0px 0px 0;}
+
+.othersMenuButtonTitle{font-size:12px;color:#000000;}
+.othersMenuButtonTitle img{display:none}
+.othersMenuButtonTitle span{position:absolute;top:5px;top:6px \9;left:8px;}
+.context-download{display:block;color:#333 !important;text-decoration:none;cursor:default;}
+
+.iconInput,.iconInputFocused,.iconInputError{height:auto !important}
+.iconUploadHint{white-space:nowrap}
+
+.pickListMenuBody
+
+.pickListCellSelected {
+    color:#333333;
+    background:#FFFFFF url(./images/Menu/menu_rollover.png) repeat-x scroll;
+}
+
+.logo img{width:150px;height:31px;margin:1px 0 0 0}
+
+/*
+.goBackButtonTitle{background:url(images/icons/16/goBack.png) no-repeat 4px 6px}
+.goBackButtonTitleDisabled{background:url(images/icons/16/goBack_Disabled.png) no-repeat 4px 6px}
+
+.createDirButtonTitle{background:url(images/icons/16/createDir.png) no-repeat 4px 6px}
+.createDirButtonTitleDisabled{background:url(images/icons/16/createDir_Disabled.png) no-repeat 4px 6px}
+
+.uploadButtonTitle{background:url(images/icons/16/upload.png) no-repeat 4px 6px}
+.uploadButtonTitleDisabled{background:url(images/icons/16/upload_Disabled.png) no-repeat 4px 6px}
+
+.deleteButtonTitle{font-size:12px;color:#000000;position:absolute;top:6px;left:0px !important;left:16px;}
+.deleteButtonTitleDisabled{font-size:12px;color:#aaaaaa;position:absolute;top:6px;left:0px !important;left:16px;}
+
+.refreshButtonTitle{background:url(images/icons/16/refresh.png) no-repeat 4px 6px}
+
+.goBackButtonTitle span,.createDirButtonTitle span,.uploadButtonTitle span,.refreshButtonTitle span{font-size:12px;color:#000000;position:absolute;top:6px;left:24px}
+.goBackButtonTitleDisabled span,.createDirButtonTitleDisabled span,.uploadButtonTitleDisabled span{font-size:12px;color:#aaaaaa;position:absolute;top:6px;left:24px}
+
+
+.othersMenuButtonTitle{font-size:12px;color:#000000;position:absolute;top:3px;left:3px;}
+
+.treeViewMenuButtonTitle{background:url(images/icons/16/treeView.png) no-repeat 2px 4px}
+.listViewMenuButtonTitle{background:url(images/icons/16/listView.png) no-repeat 2px 4px}
+.othersMenuButtonTitle img,.listViewMenuButtonTitle img,.treeViewMenuButtonTitle img{display:none}
+
+.treeViewMenuButtonTitle,.listViewMenuButtonTitle{font-size:12px;color:#000000;text-align:right}
+
+
+
+* html .iconbtn-txt{position:relative;top:4px}*/
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+.stretchImgButton div, .stretchImgButtonSelected div, .stretchImgButtonSelectedOver div, .stretchImgButtonOver div, .stretchImgButtonDown div, .stretchImgButtonSelectedDown div, .stretchImgButtonSelectedDisabled div, .stretchImgButtonDisabled div {
+ top:-1px}
+}
+
+.modalMask{background:none \0 !important;filter:alpha(opacity=50) !important;}
+.modalMask img{width:5000px !important;height:3000px !important;display:none \0!important;}

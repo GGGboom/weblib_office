@@ -1,0 +1,88 @@
+<form role="form" name="addUserForm">
+    <div class="am-g userProperty"></div>
+    <div class="am-g userProperty am-form-icon am-form-feedback">
+        <div class="am-u-sm-3" for="account-ipt">账号：</div>
+        <div class="am-u-sm-8">
+            <input type="text" id="account-ipt" name="account" class="am-form-field am-input-sm"
+                   ng-model="newUser.account" placeholder="必填" ng-pattern="/^[a-zA-Z0-9]*$/" required>
+            <span class="am-icon-check" ng-show="addUserForm.account.$dirty && addUserForm.account.$valid"></span>
+            <!--<span class="am-icon-times" ng-show="addUserForm.account.$dirty && addUserForm.account.$invalid"></span>-->
+            <span class="am-icon-times" ng-show="addUserForm.account.$dirty && addUserForm.account.$error.required">不能为空</span>
+            <span class="am-icon-times" ng-show="addUserForm.account.$dirty && addUserForm.account.$error.pattern">只能含字母</span>
+            <!--<span ng-show="addUserForm.account.$dirty && addUserForm.account.$error.required">必填！</span>-->
+        </div>
+    </div>
+    <div class="am-g userProperty am-form-icon am-form-feedback">
+        <div class="am-u-sm-3" for="name-ipt">姓名：</div>
+        <div class="am-u-sm-8">
+            <input type="text" id="name-ipt" name="name" class="am-form-field am-input-sm"
+                   ng-model="newUser.name" placeholder="必填" required>
+            <span class="am-icon-check" ng-show="addUserForm.name.$dirty && addUserForm.name.$valid"></span>
+            <span class="am-icon-times" ng-show="addUserForm.name.$dirty && addUserForm.name.$invalid"></span>
+        </div>
+    </div>
+    <div class="am-g userProperty am-form-icon am-form-feedback">
+        <div class="am-u-sm-3" for="password-ipt">密码：</div>
+        <div class="am-u-sm-8">
+            <input type="password" id="password-ipt" name="password" class="am-form-field am-input-sm"
+                   ng-model="newUser.password" ng-minlength="6" ng-maxlength="20" placeholder="必填,6-20位密码" required>
+            <span class="am-icon-check" ng-show="addUserForm.password.$dirty && addUserForm.password.$valid"></span>
+            <!--<span class="am-icon-times" ng-show="addUserForm.password.$dirty && addUserForm.password.$invalid"></span>-->
+            <span class="am-icon-times" ng-show="addUserForm.password.$dirty && addUserForm.password.$error.maxlength">超过20位</span>
+            <span class="am-icon-times" ng-show="addUserForm.password.$dirty && addUserForm.password.$error.minlength">小于6位</span>
+
+        </div>
+    </div>
+    <div class="am-g userProperty am-form-icon am-form-feedback">
+        <div class="am-u-sm-3" for="password-ipt">确认：</div>
+        <div class="am-u-sm-8">
+            <input type="password" id="password-confirm" name="confirmPassword" class="am-form-field am-input-sm"
+                   ng-model="newUser.confirmPassword" pw-check="password-ipt" placeholder="必填" required>
+            <span class="am-icon-check" ng-show="addUserForm.confirmPassword.$dirty && addUserForm.confirmPassword.$valid"></span>
+            <span class="am-icon-times" ng-show="addUserForm.confirmPassword.$dirty && addUserForm.confirmPassword.$invalid"></span>
+
+        </div>
+    </div>
+
+    <div class="am-g userProperty am-form-icon am-form-feedback">
+        <div class="am-u-sm-3" for="mobile-ipt">手机：</div>
+        <div class="am-u-sm-8">
+            <input type="text" id="mobile-ipt" name="mobile" class="am-form-field am-input-sm"  ng-pattern="/^[0-9]*$/" ng-minlength="11" ng-maxlength="11" ng-model="newUser.mobile">
+            <span class="am-icon-check" ng-show="addUserForm.mobile.$dirty && addUserForm.mobile.$valid"></span>
+            <span class="am-icon-times" ng-show="addUserForm.mobile.$dirty && addUserForm.mobile.$invalid"></span>
+        </div>
+    </div>
+    <div class="am-g userProperty am-form-icon am-form-feedback">
+        <div class="am-u-sm-3" for="email-ipt">邮箱：</div>
+        <div class="am-u-sm-8">
+            <input type="email" id="email-ipt" name="email" class="am-form-field am-input-sm" ng-model="newUser.email">
+            <span class="am-icon-check" ng-show="addUserForm.email.$dirty && addUserForm.email.$valid"></span>
+            <span class="am-icon-times" ng-show="addUserForm.email.$dirty && addUserForm.email.$invalid"></span>
+        </div>
+    </div>
+    <div class="am-g userProperty am-form-icon am-form-feedback">
+        <div class="am-u-sm-3" for="im-ipt">即时：</div>
+        <div class="am-u-sm-8" >
+            <input type="text" id="im-ipt" class="am-form-field am-input-sm" ng-model="newUser.im">
+        </div>
+    </div>
+    <div class="am-g userProperty">
+        <div class="am-u-sm-3" for="company-ipt">单位：</div>
+        <div class="am-u-sm-8">
+            <input type="text" id="company-ipt" class="am-form-field am-input-sm" ng-model="newUser.company">
+        </div>
+    </div>
+    <div class="am-g userProperty">
+        <div class="am-u-sm-3" for="department-ipt">部门：</div>
+        <div class="am-u-sm-8">
+            <input type="text" id="department-ipt" class="am-form-field am-input-sm" ng-model="newUser.department">
+        </div>
+    </div>
+
+    <div class="am-g userProperty">
+        <div class="am-u-sm-3" for="position-ipt">岗位：</div>
+        <div class="am-u-sm-8">
+            <input type="text" id="position-ipt" class="am-form-field am-input-sm" ng-model="newUser.position">
+        </div>
+    </div>
+</form>

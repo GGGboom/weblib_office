@@ -1,0 +1,76 @@
+<!--2016/08/10，edit by ChenQiqi,把标题的所有字体样式am-text-lg修改为am-text-default;
+                                 把标题栏的图标和文字设置成并排，去掉了<br>
+-->
+
+<div class="am-topbar-brand am-hide-md-only  am-u-sm-4">
+    <img ng-src="./images/logo.png">
+</div>
+
+<!--<div class="am-btn-toolbar ">-->
+<!--<div class="am-btn-group am-btn-group-sm">-->
+<!--<button type="button" class="am-btn am-btn-default" ng-click="manageUser() ">用户管理</button>-->
+<!--<button type="button" class="am-btn am-btn-default" ng-click="manageStorage() ">存储管理</button>-->
+<!--<button type="button" class="am-btn am-btn-default" ng-click="manageApplication()" >应用管理</button>-->
+<!--<button type="button" class="am-btn am-btn-default" ng-click="manageSystem()" >系统管理</button>-->
+<!--</div>-->
+<!--</div>-->
+    <!---->
+<!--当页面缩小到一定程度时，自动切换到导航按钮-->
+<button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only am-collapsed" data-am-collapse="{target: '#doc-topbar-collapse'}">
+    <span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+<div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse am-u-sm-8">
+        <ul class="am-nav am-nav-pills am-topbar-left am-topbar-nav">
+            <li>
+                <a href="javascript:void(0);" ng-click="manageUser()" ng-style="isActive('manager.userManagement')">
+                    <div class="icon-wrap ">
+                        <span class="am-icon-user am-text-primary"></span>
+                        <span class="am-text-sm">&nbsp;&nbsp;用户中心</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0);" ng-click="manageStorage()" ng-style="isActive('manager.storageManagement')">
+                    <div class="icon-wrap">
+                        <span class="am-icon-inbox am-text-primary"></span>
+                        <span class="am-text-sm">&nbsp;&nbsp;文件柜管理</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0);" ng-click="manageApplication()" ng-style="isActive('manager.applicationManagement')">
+                    <div class="icon-wrap">
+                        <span class="am-icon-cube am-text-primary"></span>
+                        <span class="am-text-sm">&nbsp;&nbsp;应用管理</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0);" ng-click="manageSystem()" ng-style="isActive('manager.systemManagement')">
+                    <div class="icon-wrap">
+                        <span class="am-icon-cog am-text-primary"> </span>
+                        <span class="am-text-sm">&nbsp;&nbsp;系统管理</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0);" ng-click="manageAddressbook()" ng-style="isActive('manager.addressbookManagement')">
+                    <div class="icon-wrap">
+                        <span class="am-icon-book am-text-primary"></span>
+                        <span class="am-text-sm">&nbsp;&nbsp;通讯录管理</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <ul class="am-nav am-nav-pills am-topbar-right am-topbar-nav" style="right:0px;">
+            <li><a href="#" ng-click=""><i class=" am-icon-align-left am-text-primary am-text-sm"></i></a></li>
+            <li><a href="#" ng-click=""><i class=" am-icon-align-center am-text-primary am-text-sm"></i></a></li>
+            <li><a href="#" ng-click=""><i class="am-icon-align-right am-text-primary am-text-sm"></i></a></li>
+            <li><a href="#" ng-click="goClient();"><i class=" am-icon-desktop am-text-primary am-text-sm">&nbsp;客户端</i></a></li>
+            <li><a href="#" ng-click="logout();"><i class="am-icon-sign-out am-text-primary am-text-sm">&nbsp;退出</i></a></li>
+        </ul>
+</div>
+
+
+
+

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="96px" height="21px" viewBox="0 0 96 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>通讯录管理_选中</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="2.5" y="2" width="4" height="1"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="4" height="1" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <rect id="path-3" x="2.5" y="6" width="4" height="1"></rect>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="4" height="1" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+        <rect id="path-5" x="2.5" y="10" width="4" height="1"></rect>
+        <mask id="mask-6" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="4" height="1" fill="white">
+            <use xlink:href="#path-5"></use>
+        </mask>
+        <path d="M0.808,4.1198 C0.808,5.6658 1.666,6.9988 2.926,7.7038 C1.713,8.2278 0.504,9.2118 0,10.4348 L1.047,10.4348 C1.718,9.1718 3.264,8.2978 4.78,8.2408 L4.928,8.2408 L5.094,8.2408 C6.61,8.2978 8.157,9.1718 8.828,10.4348 L9.874,10.4348 C9.368,9.2078 8.156,8.2218 6.938,7.6988 C8.193,6.9938 9.048,5.6628 9.048,4.1198 C9.048,1.8448 7.204,-0.0002 4.928,-0.0002 C2.653,-0.0002 0.808,1.8448 0.808,4.1198 Z M1.761,4.1198 C1.761,2.3708 3.179,0.9528 4.928,0.9528 C6.678,0.9528 8.095,2.3708 8.095,4.1198 C8.095,5.8698 6.678,7.2878 4.928,7.2878 C3.179,7.2878 1.761,5.8698 1.761,4.1198 Z" id="path-7"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="通讯录管理_选中">
+            <text id="通讯录管理" font-family="PingFangSC-Regular, PingFang SC" font-size="12" font-weight="normal" fill="#5EB95E">
+                <tspan x="36" y="15">通讯录管理</tspan>
+            </text>
+            <g id="Group-5">
+                <path d="M4,1.99456145 C4,0.892995579 4.89821238,0 5.99079514,0 L22.0092049,0 C23.1086907,0 24,0.90234375 24,1.99456145 L24,19.0054385 C24,20.1070044 23.1017876,21 22.0092049,21 L5.99079514,21 C4.89130934,21 4,20.0976562 4,19.0054385 L4,1.99456145 Z M5,1.99456145 L5,19.0054385 C5,19.5497435 5.44795608,20 5.99079514,20 L22.0092049,20 C22.5519994,20 23,19.5522243 23,19.0054385 L23,1.99456145 C23,1.45025651 22.5520439,1 22.0092049,1 L5.99079514,1 C5.44800063,1 5,1.4477757 5,1.99456145 Z" id="Rectangle-5" fill="#5EB95E"></path>
+                <g id="Group-4" transform="translate(0.000000, 4.000000)">
+                    <rect id="Rectangle-7" fill="#FFFFFF" x="0" y="0" width="9" height="13"></rect>
+                    <use id="Rectangle-6" stroke="#5EB95E" mask="url(#mask-2)" stroke-width="2" xlink:href="#path-1"></use>
+                    <use id="Rectangle-6-Copy" stroke="#5EB95E" mask="url(#mask-4)" stroke-width="2" xlink:href="#path-3"></use>
+                    <use id="Rectangle-6-Copy-2" stroke="#5EB95E" mask="url(#mask-6)" stroke-width="2" xlink:href="#path-5"></use>
+                </g>
+                <g id="Page-1" transform="translate(9.000000, 5.000000)">
+                    <mask id="mask-8" fill="white">
+                        <use xlink:href="#path-7"></use>
+                    </mask>
+                    <g id="Clip-2"></g>
+                    <polygon id="Fill-1" fill="#5EB95E" mask="url(#mask-8)" points="-5 15.435 14.874 15.435 14.874 -5 -5 -5"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

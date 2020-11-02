@@ -1,0 +1,68 @@
+<div id="system-m" class="am-g am-g-collapse">
+    <div class="panelWrap am-u-sm-3 left">
+        <div class="am-panel am-panel-default ">
+            <div class="am-panel-hd am-titlebar am-titlebar-multi">
+                <h3 class="am-titlebar-title">应用目录</h3>
+            </div>
+            <div class="am-panel-bd ngViewport">
+                <div data-drag-enabled="false">
+                <ul class="am-list admin-sidebar-list">
+                    <li><a href="javascript:void(0);" ng-click="showGlobalSetting();" ng-style="isTabActive('globalSetting')">
+                        <i>全局设置</i></a>
+                    </li>
+                    <li><a href="javascript:void(0);" ng-click="showStorageIconSet();" ng-style="isTabActive('storageIconSet')">
+                        <i>文件柜图标设置</i></a>
+                    </li>
+                    <li>
+                        <a data-am-collapse="{target:'#loglist'}"  href="javascript:void(0);" ng-style="isTabActive('');">
+                            <i ng-class="{'am-icon-caret-down':!collapsed,'am-icon-caret-right':collapsed}"
+                               class="sidebarImg am-text-secondary am-icon-sm"></i>
+                        <i>日志管理</i></a>
+                        <div id="loglist" class="am-collapse am-in">
+                            <ul class="am-list">
+                                <li><a href="javascript:void(0);" ng-click="loginLog();" ng-style="isTabActive('loginLog')">
+                                    <i>   登录日志</i></a></li>
+                                <li><a href="javascript:void(0);" ng-click="uploadLog();" ng-style="isTabActive('uploadLog')">
+                                    <i>  上传日志</i></a></li>
+                                <li><a href="javascript:void(0);" ng-click="downloadLog();" ng-style="isTabActive('downloadLog')">
+                                    <i>  下载日志</i></a></li>
+                                <li><a href="javascript:void(0);" ng-click="operateLog();" ng-style="isTabActive('operateLog')">
+                                    <i>  操作日志</i></a></li>
+                                <li><a href="javascript:void(0);" ng-click="errorLog();" ng-style="isTabActive('errorLog')">
+                                    <i>  错误日志</i></a></li>
+                            </ul>
+                        </div>
+
+                    </li>
+                </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="panelWrap am-u-sm-9 right">
+        <div class="am-panel am-panel-default ">
+            <!--选中用户组，右边视图标题栏-->
+            <div class="am-panel-hd am-titlebar am-titlebar-multi">
+                <h3 class="am-titlebar-title">系统信息</h3>
+                <nav class="am-titlebar-nav am-fr">
+                    <div class="am-btn-group">
+                        <button type="button" class="am-btn am-btn-default" ng-show="ifModify" ng-click="editGlobalSettingSubmit();">
+                            <img src="./images/User_Management/icon_ok@2x.png"/>
+                        </button>
+                        <button type="button" class="am-btn am-btn-default" ng-show="ifModify" ng-click="editGlobalSettingCancel();">
+                            <img src="./images/User_Management/icon_cancel@2x.png"/>
+                        </button>
+                        <button type="button" class="am-btn am-btn-default" ng-show="ifEdit" ng-click="editGlobalSetting();">
+                            <img src="./images/User_Management/icon_edit@2x.png"/>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+            <div class="am-panel-bd ngViewport ">
+                <div class="system-info-content" ui-view></div>
+            </div>
+        </div>
+    </div>
+
+</div>

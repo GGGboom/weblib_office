@@ -1,0 +1,88 @@
+<form role="form" name="userDetailForm">
+    <div id="userName" class="am-g userProperty">
+        <div class="am-u-sm-3">账号：</div>
+        <div class="am-u-sm-9">
+            <input type="text" class="am-form-field" ng-model="modifyingUser.account">
+        </div>
+    </div>
+    <!--<div id="userStatus" ng-switch="modifyingUser.status">
+        <span class="am-btn am-btn-success am-btn-xs status-btn" ng-switch-when="normal">正常</span>
+        <span class="am-btn am-btn-default am-btn-xs status-btn" ng-switch-when="expired">停用</span>
+        <span class="am-btn am-btn-warning am-btn-xs status-btn" ng-switch-when="delete">注销</span>
+        <span class="am-badge am-round" ng-switch-default>未知</span>
+    </div>-->
+    <div class="am-g userProperty">
+        <div class="am-u-sm-3">姓名：</div>
+        <div class="am-u-sm-9">
+            <input type="text" id="edit-name-ipt" name="editName" class="am-form-field " ng-model="modifyingUser.name" required>
+        </div>
+    </div>
+    <div class="am-g userProperty">
+        <div class="am-u-sm-3">密码：</div>
+        <div class="am-u-sm-9">
+            <input type="password" id="edit-password-ipt" class="am-form-field " ng-model="modifyingUser.password" placeholder="不修改请留空">
+        </div>
+    </div>
+    <div class="am-g userProperty">
+        <div class="am-u-sm-3">确认密码：</div>
+        <div class="am-u-sm-9">
+            <input type="password" id="confirm-password-ipt" class="am-form-field " ng-model="modifyingUser.password" placeholder="不修改请留空">
+        </div>
+    </div>
+    <div class="am-g userProperty">
+        <div class="am-u-sm-3">手机：</div>
+        <div class="am-u-sm-9">
+            <input type="text" id="edit-mobile-ipt" class="am-form-field " ng-model="modifyingUser.mobile">
+        </div>
+    </div>
+    <div class="am-g userProperty">
+        <div class="am-u-sm-3">邮箱：</div>
+        <div class="am-u-sm-9">
+            <input type="email" id="edit-email-ipt" class="am-form-field " ng-model="modifyingUser.email">
+        </div>
+    </div>
+    <div class="am-g userProperty">
+        <div class="am-u-sm-3">单位：</div>
+        <div class="am-u-sm-9">
+            <input type="text" id="edit-company-ipt" class="am-form-field " ng-model="modifyingUser.company">
+        </div>
+    </div>
+    <div class="am-g userProperty">
+        <div class="am-u-sm-3">部门：</div>
+        <div class="am-u-sm-9">
+            <input type="text" id="edit-department-ipt" class="am-form-field " ng-model="modifyingUser.department">
+        </div>
+    </div>
+    <div class="am-g userProperty">
+        <div class="am-u-sm-3">职位：</div>
+        <div class="am-u-sm-9">
+            <input type="text" id="edit-position-ipt" class="am-form-field " ng-model="modifyingUser.position">
+        </div>
+    </div>
+    <!--<div id="userLabel" class=" ">
+        <div class="">标签</div>
+        <div class="">
+            <sapn class="am-badge am-badge-primary">Free</sapn>
+            <sapn class="am-badge am-badge-secondary">Secondary</sapn>
+            <span class="am-badge am-badge-success">Success</span>
+            <span class="am-badge am-badge-warning">Warning</span>
+            <span class="am-badge am-badge-danger">Danger</span>
+
+        </div>
+    </div>
+    <div id="userAuthority" class=" ">
+        <div class="">权限信息</div>
+        <div class="">
+            <sapn class="am-badge ">用户系统管理员</sapn>
+            <sapn class="am-badge ">LMS用户管理员</sapn>
+            <span class="am-badge ">CMS管理员</span>
+
+
+        </div>
+    </div>-->
+    <button type="submit" class="am-btn am-btn-primary" ng-click="editCancel();">确定</button>
+    <button type="reset" class="am-btn am-btn-gray" ng-click="editConfirm();">取消</button>
+</form>
+<div class="am-btn-group">
+
+</div>

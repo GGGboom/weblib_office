@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>导入用户</title>
+<script src="js/jquery-1.4.2.pack.js"></script>
+<script src="js/ajaxFileUpload.js"></script>
+<script>
+var fileUpdate = {
+  getFileUpload : function(){
+	    $.ajaxFileUpload(
+			{
+				url:'/user/importAccount.action',
+				secureuri:false,
+				fileElementId:'filedata',
+				dataType: 'json',
+				
+				success: function (data, status){
+				     $(".uploadText").text(data.detail);
+					},
+				error: function (data, status, e){
+					
+				}
+			}
+		)
+   }
+}
+
+$(function(){
+
+ $(".upload").bind("click",function(){
+	 $(".uploadText").show();
+	 $("#form").hide(); 
+     fileUpdate.getFileUpload();
+   
+ })
+
+})
+
+</script>
+<style>
+body {padding:10px 0 0 10px;margin:0;background:#fff;}
+* {font:normal 12px "宋体";color:#333;margin:0;}
+#filedata {height:22px;line-height:22px;width:250px\9;}
+.button {height:23px;line-height:18px;padding:0 10px;}
+#form p{font:12px/180% "宋体";color:#333;}
+</style>
+</head>
+
+<body>
+<form id="form">
+<p>请选择上传的文件：</p>
+<p style="margin-bottom:5px;">可导入的文件类型为*.xls</p>
+<input type="hidden" name="aa" value="123" />
+<input type="file" name="filedata" value="上传" id="filedata" class="file valid"/>
+                <input type="button" value="导入" class="button upload" />
+</form>
+<div class="uploadText" style="display:none;">正在上传中...</div>
+</body>
+</html>

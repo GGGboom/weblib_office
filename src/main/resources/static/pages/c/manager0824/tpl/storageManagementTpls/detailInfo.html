@@ -1,0 +1,51 @@
+<!--<div class="detail-info">
+    <div class="am-g">
+        <div class="am-u-sm-4">
+            <span class="square label " style="background-color: #eaeff6"><label class="">名称</label></span>
+            <span class="square">{{groupInfo.displayName}}</span>
+        </div>
+        <div class="am-u-sm-4">
+            <span class="square label" style="background-color: #eaf6f5"><label>容量</label></span>
+            <span class="square">
+                <div>
+                   总容量：{{groupInfo.totalSize}}<br>可用容量：{{groupInfo.remainSize}}
+                </div>
+            </span>
+        </div>
+        <div class="am-u-sm-4">
+            <span class="square label " style="background-color: #f1f6ea"><label>时间</label></span>
+            <span class="square">
+                <div>
+                    创建：<br>{{groupInfo.createTime}}<br>修改：<br>{{groupInfo.modifyTime}}
+                </div>
+            </span>
+        </div>
+    </div>
+    <div class="am-g">
+        <div class="am-u-sm-2">
+            <div class="square label" style="background-color: #f1f6ea"><label>描述</label></div>
+        </div>
+        <div class="am-u-sm-10">
+            <div class="square">{{groupInfo.desc}}</div>
+        </div>
+    </div>
+</div>-->
+<div id="groupDetails" ng-hide="isgroupDetailsHide">
+    <div id="groupName">
+        <h3>{{groupInfo.displayName}}</h3>
+    </div>
+    <div class="folderProperty">
+        <div ><label class="am-badge am-badge-secondary">容量</label></div>
+        <span>总容量：{{groupInfo.totalSize}}</span><br>
+        <span>可用容量：{{groupInfo.remainSize}}</span>
+    </div>
+    <div class="folderProperty">
+        <div ><label class="am-badge am-badge-secondary">时间</label></div>
+        <span >创建：{{groupInfo.createTime}}</span><br>
+        <span >修改：{{groupInfo.modifyTime}}</span>
+    </div>
+    <div class="folderProperty">
+        <div ><label class="am-badge am-badge-secondary">描述</label></div>
+        <span>{{groupInfo.desc}}</span>
+    </div>
+</div>

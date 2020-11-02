@@ -1,0 +1,46 @@
+<div id="system-m" class="am-g am-g-collapse">
+    <div class="panelWrap am-u-sm-3 left">
+        <div class="am-panel am-panel-default ">
+            <div class="am-panel-hd am-titlebar am-titlebar-multi">
+                <h3 class="am-titlebar-title">应用目录</h3>
+            </div>
+            <div class="am-panel-bd ngViewport">
+                <div data-drag-enabled="false">
+                <ul class="am-list admin-sidebar-list">
+                    <li><a href="javascript:void(0);" ng-click="showGlobalSetting();">
+                        <i>全局设置</i></a>
+                        <!--<button type="button" class="am-btn am-btn-default" ng-click="showGlobalSetting();"
+                                ng-class="{'am-active':isTabActive('{{sysTabName.GLOBALSETTING}}')}">全局设置
+                        </button>-->
+                    </li>
+                    <li><a href="javascript:void(0);" ng-click="showStorageIconSet();">
+                        <i>文件柜图标设置</i></a>
+                       <!-- <button type="button" class="am-btn am-btn-default" ng-click=""
+                                ng-class="{'am-active':isTabActive('{{sysTabName.STORAGEICONSET}}')}">
+                        </button>-->
+                    </li>
+                    <li><a href="javascript:void(0);" ng-click="showLogManagement();">
+                        <i>日志管理</i></a>
+                        <!--<button type="button" class="am-btn am-btn-default" ng-click=""
+                                ng-class="{'am-active':isTabActive('{{sysTabName.LOGMANAGEMENT}}')}">
+                        </button>-->
+                    </li>
+                </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="panelWrap am-u-sm-9 right">
+        <div class="am-panel am-panel-default ">
+            <!--选中用户组，右边视图标题栏-->
+            <div class="am-panel-hd am-titlebar am-titlebar-multi">
+                <h3 class="am-titlebar-title">标题</h3>
+            </div>
+            <div class="am-panel-bd ngViewport ">
+                <div class="system-info-content" ui-view></div>
+            </div>
+        </div>
+    </div>
+
+</div>

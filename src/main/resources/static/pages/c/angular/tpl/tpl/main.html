@@ -1,0 +1,25 @@
+
+<header class="am-topbar admin-header" id="header">
+    <div ui-view="btnWrap"></div>
+</header>
+
+<div class="am-cf admin-main" ng-controller="appController">
+    <div id="left">
+        <!-- sidebar start -->
+        <div ui-view="slider"></div>
+        <!-- sidebar end -->
+    </div>
+
+<div id="right">
+    <!-- content start -->
+    <div ui-view="content"></div>
+    <!-- content end -->
+</div>
+
+</div>
+
+<a href="javascript:void(0)" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+
+<!--<footer class="copyrightInner">-->
+   <!--广州数园网络有限公司版权所有-->
+<!--</footer>-->

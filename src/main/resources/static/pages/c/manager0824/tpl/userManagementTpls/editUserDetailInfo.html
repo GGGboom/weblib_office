@@ -1,0 +1,107 @@
+    <form role="form" name="editUserForm">
+        <div class="am-g userProperty"></div>
+        <div id="userName" class="am-g userProperty">
+            <div class="am-u-sm-3">账号：</div>
+            <div class="am-u-sm-8" style="float:left;">
+                <input type="text" class="am-form-field" disabled ng-model="modifyingUser.account">
+            </div>
+        </div>
+        <!--<div id="userStatus" ng-switch="modifyingUser.status">
+            <span class="am-btn am-btn-success am-btn-xs status-btn" ng-switch-when="normal">正常</span>
+            <span class="am-btn am-btn-default am-btn-xs status-btn" ng-switch-when="expired">停用</span>
+            <span class="am-btn am-btn-warning am-btn-xs status-btn" ng-switch-when="delete">注销</span>
+            <span class="am-badge am-round" ng-switch-default>未知</span>
+        </div>-->
+        <div class="am-g userProperty am-form-icon am-form-feedback">
+            <div class="am-u-sm-3" for="edit-name-ipt">姓名：</div>
+            <div class="am-u-sm-8">
+                <input type="text" id="edit-name-ipt" name="editName" class="am-form-field am-input-sm"
+                       ng-model="modifyingUser.name" required>
+                <span class="am-icon-check" ng-show="editUserForm.editName.$dirty && editUserForm.editName.$valid"></span>
+                <span class="am-icon-times" ng-show="editUserForm.editName.$dirty && editUserForm.editName.$invalid"></span>
+            </div>
+        </div>
+        <!--<div class="am-g userProperty am-form-icon am-form-feedback">
+            <div class="am-u-sm-3">密码：</div>
+            <div class="am-u-sm-8">
+                <input type="password" id="edit-password-ipt" name="editPassword" class="am-form-field am-input-sm"
+                       ng-model="modifyingUser.password" ng-minlength="6" ng-maxlength="20" placeholder="不修改请留空">
+                <span class="am-icon-check" ng-show="editUserForm.editPassword.$dirty && editUserForm.editPassword.$valid"></span>
+                <span class="am-icon-times" ng-show="editUserForm.editPassword.$dirty && editUserForm.editPassword.$error.maxlength">超过20位</span>
+                <span class="am-icon-times" ng-show="editUserForm.editPassword.$dirty && editUserForm.editPassword.$error.minlength">小于6位</span>
+            </div>
+        </div>
+        <div class="am-g userProperty am-form-icon am-form-feedback">
+            <div class="am-u-sm-3">确认：</div>
+            <div class="am-u-sm-8">
+                <input type="password" id="confirm-password-ipt" name="editConfirmPassword" class="am-form-field am-input-sm"
+                       ng-model="modifyingUser.confirmPassword" pw-check="edit-password-ipt" placeholder="不修改请留空">
+                <span class="am-icon-check" ng-show="editUserForm.editConfirmPassword.$dirty && editUserForm.editConfirmPassword.$valid"></span>
+                <span class="am-icon-times" ng-show="editUserForm.editConfirmPassword.$dirty && editUserForm.editConfirmPassword.$invalid"></span>
+            </div>
+        </div>-->
+        <div class="am-g userProperty am-form-icon am-form-feedback">
+            <div class="am-u-sm-3">手机：</div>
+            <div class="am-u-sm-8">
+                <input type="text" id="edit-mobile-ipt" name="editMobile" class="am-form-field am-input-sm"
+                       ng-pattern="/^[0-9]*$/" ng-minlength="11" ng-maxlength="11" ng-model="modifyingUser.mobile">
+                <span class="am-icon-check" ng-show="editUserForm.editMobile.$dirty && editUserForm.editMobile.$valid"></span>
+                <span class="am-icon-times" ng-show="editUserForm.editMobile.$dirty && editUserForm.editMobile.$invalid"></span>
+            </div>
+        </div>
+        <div class="am-g userProperty am-form-icon am-form-feedback">
+            <div class="am-u-sm-3">邮箱：</div>
+            <div class="am-u-sm-8">
+                <input type="email" id="edit-email-ipt" name="editEmail" class="am-form-field am-input-sm"
+                       ng-model="modifyingUser.email">
+                <span class="am-icon-check" ng-show="editUserForm.editEmail.$dirty && editUserForm.editEmail.$valid"></span>
+                <span class="am-icon-times" ng-show="editUserForm.editEmail.$dirty && editUserForm.editEmail.$invalid"></span>
+            </div>
+        </div>
+        <div class="am-g userProperty am-form-icon am-form-feedback">
+            <div class="am-u-sm-3" for="im-ipt">即时：</div>
+            <div class="am-u-sm-8" >
+                <input type="text" id="im-ipt" class="am-form-field am-input-sm" ng-model="modifyingUser.im">
+            </div>
+        </div>
+        <div class="am-g userProperty">
+            <div class="am-u-sm-3">单位：</div>
+            <div class="am-u-sm-8">
+                <input type="text" id="edit-company-ipt" class="am-form-field " ng-model="modifyingUser.company">
+            </div>
+        </div>
+        <div class="am-g userProperty">
+            <div class="am-u-sm-3">部门：</div>
+            <div class="am-u-sm-8">
+                <input type="text" id="edit-department-ipt" class="am-form-field " ng-model="modifyingUser.department">
+            </div>
+        </div>
+        <div class="am-g userProperty">
+            <div class="am-u-sm-3">岗位：</div>
+            <div class="am-u-sm-8">
+                <input type="text" id="edit-position-ipt" class="am-form-field " ng-model="modifyingUser.position">
+            </div>
+        </div>
+        <!--<div id="userLabel" class=" ">
+            <div class="">标签</div>
+            <div class="">
+                <sapn class="am-badge am-badge-primary">Free</sapn>
+                <sapn class="am-badge am-badge-secondary">Secondary</sapn>
+                <span class="am-badge am-badge-success">Success</span>
+                <span class="am-badge am-badge-warning">Warning</span>
+                <span class="am-badge am-badge-danger">Danger</span>
+
+            </div>
+        </div>
+        <div id="userAuthority" class=" ">
+            <div class="">权限信息</div>
+            <div class="">
+                <sapn class="am-badge ">用户系统管理员</sapn>
+                <sapn class="am-badge ">LMS用户管理员</sapn>
+                <span class="am-badge ">CMS管理员</span>
+
+
+            </div>
+        </div>-->
+    </form>
+

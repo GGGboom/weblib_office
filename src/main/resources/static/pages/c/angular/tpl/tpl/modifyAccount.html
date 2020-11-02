@@ -1,0 +1,58 @@
+<div id="AccountContent">
+    <span class="personalInfo">
+        个人信息
+    </span>
+    <div class="topItem">
+    <span class="itemLeft">
+        姓名：<input type="text" ng-model="data.name" class="setting_input"/>
+    </span>
+        <span class="itemRight">
+        单位：<input type="text" ng-model="data.company" class="setting_input"/>
+    </span>
+    </div>
+    <div class="itemWrap">
+    <span class="itemLeft">
+        部门：<input type="text" ng-model="data.department" class="setting_input"/>
+    </span>
+        <span class="itemRight">
+        手机：<input type="text" ng-model="data.mobile" class="setting_input"/>
+    </span>
+    </div>
+    <div class="itemWrap">
+    <span class="itemLeft">
+        电话：<input type="text" ng-model="data.phone" class="setting_input"/>
+    </span>
+        <span class="itemRight">
+        邮箱：<input type="text" ng-model="data.email" class="setting_input"/>
+    </span>
+    </div>
+    <div class="im">
+    <span>
+        即时通讯：<input type="text" ng-model="data.im" class="setting_input"/>
+    </span>
+    </div>
+</div>
+<div id="resetPassword">
+    <span class="modifyPassword">
+        修改密码
+    </span>
+    <div class="oldPassword">
+    <span>
+        原密码：<input type="password" ng-model="data.old_password" class="setting_input"/> 该项不填则不修改密码
+    </span>
+    </div>
+    <div class="newPassword">
+    <span>
+        新密码：<input type="password" ng-model="data.new_password" class="setting_input"/>
+    </span>
+    </div>
+    <div class="confirmPassword">
+    <span>
+        确认密码：<input type="password" ng-model="data.confirm_password" class="setting_input"/>
+    </span>
+    </div>
+</div>
+<div class="am-margin">
+    <button type="button" class="am-btn am-btn-primary am-btn-xs" ng-click="modifyBtn()">确定</button>
+    <button type="button" class="am-btn  am-btn-xs" ng-click="cancel()">取消</button>
+</div>

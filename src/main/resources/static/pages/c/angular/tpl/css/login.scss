@@ -1,0 +1,24 @@
+@charset "UTF-8";
+.login-body{margin:0; height:100%;background:url(../images/login/body-bg.jpg) repeat-x #f9f9f9;}
+.login-body *,.login-body *:before, .login-body *:after{box-sizing:content-box;-webkit-box-sizing:content-box}
+.login-wrap{background:url(../images/login/wrap-bg.jpg) no-repeat #f9f9f9;width:300px;margin:0 auto;padding:220px 310px 80px 310px}
+
+.main{margin:0;height:auto;padding:0 0 48px}
+
+.main form{}
+.main form .form-text{font:12px/28px "宋体";color:#7b7b7b;padding-top:8px}
+.main form .form-text .text-input{font:14px Arial;color:#000000;background:url(../images/login/text-input-bg.jpg) no-repeat;border:0px none;padding:8px 12px;width:267px;height:17px}
+.main form .form-checkbox{clear:both;padding:20px 0 0px 2px;font:12px "宋体";color:#848484}
+.main form .form-checkbox .checkbox-input{margin:0px;}
+.main form .form-foot{padding:32px 0 0 0}
+.main form .form-foot a{font:12px/29px "新宋体";color:#3e7cc8;}
+.main form .submit{width:79px;height:29px;background:url(../images/login/login-btn.jpg);border:0 none;margin:0 10px 0 0px;padding:0;float:right;cursor:pointer;}
+
+.downloadWrap{padding:24px 0px 0 2px}
+.downloadWrap .head{color:#545454;font:14px/28px "黑体"}
+.downloadWrap .links{width:297px;height:47px;background:url(../images/login/appstore.jpg)}
+.downloadWrap .links a{display:block;float: left;height: 47px;overflow: hidden;}
+.downloadWrap .links .iphone{width: 146px;}
+.downloadWrap .links .ipad{width: 151px}
+
+.copyright{font:11px Arial;color:#272626;text-align:center;position:relative;top:15px;}

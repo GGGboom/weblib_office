@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+    <display-name>weblib</display-name>
+
+    <!-- 上下文参数 -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath:/application.yml
+        </param-value>
+    </context-param>
+
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
+
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>URLRewritenFilter</filter-name>
+        <filter-class>com.dcampus.weblib.web.filter.URLRewritenFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>URLRewritenFilter</filter-name>
+        <url-pattern>*.action</url-pattern>
+    </filter-mapping>
+
+    <servlet-mapping>
+
+        <servlet-name>default</servlet-name>
+
+        <url-pattern>*.js</url-pattern>
+
+    </servlet-mapping>
+
+
+    <!-- OpenEntityManagerInViewFilter -->
+    <filter>
+        <filter-name>openEntityManagerInViewFilter</filter-name>
+        <filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>openEntityManagerInViewFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>springMVC</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>springMVC</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <!-- 验证码 -->
+    <servlet>
+        <servlet-name>ValidateCodeServlet</servlet-name>
+        <servlet-class>com.dcampus.common.servlet.ValidateCodeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ValidateCodeServlet</servlet-name>
+        <url-pattern>/servlet/validateCodeServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- htmlShiroFilter -->
+    <filter>
+        <filter-name>htmlShiroFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <init-param>
+            <param-name>targetFilterLifecycle</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <init-param>
+            <description>设定不需要保护的 uri，多个 uri 之间以半角逗号分隔</description>
+            <param-name>ignore-uri</param-name>
+            <param-value>/pages/c/login.jsp</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>htmlShiroFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
+
+    <!--ccnl中央认证
+    <filter>
+        <filter-name>CAS Filter</filter-name>
+        <filter-class>
+            cn.edu.scut.ccnl.cas.client.filter.CASFilter
+        </filter-class>
+        <init-param>
+            <description>设定不需要保护的 uri，多个 uri 之间以半角逗号分隔</description>
+            <param-name>ignore-uri</param-name>
+            <param-value>/pagces/c/vue/,/pages/c/angular/,/pages/c/angular/lib/amaze/js/jquery.min.js,/pages/c/angular/lib/amaze/js/amazeui.js,/pages/c/angular/lib/angular-ueditor/ueditor.config.js,/pages/c/angular/lib/angular-ueditor/ueditor.all.js,/pages/c/angular/lib/ZeroClipboard/ZeroClipboard.js,/pages/c/angular/js/controller/personalController.js,/pages/c/angular/lib/ZeroClipboard/myClipboard.js,/pages/c/angular/lib/angularjs/ui-grid/ng-grid.plugin.draggablerow.js,/pages/c/angular/tpl/,/pages/c/angular/images/,/pages/c/angular/dist/,/pages/c/angular/css/,/pages/logout.jsp,/pages/login.jsp,/pages/c/logout.html,/pages/c/login.jsp,/pages/c/login.html,/pages/c/login/,/pages/c/login/js/,/pages/c/login/images/,/pages/c/login/images/cssimgs/,/pages/c/filedownload.jsp,/pages/c/js/,/pages/c/images/,/pages/c/downloadfail.jsp,/pages/c/404.html,/pages/c/m/,/pages/c/m/js/,/pages/c/m/css/,/pages/c/m/images/,/pages/c/manager0824/tpl/,/pages/c/manager0824/images/,/pages/c/manager0824/dist/,/pages/c/manager0824/css/,/pages/c/manager0824/,/pages/c/manager/,/pages/c/manager0824/lib/amaze2.7.1/js/,/pages/c/manager0824/lib/angular-ueditor/,/pages/c/manager0824/lib/ZeroClipboard/,/pages/c/manager0824/lib/angularjs/ui-grid/</param-value>
+        </init-param>
+        <init-param>
+            <description>登录 cas 服务器的地址</description>
+            <param-name>login-url</param-name>
+            <param-value>https://ccnl.scut.edu.cn/cas/login</param-value>
+        </init-param>
+
+        <init-param>
+            <description>cas 服务器校验 ticket 的地址</description>
+            <param-name>validate-url</param-name>
+            <param-value>https://ccnl.scut.edu.cn/cas/serviceValidate</param-value>
+        </init-param>
+        <init-param>
+            <description>退出 cas 服务器的地址</description>
+            <param-name>logout-url</param-name>
+            <param-value>https://ccnl.scut.edu.cn/cas/logout</param-value>
+        </init-param>
+        <init-param>
+            <param-name>session-user</param-name>
+            <description>session 中保存用户名的参数名称</description>
+            <param-value>cas.client.user</param-value>
+        </init-param>
+        <init-param>
+            <param-name>session-userattribute</param-name>
+            <description>session 中保存用户属性对象的参数名称</description>
+            <param-value>cas.client.userattributes</param-value>
+        </init-param>
+        <init-param>
+            <description>退出 cas 后返回的地址</description>
+            <param-name>logout-redirect-url</param-name>
+            <param-value>/pages/logout.jsp</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>CAS Filter</filter-name>
+        <url-pattern>/pages/casLogin.jsp</url-pattern>
+    </filter-mapping>-->
+
+    <filter>
+        <filter-name>HiddenHttpMethodFilter</filter-name>
+        <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>HiddenHttpMethodFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <session-config>
+        <session-timeout>600</session-timeout>
+    </session-config>
+
+
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+
+</web-app>

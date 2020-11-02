@@ -1,0 +1,164 @@
+<div class="admin-content" id="share-content" style="font-size: smaller">
+
+    <div class="am-tabs am-margin" data-am-tabs>
+        <ul class="am-tabs-nav am-nav am-nav-tabs">
+            <li class="am-active"><a href="tab1">共享用户</a></li>
+            <li><a href="tab2">共享用户组</a></li>
+        </ul>
+
+        <div class="am-tabs-bd">
+            <div class="am-tab-panel am-fade am-in am-active" id="tab1">
+                <div class="shareLeft">
+                    <div class="am-input-group am-input-group-sm" >
+                        <input type="text" class="am-form-field" placeholder="输入用户名" ng-model="inputName">
+          <span class="am-input-group-btn">
+            <button class="am-btn am-btn-default am-icon-search" type="button"
+                    ng-click="searchUser(inputName)"></button>
+          </span>
+                    </div>
+                    <div >
+                        搜索范围：<input type="text" ng-model="range" readonly id="searchInput" style="width: 268px;" />
+                        <button class="am-btn am-btn-default am-btn-xs am-icon-times"
+                                ng-click="resetRange()"></button>
+                    </div>
+                    <div id="shareRang">
+                        <div ui-tree data-drag-enabled="false" id="tree-root" >
+                            <ol ui-tree-nodes="" ng-model="groupdata" style="padding-left: 0">
+                                <li ng-repeat="node in groupRang" ui-tree-node ng-include="'userGroup'"
+                                    ng-show="visible(node)" style="background-color: white;line-height: 2"></li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="gridStyle" ng-grid="gridOption1" style="height: 314px;overflow-x: hidden;text-align: left;color: #000000"></div>
+                    <div  style="float: left">
+                        <button type="button" class="am-btn am-btn-default am-btn-xs am-icon-step-backward" ng-click="first()"></button>
+                        <button type="button" class="am-btn am-btn-default am-btn-xs am-icon-caret-left " ng-click="prev()"></button>
+                        <input type="text" ng-model="pagingOptions.currentPage" style="width: 40px"/>
+                        <button type="button" class="am-btn am-btn-default am-btn-xs am-icon-caret-right " ng-click="next()"></button>
+                        <button type="button" class="am-btn am-btn-default am-btn-xs am-icon-step-forward" ng-click="end()"></button>
+                        共{{ totalItems}}条，
+                        共{{pagingOptions.totalPage}}页 {{pagingOptions.totalCount}}条记录
+
+                    </div>
+                </div>
+
+                <div class="addDelete">
+                    <div>
+                        <button type="button" class="am-btn  am-btn-xs"ng-click="addbtn()">添加 <span class="am-icon-arrow-right"></span></button>
+                    </div>
+                    <br>
+                    <div>
+                        <button type="button" class="am-btn  am-btn-xs" ng-click="deletebtn()"><span class="am-icon-arrow-left"></span> 删除</button>
+                    </div>
+                </div>
+
+                <div class="shareRight">
+                    <div style="height: 25px">
+                        <div style="float: left;padding:6px;">
+                            已选用户
+                        </div>
+                        <a style="float: right;padding:6px;cursor: pointer" ng-click="cleanusers()">
+                            清空
+                        </a>
+                    </div>
+
+                    <div class="gridStyle" ng-grid="gridOption2" style="height: 370px;overflow-x: hidden;text-align: left;color: #000000"></div>
+                    </div>
+
+
+                </div>
+
+
+
+            <div class="am-tab-panel am-fade" id="tab2">
+                <div class="shareLeft">
+                    <div id="memberTree">
+                        <div style="float: left;padding: 8px">
+                            用户组
+                        </div>
+                        <div style="float: right;width: 200px;">
+                            <div class="am-input-group am-input-group-sm" >
+                                <input type="text" class="am-form-field" placeholder="请输入用户组" ng-model="inputGroup">
+          <span class="am-input-group-btn">
+            <button class="am-btn am-btn-default am-icon-search" type="button"
+                    ng-click="searchGroup(inputGroup)"></button>
+          </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div ui-tree data-drag-enabled="false">
+                        <ol ui-tree-nodes="" ng-model="groupdata" style="padding:0">
+                            <li ng-repeat="node in groupdata" ui-tree-node ng-include="'nodes_renderer.html'" ng-show="visible(node)"></li>
+                        </ol>
+                    </div>
+                </div>
+
+
+                <div class="addDelete">
+                    <div>
+                    <button type="button" class="am-btn  am-btn-xs"ng-click="treeAddBtn()">添加 <span class="am-icon-arrow-right"></span></button>
+                    </div>
+                    <br>
+                    <div>
+                        <button type="button" class="am-btn  am-btn-xs" ng-click="treeDeleteBtn()"><span class="am-icon-arrow-left"></span> 删除</button>
+                    </div>
+                </div>
+                <div class="shareRight">
+                    <div class="gridStyle" ng-grid="gridOption3" style="height: 370px;overflow-x: hidden;text-align: left;color: #000000"></div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+    <div>
+       附言： <textarea id="postscript" cols=110 rows=2></textarea>
+    </div>
+
+    <div class="am-margin">
+        <button type="button" class="am-btn am-btn-primary am-btn-xs" ng-click="sharing()">共享</button>
+        <button type="button" class="am-btn  am-btn-xs" ng-click="cancel()">取消</button>
+    </div>
+</div>
+<!-- Nested node template -->
+<script type="text/ng-template" id="nodes_renderer.html" >
+    <div ui-tree-handle class="tree-node tree-node-content"ng-click="selectTree(this)" ng-class ="{'selectTree': node.isSelected}" style="color: #000000">
+        <div class="am-btn am-btn-xs" data-nodrag ng-click="openTree(this,$event)"><span    ng-class="setIcon(node.type,collapsed)"></span></div>
+        {{node.text}}
+    </div>
+    <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: !collapsed}">
+        <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'"  ng-show="visible(node)">
+        </li>
+    </ol>
+</script>
+<script type="text/ng-template" id="userGroup">
+    <div  class="tree-node tree-node-content">
+        <div id="searchTrees" ng-click="selectRange(this)" style="cursor:default" data-nodrag > <span style="padding-left: 5px" id="searchTree"
+         ng-class="setIcon(node.type,collapsed)"></span>  {{node.text}}</div>
+    </div>
+    <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: !collapsed}">
+        <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'userGroup'"
+            ng-show="visible(node)" style="line-height: 2">
+        </li>
+    </ol>
+</script>
+<script>
+    $b = $("#shareRang");
+    $("#searchInput").on({
+        "click": function(){
+            $b.toggle();
+            return false;
+        }
+    });
+    $("#share-content").on({
+        "click": function(e){
+            var src = e.target;
+            if(src.id && (src.id ==="searchTree"||src.id==="searchTrees")){
+                return false;
+            }else{
+                $b.hide();
+            }
+        }
+    });
+</script>

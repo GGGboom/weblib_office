@@ -1,0 +1,398 @@
+<div id="storage-m" class="am-g am-g-collapse">
+    <div class="panelWrap am-u-sm-3 left">
+        <div class="am-panel am-panel-default ">
+            <div class="am-panel-hd am-titlebar am-titlebar-multi">
+                <div class="am-btn-group">
+                    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only am-collapsed" data-am-collapse="{target: '#btn-menu'}">
+                        <span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+                    <div class="am-collapse am-topbar-collapse am-btn-group" id="btn-menu">
+                        <button type="button" class="am-btn am-btn-default am-icon-plus-square" ng-click=""
+                                ng-disabled="" ></button><!--新建文件柜-->
+                        <button type="button" class="am-btn am-btn-default am-icon-plus" ng-click=""
+                                ng-disabled="" ></button><!--新建分类-->
+                        <!-- -->
+                        <button type="button" class="am-btn am-btn-default am-icon-edit" ng-click=""
+                                ng-disabled="" ></button><!--编辑-->
+                        <button type="button" class="am-btn am-btn-default am-icon-minus" ng-click=""
+                                ng-disabled="" ></button><!--删除-->
+                    </div>
+                </div>
+                <nav class="am-titlebar-nav">
+                    <a href="javascript:void(0);" class="am-icon-sm am-icon-search" ng-click="searchGroup();"></a>
+                    <a href="javascript:void(0);" class="am-icon-sm am-icon-ellipsis-v"></a>
+                </nav>
+            </div>
+
+            <div class="am-panel-bd ngViewport">
+                <!--tree begin-->
+                <div ui-tree data-drag-enabled="false" class="tree-root">
+                    <ol ui-tree-nodes="" ng-model="tree" class="am-list admin-sidebar-list">
+                        <li ng-repeat="node in tree" ui-tree-node ng-include="'nodes_folderRenderer'"></li>
+
+                    </ol>
+                </div>
+                <!--tree end-->
+            </div>
+        </div>
+    </div>
+    <div class="panelWrap am-u-sm-6 middle">
+        <div class="am-panel am-panel-default ">
+            <div class="am-panel-hd am-titlebar am-titlebar-multi">
+                <!--<h3 class="am-titlebar-title">{{currentGroupName||'文件柜'}}</h3>-->
+                <div class="am-btn-group">
+                    <button type="button" class="am-btn am-btn-default am-icon-plus" ng-click="addPermission();" ></button><!--添加权限-->
+                    <button type="button" class="am-btn am-btn-default am-icon-minus"></button><!--移除权限-->
+                    <button type="button" class="am-btn am-btn-default am-icon-copy"></button><!--复制权限-->
+                </div>
+                <div class="am-btn-group">
+                    <button type="button" class="am-btn am-btn-default am-icon-edit" ng-click=""></button><!--修改详细信息-->
+                </div>
+                <nav class="am-titlebar-nav">
+                    <a href="javascript:void(0);" class="am-icon-sm am-icon-search" ng-click="searchUser();"></a>
+                </nav>
+            </div>
+
+            <div class="am-panel-bd ngViewport groupInfoViewport">
+                <div class="no-selected-group-cover am-vertical-align" ng-show="currentGroupId<0&&!adding">
+                    <div class="am-vertical-align-middle">
+                        <i  class="am-icon-btn am-warning am-icon-warning"></i>请先选择一个柜子！
+                    </div>
+                </div>
+                <!--<div ng-show="currentGroupId>=0&&!adding">-->
+                    <!--<div class="am-btn-toolbar group-info-tab">
+                        <div class="am-btn-group am-btn-group-lg">
+                            <button type="button" class="am-btn am-btn-default" ng-click="showPermission();"
+                                    ng-class="{'am-active':isTabActive('{{tabName.PERMISSION}}')}">查看权限
+                            </button>
+                            <button type="button" class="am-btn am-btn-default" ng-click="showDetailInfo();"
+                                    ng-class="{'am-active':isTabActive('{{tabName.DETAILINFO}}')}">详细信息
+                            </button>
+                        </div>
+                        <hr data-am-widget="divider" style="" class="am-divider am-divider-default"/>
+                </div>-->
+                    <!--uiview对应到permission.html-->
+                    <div class="group-info-content" ui-view></div>
+                <!--</div>-->
+                <div class="add-group-form am-text-center" ng-show="currentCategoryId>=0&&adding">
+                    <!--创建柜子表单-->
+                    <form class="am-form" ng-if="addingGroup">
+                        <fieldset>
+                            <div class="am-form-group am-text-left">
+                                <label for="name-ipt">名称</label>
+                                <input type="text" class="" id="name-ipt" ng-model="newGroup.displayName">
+                            </div>
+
+                            <div class="am-form-group am-text-left">
+                                <label for="desc-txt">描述</label>
+                                <textarea class="" rows="5" id="desc-txt" ng-model="newGroup.desc"></textarea>
+                            </div>
+                            <div class="am-form-group am-text-left">
+                                <label for="total-size-ipt">总容量(GB)</label>
+                                <input type="number" min="1" max="297853" id="total-size-ipt" value="2" class="half-width" ng-model="newGroup.totalSize">
+                                <small>范围：1~297853</small>
+                            </div>
+
+                            <div class="am-form-group am-text-left">
+                                <label for="single-file-size-slt">单文件大小</label>
+                                <select name="" id="single-file-size-slt" class="half-width" ng-model="newGroup.singleFileSize">
+                                    <option value="10240">10MB</option>
+                                    <option value="102400">100MB</option>
+                                    <option value="1048576" selected>1GB</option>
+                                    <option value="2097152">2GB</option>
+                                    <option value="5242880">5GB</option>
+                                </select>
+                            </div>
+                            <div class="am-form-group am-text-left">
+                                <label for="paiban-slt">专辑方向</label>
+                                <select name="" id="paiban-slt" class="half-width" ng-model="newGroup.paiban">
+                                    <option value='Landscape' selected>横向</option>
+                                    <option value="Portrait">竖向</option>
+                                </select>
+                            </div>
+
+
+                            <button type="submit" class="am-btn am-btn-primary" ng-click="createGroupSubmit()">确定
+                            </button>
+                            <button type="reset" class="am-btn am-btn-gray" ng-click="cancelAdding();">取消</button>
+                        </fieldset>
+                    </form>
+                    <!--创建分类表单-->
+                    <form class="am-form" ng-if="addingCategory">
+                        <fieldset>
+                            <div class="am-form-group am-text-left">
+                                <label for="category-name-ipt">名称</label>
+                                <input type="text" class="" id="category-name-ipt" ng-model="newCategory.displayName">
+                            </div>
+
+                            <div class="am-form-group am-text-left">
+                                <label for="category-desc-txt">描述</label>
+                                <textarea class="" rows="5" id="category-desc-txt" ng-model="newCategory.desc"></textarea>
+                            </div>
+
+                            <button type="submit" class="am-btn am-btn-primary" ng-click="createCategorySubmit()">确定
+                            </button>
+                            <button type="reset" class="am-btn am-btn-gray" ng-click="cancelAdding()">取消</button>
+                        </fieldset>
+                    </form>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+    <div class="panelWrap am-u-sm-3 right">
+        <div class="am-panel am-panel-default ">
+            <div class="am-panel-hd am-titlebar am-titlebar-multi">
+                <h3 class="am-titlebar-title">详细信息</h3>
+            </div>
+            <div class="am-panel-bd ngViewport " >
+                <div id="groupDetails" ng-hide="isgroupDetailsHide">
+                    <div id="groupName">
+                        <h3>{{groupInfo.displayName}}</h3>
+                    </div>
+                    <div class="folderProperty">
+                        <div ><label class="am-badge am-badge-secondary">容量</label></div>
+                        <span>总容量：{{groupInfo.totalSize}}</span><br>
+                        <span>可用容量：{{groupInfo.remainSize}}</span>
+                    </div>
+                    <div class="folderProperty">
+                        <div ><label class="am-badge am-badge-secondary">时间</label></div>
+                        <span >创建：{{groupInfo.createTime}}</span><br>
+                        <span >修改：{{groupInfo.modifyTime}}</span>
+                    </div>
+                    <div class="folderProperty">
+                        <div ><label class="am-badge am-badge-secondary">描述</label></div>
+                        <span>{{groupInfo.desc}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<button data-am-offcanvas="{target: '#userDetail'}">打开</button>-->
+<!--侧边框userDetail-->
+<!--<div id="userDetail" class="am-offcanvas">
+    <div class="am-offcanvas-bar am-offcanvas-bar-flip avoidTopBar">
+        <div class="am-offcanvas-content">
+            <div class="am-panel am-panel-default ">
+                <div class="am-panel-hd am-titlebar am-titlebar-multi">
+                    <h3 class="am-titlebar-title">详细资料</h3>
+                    <nav class="am-titlebar-nav">
+                        <a href="javascript:void(0);" class=""><i class="am-icon-close am-icon-md"></i></a>
+
+                    </nav>
+                </div>
+
+                <div class="am-panel-bd ngViewport userViewport" ng-style="rightOffCanvasPanelStyle">
+                    <div id="userName">
+                        <h1>{{user.name}}</h1>
+                    </div>
+                    <div id="userStatus" ng-switch="user.status">
+                        <span class="am-badge am-round" ng-switch-when="normal">正常</span>
+                        <span class="am-badge am-round" ng-switch-when="expired">停用</span>
+                        <span class="am-badge am-round" ng-switch-default>未知</span>
+                    </div>
+                    <div class="am-g userProperty">
+                        <div class="am-u-sm-3">账号</div>
+                        <div class="am-u-sm-9">{{user.account}}</div>
+                    </div>
+                    &lt;!&ndash;<div class="am-g userProperty">&ndash;&gt;
+                    &lt;!&ndash;<div class="am-u-sm-3">性别</div>&ndash;&gt;
+                    &lt;!&ndash;<div class="am-u-sm-9">{{}}</div>&ndash;&gt;
+                    &lt;!&ndash;</div>&ndash;&gt;
+                    <div class="am-g userProperty">
+                        <div class="am-u-sm-3">职位</div>
+                        <div class="am-u-sm-9">{{user.position}}</div>
+                    </div>
+                    <div class="am-g userProperty">
+                        <div class="am-u-sm-3">电话</div>
+                        <div class="am-u-sm-9">{{user.phone}}</div>
+                    </div>
+                    <div class="am-g userProperty">
+                        <div class="am-u-sm-3">邮箱</div>
+                        <div class="am-u-sm-9">{{user.email}}</div>
+                    </div>
+                    <div class="am-g userProperty">
+                        <div class="am-u-sm-3">部门</div>
+                        <div class="am-u-sm-9">{{user.department}}</div>
+                    </div>
+
+                    <div id="userLabel" class=" ">
+                        <div class="">标签</div>
+                        <div class="">
+                            <sapn class="am-badge am-badge-primary">Free</sapn>
+                            <sapn class="am-badge am-badge-secondary">Secondary</sapn>
+                            <span class="am-badge am-badge-success">Success</span>
+                            <span class="am-badge am-badge-warning">Warning</span>
+                            <span class="am-badge am-badge-danger">Danger</span>
+
+                        </div>
+                    </div>
+                    <div id="userAuthority" class=" ">
+                        <div class="">权限信息</div>
+                        <div class="">
+                            <sapn class="am-badge ">用户系统管理员</sapn>
+                            <sapn class="am-badge ">LMS用户管理员</sapn>
+                            <span class="am-badge ">CMS管理员</span>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+                &lt;!&ndash;<footer class="am-panel-footer">面板页脚</footer>&ndash;&gt;
+            </div>
+
+        </div>
+    </div>
+</div>-->
+
+<!--no Selection Alert-->
+<div class="am-modal am-modal-alert" tabindex="-1" id="noSelectionAlert">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">消息</div>
+        <div class="am-modal-bd">
+            请选择一条记录！
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn">确定</span>
+        </div>
+    </div>
+</div>
+<!--添加按钮侧边栏-->
+<div id="addPermissionOffcanvas" class="am-offcanvas">
+    <div class="am-offcanvas-bar am-offcanvas-bar-flip avoidTopBar">
+        <div class="am-offcanvas-content">
+            <div class="am-panel am-panel-default">
+                <div class="am-panel-hd am-titlebar am-titlebar-multi">
+                    <div class="am-btn-group am-btn-group-lg">
+                        <button type="button" class="am-btn am-btn-default" ng-click="showStructure();"
+                                ng-class="{'am-active':isTabSelected('{{tabSelect.STRUCTURE}}')}">组织结构
+                        </button>
+                        <button type="button" class="am-btn am-btn-default" ng-click="showUsers();"
+                                ng-class="{'am-active':isTabSelected('{{tabSelect.USERS}}')}">所有用户
+                        </button>
+                        <nav class="am-navbar-nav">
+                            <a href="javascript:void(0);"><i class="am-icon-ellipsis-v am-icon-md"></i>
+                            </a>
+                            <a href="javascript:void(0);"><i class="am-icon-search am-icon-md"></i>
+                            </a>
+                        </nav>
+                    </div>
+                    <nav class="am-titlebar-nav">
+                        <a href="javascript:void(0);" ng-click="closeAddPermission();">
+                            <i class="am-icon-close am-icon-md"></i>
+                        </a>
+                    </nav>
+                </div>
+                <!--选项卡标签-->
+                <div class="am-pannel-bd ngViewport">
+                    <div class="ng-scope">
+                        <div class="am-btn-toolbar group-info-tab">
+
+                            <hr data-am-widget="divider" style="" class="am-divider am-divider-default"/>
+                        </div>
+                        <!--选项卡内容-->
+                        <div class="group-info-tab" ng-show="isTabSelected('{{tabSelect.STRUCTURE}}');" id="structure">
+                            <!--使用AngularJS的ui-tree来构建目录结构-->
+                            <div ui-tree data-drag-enabled="false" class="tree-root">
+                                <ol ui-tree-nodes ng-model="usersTree" class="am-list admin-sidebar-list">
+                                    <li ui-tree-node ng-repeat="node in usersTree" ng-include="'nodes_usersRenderer'"></li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="group-info-tab" ng-show="isTabSelected('{{tabSelect.USERS}}');" id="users">
+                            <!--用户列表，用ui-grid实现-->
+                            <div id="grid" ui-grid="userGridOptions" ui-grid-selection class="gridStyle" ui-grid-auto-resize
+                                 ng-style="{height:gridHeight}"></div>
+                        </div>
+                        <div>
+                            <button type="button" class="am-btn am-btn-default" ng-click="addPermissionTo();">添加（{{checkedCount}}）个</button>
+                            <button type="button" class="am-btn am-btn-default" ng-click="closeAddPermission();">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--添加权限按钮侧边栏，嵌套显示目录-->
+<script type="text/ng-template" id="nodes_usersRenderer">
+    <div class="tree-node tree-node-content" >
+        <div class="am-text-default" data-nodrag>
+            <i ng-class="{'am-icon-minus-square-o':node.type!='team' && node.type!='allUsers' && !collapsed,
+                          'am-icon-plus-square-o':node.type!='team' && node.type!='allUsers' && collapsed}"
+               class="sidebarImg am-text-default" ng-click="openUsersTree(this);"></i>
+            <i class="am-icon-folder am-text-secondary am-text-default"></i>
+            <i class="am-text-default">{{node.text}}</i>&nbsp;&nbsp;
+            <input type="checkbox" class="am-checkbox am-checkbox-inline" id="checkBox"
+                   ng-if="node.type!='folder'&& node.type!='rootFolder'" ng-click="updateChecked($event,node.id,node.fullName);"/>
+        </div>
+
+    </div>
+    <!--包含子目录的样式-->
+    <ol ui-tree-nodes ng-model="node.nodes" ng-class="{hidden: collapsed}">
+        <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_usersRenderer'" collapsed="true" style="line-height: 2">
+        </li>
+    </ol>
+</script>
+<!--添加侧边栏，添加按钮弹出框-->
+<div class="am-modal am-modal-alert" tabindex="-1" id="noCheckedAlert">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">消息</div>
+        <div class="am-modal-bd">
+            请选择一个用户！
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn">确定</span>
+        </div>
+    </div>
+</div>
+<div class="am-modal am-modal-confirm" tabindex="-1" id="addPermissionToConfirm">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">添加用户</div>
+        <div class="am-modal-bd">
+            确定添加{{checkedCount}}个用户组到{{currentGroupName}}？
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+        </div>
+    </div>
+</div>
+
+<!-- Nested node template -->
+<script type="text/ng-template" id="nodes_folderRenderer">
+    <div class="tree-node tree-node-content " ng-dblclick="openTree(this)" ng-click="selectNode(this)"
+         style="color: #000000" ng-style="isSelected(this)">
+        <div data-nodrag style="padding-bottom: 9px"
+             data-target="menu-{{node}}" class="am-text-default">
+            <!--这段判断图标的代码，在服务器重构后需修改-->
+            <i ng-class="{'am-icon-minus-square-o':(node.leaf==false||node.leaf)&&!collapsed,'am-icon-plus-square-o':(node.leaf==false||node.leaf)&&collapsed}"
+               class="sidebarImg am-text-default" ng-click="openTree(this)"></i>
+            <i ng-class="{'am-icon-inbox':node.leaf!=false&&node.leaf!=true}"
+               class="am-text-secondary am-text-default"></i>&nbsp;{{node.displayName}}
+            <div class="am-dropdown" data-am-dropdown ng-show="(node.leaf==false||node.leaf)&&showDropdownMenu(this)">
+                <div class="am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-toggle-down"></span></div>
+                <ul class="am-dropdown-content">
+                    <li><a href="javascript:void(0);" ng-click="createGroup()">创建文件柜</a></li>
+                    <li><a href="javascript:void(0);" ng-click="createCategory()">创建分类</a></li>
+
+                </ul>
+            </div>
+
+        </div>
+
+
+    </div>
+    <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+        <li ng-repeat="node in node.nodes" ui-tree-node="" style="line-height: 2" ng-include="'nodes_folderRenderer'"
+            collapsed="true">
+        </li>
+    </ol>
+</script>
+
+

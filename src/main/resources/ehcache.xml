@@ -1,0 +1,46 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="ehcache.xsd">
+
+	<diskStore path="java.io.tmpdir" />
+
+	<defaultCache maxElementsInMemory="10000" eternal="false"
+		timeToIdleSeconds="120" timeToLiveSeconds="0" overflowToDisk="false"
+		maxElementsOnDisk="0" diskPersistent="false"
+		diskExpiryThreadIntervalSeconds="120" memoryStoreEvictionPolicy="LRU" />
+
+	<!-- 
+	<cacheManagerPeerProviderFactory
+		class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+		properties="peerDiscovery=automatic,
+                        multicastGroupAddress=230.0.0.1,
+                        multicastGroupPort=54321" />
+ 	-->
+ 	
+	<cacheManagerPeerListenerFactory
+		class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory" />
+
+	<cache name="group-cache" maxElementsInMemory="10000" eternal="true"
+		overflowToDisk="false" memoryStoreEvictionPolicy="LRU" />
+
+	<cache name="groupMap-cache" maxElementsInMemory="1000" eternal="true"
+		overflowToDisk="false" memoryStoreEvictionPolicy="LRU" />
+
+	<cache name="permission-cache" maxElementsInMemory="10000"
+		eternal="true" overflowToDisk="false" memoryStoreEvictionPolicy="LRU" />
+
+	<cache name="mygroup-cache" maxElementsInMemory="10000"
+		eternal="true" overflowToDisk="false" memoryStoreEvictionPolicy="LRU" />
+
+	<cache name="myvisualgroup-cache" maxElementsInMemory="10000"
+		eternal="true" overflowToDisk="false" memoryStoreEvictionPolicy="LRU" />
+	<!-- 用户所在组缓存 -->	
+	<cache name="memberTeam-cache" maxElementsInMemory="10000"
+		eternal="true" overflowToDisk="false" memoryStoreEvictionPolicy="LRU" />
+	<!-- 用户组织节点拥有的子节点缓存 -->
+	<!-- 该缓存不需要代码中手动更新，因为key值中已经绑定了时间戳，结合siftuplastModified更新操作即可实现缓存自动失效 -->
+	<cache name="memberChildren-cache" maxElementsInMemory="10000" timeToIdleSeconds="86400" timeToLiveSeconds="0"
+		eternal="false" overflowToDisk="false" memoryStoreEvictionPolicy="LRU" />
+		<!-- 该缓存不需要代码中手动更新，因为key值中已经绑定了时间戳，结合siftuplastModified更新操作即可实现缓存自动失效 -->
+	<cache name="categoryGroup-cache" maxElementsInMemory="10000" timeToIdleSeconds="86400" timeToLiveSeconds="0"
+		eternal="false" overflowToDisk="false" memoryStoreEvictionPolicy="LRU" />
+</ehcache>
