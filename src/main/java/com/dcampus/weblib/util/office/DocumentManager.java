@@ -5,6 +5,7 @@ import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.io.FileFilter;
 import java.io.FileWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.InetAddress;
@@ -22,6 +23,7 @@ public class DocumentManager {
 
     /**
      * 初始化
+     *
      * @param req
      */
     public static void init(HttpServletRequest req) {
@@ -71,6 +73,7 @@ public class DocumentManager {
 
     /**
      * 获取当前用户的ip地址
+     *
      * @param userAddress
      * @return
      */
@@ -90,11 +93,11 @@ public class DocumentManager {
         return request.getScheme() + "://" + CurUserHostAddress(null) + ":" + request.getServerPort() + request.getContextPath();
     }
 
-    public static String getCallback(String fileName) {
+    public static String getCallback(Long id) {
         String serverPath = getServerUrl();
         try {
-            String query = "?type=track&fileName=" + URLEncoder.encode(fileName, java.nio.charset.StandardCharsets.UTF_8.toString());
-            return serverPath + "/office/edit" + query;
+            String query = "?id=" + URLEncoder.encode(String.valueOf(id), java.nio.charset.StandardCharsets.UTF_8.toString());
+            return serverPath + "/office/track" + query;
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
             return "";
@@ -122,6 +125,30 @@ public class DocumentManager {
         return filePath + "/" + filename;
     }
 
+    public static String HistoryDir(String storagePath) {
+        return storagePath + "hist";
+    }
+
+    public static Integer GetFileVersion(String historyPath)
+    {
+        File dir = new File(historyPath);
+
+        if (!dir.exists()) return 0;
+
+        File[] dirs = dir.listFiles(new FileFilter() {
+            @Override
+            public boolean accept(File pathname) {
+                return pathname.isDirectory();
+            }
+        });
+
+        return dirs.length;
+    }
+
+    public static String VersionDir(String histPath, Integer version)
+    {
+        return histPath + File.separator + Integer.toString(version);
+    }
 
     public static String GenerateRevisionId(String expectedKey) {
         if (expectedKey.length() > 20)
@@ -134,6 +161,7 @@ public class DocumentManager {
 
     /**
      * 用于创建office文件的版本控制
+     *
      * @param fileName
      * @param uid
      * @param groupID

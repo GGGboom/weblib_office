@@ -1,5 +1,6 @@
 package com.dcampus.weblib.entity.office;
 
+import com.dcampus.weblib.entity.GroupResource;
 import com.dcampus.weblib.util.office.DocumentManager;
 import com.dcampus.weblib.util.office.OfficeFileUtil;
 
@@ -18,29 +19,28 @@ public class OfficeFileModel {
     public EditorConfig editorConfig;
     public String token;
 
-    public OfficeFileModel(String fileName, String lang, String uid, String uname, String groupID) {
-        if (fileName == null) fileName = "";
-        fileName = fileName.trim();
+    //String fileName, String lang, String uid, String uname, String groupID
+    public OfficeFileModel(GroupResource resource) {
+        String fileName = resource.getFilePath();
+        String userName = resource.getMemberName();
+        String groupID = resource.getGroupName();
+        Long id = resource.getId();
 
+        fileName = fileName.trim();
         documentType = OfficeFileUtil.GetFileType(fileName).toString().toLowerCase();
 
         document = new Document();
         document.title = fileName;
         document.url = DocumentManager.getFileUrl(fileName, groupID);
-//        document.url = "http://211.66.87.5:9000/app_data/127.0.1.1/new.docx";
         document.fileType = OfficeFileUtil.GetFileExtension(fileName).replace(".", "");
         document.key = DocumentManager.GenerateRevisionId(DocumentManager.CurUserHostAddress(null) + "/" + fileName + "/" + Long.toString(new File(DocumentManager.StoragePath(fileName, null)).lastModified()));
 
         editorConfig = new EditorConfig();
-//        editorConfig.callbackUrl = DocumentManager.getLocalCallback(fileName);
-        editorConfig.callbackUrl = "";
-        editorConfig.lang = lang == null ? editorConfig.lang : lang;
-
-        if (uid != null) editorConfig.user.id = uid;
-        if (uname != null) editorConfig.user.name = uname;
-
-        editorConfig.customization.goback.url = "";
-
+        editorConfig.callbackUrl = DocumentManager.getCallback(id);
+        editorConfig.lang = "en";
+        editorConfig.user.id = "1";
+        editorConfig.user.name = userName;
+//        editorConfig.customization.goback.url = "";
 
         changeType(mode, type);
     }
@@ -334,6 +334,5 @@ public class OfficeFileModel {
         sb.append("\"type\":\"" + type + "\"");
         sb.append("}");
         return sb.toString();
-
     }
 }
