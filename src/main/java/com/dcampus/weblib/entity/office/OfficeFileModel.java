@@ -31,9 +31,10 @@ public class OfficeFileModel {
 
         document = new Document();
         document.title = fileName;
-        document.url = DocumentManager.getFileUrl(fileName, groupID);
+//        document.url = DocumentManager.getFileUrl(fileName, groupID);
+        document.url = "http://211.66.87.5:3333/office/20/20_3539151604581299454.docx";
         document.fileType = OfficeFileUtil.GetFileExtension(fileName).replace(".", "");
-        document.key = DocumentManager.GenerateRevisionId(DocumentManager.CurUserHostAddress(null) + "/" + fileName + "/" + Long.toString(new File(DocumentManager.StoragePath(fileName, null)).lastModified()));
+        document.key = DocumentManager.GenerateRevisionId(DocumentManager.CurUserHostAddress(null) + "/" + fileName + "/" + Long.toString(new File(DocumentManager.StoragePath(fileName, groupID)).lastModified()));
 
         editorConfig = new EditorConfig();
         editorConfig.callbackUrl = DocumentManager.getCallback(id);

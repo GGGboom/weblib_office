@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
+import java.net.URI;
 import java.net.URL;
 import java.util.Scanner;
 
@@ -61,8 +62,12 @@ public class OfficeService {
         DocumentManager.init(request);
         String changesUri = (String) jsonObject.get("changesurl");
         String key = (String) jsonObject.get("key");
-
-        String histDir = DocumentManager.StoragePath(resource.getFilePath(),resource.getGroupName());
+        String downloadUri = jsonObject.getString("url");
+        String targetPath = DocumentManager.FileRootPath(resource.getGroupName());
+        String fileName = resource.getName();
+        File savedFile = new File(new URI(targetPath + fileName));
+        downloadFile(downloadUri,savedFile);
+        String histDir = DocumentManager.StoragePath(fileName,resource.getGroupName());
         String versionDir = DocumentManager.VersionDir(histDir, DocumentManager.GetFileVersion(histDir) + 1);
         String history = (String) jsonObject.get("changeshistory");
         if (history == null) {

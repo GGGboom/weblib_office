@@ -15,6 +15,7 @@ public class OfficeProperty {
     private static String tempStorage;
     private static String urlApi;
     private static String urlPreloader;
+    private static String secret;
 
     static {
         try{
@@ -30,7 +31,7 @@ public class OfficeProperty {
             tempStorage = properties.getProperty("files.docservice.url.tempstorage");
             urlApi = properties.getProperty("files.docservice.url.api");
             urlPreloader = properties.getProperty("files.docservice.url.preloader");
-
+            secret = properties.getProperty("files.docservice.secret");
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -74,5 +75,9 @@ public class OfficeProperty {
 
     public static String getUrlPreloader() {
         return urlPreloader;
+    }
+
+    public static String getSecret() {
+        return secret;
     }
 }

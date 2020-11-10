@@ -1,5 +1,6 @@
 package com.dcampus.weblib.web.action;
 
+import com.dcampus.common.config.OfficeProperty;
 import com.dcampus.common.util.Crypt;
 import com.dcampus.sys.util.UserUtils;
 import com.dcampus.weblib.dao.GroupResourceDao;
@@ -22,9 +23,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
 
 @Controller
 @RequestMapping(value = "/office")
@@ -45,7 +43,7 @@ public class OfficeController {
     @RequiresUser
     @ResponseBody
     @RequestMapping(value = "/preview", produces = "application/json; charset=UTF-8")
-    public String downloadResource(Long id,String mode,String type, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public String downloadResource(Long id, String mode, String type, HttpServletRequest request, HttpServletResponse response) throws Exception {
         if (id == null) {
             throw new GroupsException("资源id为空，无法查看");
         }
@@ -70,38 +68,41 @@ public class OfficeController {
             DocumentManager.createMeta(filename, userName, groupID);
             Crypt.fileDecrypt(downFile, targetFile);
         } catch (Exception e) {
-            System.out.println(e.toString());
             return "{\"type\":\"error\",\"code\":\"300\", \"detail\": \"" + e.toString() + "\"}";
         }
-        model.changeType(mode,type);
+        model.changeType(mode, type);
         StringBuilder sb = new StringBuilder();
-        sb.append("{" + "\"model\":" + model.toString() + "}");
+        sb.append("{" + "\"model\":" + model.toString() + "," + "\"apiUrl\":\"" + OfficeProperty.getUrlApi() + "\"}");
         System.out.println(model.toString());
         return sb.toString();
     }
 
-    @RequiresUser
+    //    @RequiresUser
     @RequestMapping(value = "/track", produces = "application/json;charset=UTF-8")
     public void saveOfficeFile(Long id, HttpServletRequest request, HttpServletResponse response) throws Exception {
         if (id == null) {
             throw new GroupsException("资源id为空");
         }
-        DocumentManager.init(request);
         PrintWriter writer = response.getWriter();
         InputStream requestStream = request.getInputStream();
-        String body = officeService.getBody(requestStream);
-        GroupResource resourceBean = resourceService.getResourceById(id);
-        JSONObject parse = new JSONObject();
-        JSONObject jsonObj = parse.getJSONObject(body);
-        String targetPath = DocumentManager.FileRootPath(resourceBean.getGroupName());
-        String fileName = resourceBean.getName();
-
-        if (jsonObj.getInt("status") == 2) {
-            String downloadUri = jsonObj.getString("url");
-            File savedFile = new File(new URI(targetPath + fileName));
-            officeService.downloadFile(downloadUri,savedFile);
-
+        JSONObject jsonObj = null;
+        try {
+            String body = officeService.getBody(requestStream);
+            jsonObj = new JSONObject(body);
+            System.out.println(jsonObj.toString());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            writer.write("JSONParser.parse error:" + ex.getMessage());
+            return;
         }
+        try {
+            GroupResource resourceBean = resourceService.getResourceById(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//        if (jsonObj.getInt("status") == 2) {
+//            officeService.saveChanges(jsonObj, request, resourceBean);
+//        }
         writer.write("{\"error\":0}");
     }
 }

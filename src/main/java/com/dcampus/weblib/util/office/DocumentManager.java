@@ -129,8 +129,7 @@ public class DocumentManager {
         return storagePath + "hist";
     }
 
-    public static Integer GetFileVersion(String historyPath)
-    {
+    public static Integer GetFileVersion(String historyPath) {
         File dir = new File(historyPath);
 
         if (!dir.exists()) return 0;
@@ -145,8 +144,7 @@ public class DocumentManager {
         return dirs.length;
     }
 
-    public static String VersionDir(String histPath, Integer version)
-    {
+    public static String VersionDir(String histPath, Integer version) {
         return histPath + File.separator + Integer.toString(version);
     }
 
@@ -168,7 +166,7 @@ public class DocumentManager {
      * @throws Exception
      */
     public static void createMeta(String fileName, String uid, String groupID) throws Exception {
-        String histDir = FileRootPath(groupID) + "/" + fileName + "-hist";
+        String histDir = FileRootPath(groupID) + "/" + OfficeFileUtil.GetFileNameWithoutExtension(fileName) + "-hist";
         File file = new File(histDir);
         if (!file.exists()) {
             file.mkdir();
